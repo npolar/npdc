@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="loginApp" class="no-js">
+<head>
+  
+  <base href="/_login/" id="base">
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Login</title>
+  
+  <link rel="stylesheet" href="/flake/flake.css">
+</head>
+<body>
+  <div class="wrapper" id="wrapper">
+    <div ng-view></div>
+  </div>
+
+  <!-- lodash -->
+  <script src="/bower/lodash/dist/lodash.min.js"></script>
+  
+  <!-- angular -->
+  <script src="/bower/angular/angular.js"></script>
+  <script src="/bower/angular-route/angular-route.js"></script>
+  <script src="/bower/angular-resource/angular-resource.js"></script>
+  
+  <!-- npolarApi -->
+  <script src="/bower/angular-base64/angular-base64.min.js"></script>
+  <script src="/bower/angular-jwt/dist/angular-jwt.js"> </script>
+  <script src="/npolar/npolar_api.js"></script>
+  
+  <!-- loginApp -->
+  <script src="login_app.js"></script>
+  <script src="login_controller.js"></script>
+  
+  <script src="/_shared/model/nav.js"></script>
+
+</body>
+</html>
