@@ -1,0 +1,29 @@
+{
+  "name": "data-npolar-v2",
+  "description": "Norwegian Polar Data v2",
+  "version": "0.0.0",
+  "homepage": "https://data.npolar.no",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.4",
+    "angular-route": "~1.4",
+    "angular-resource": "~1.4",
+    "angular-loader": "~1.4",
+    "angular-mocks": "~1.4",
+    "html5-boilerplate": "~4.3.0",
+    "angular-xeditable": "~0.1.x",
+    "angular-base64": "~2",
+    "tv4": "~1",
+    "formula": "*",
+    "underscore": "~1",
+    "lodash": "~2",
+    "dygraphs": "~1",
+    "bootstrap": "~3.3",
+    "pure": "<=1",
+    "angular-jwt": "*",
+    "leaflet": "~0.7",
+    "leaflet-minimap": "git://github.com/Norkart/Leaflet-MiniMap.git#~2.0.1",
+    "league-gothic": "git://github.com/theleagueof/league-gothic.git"
+  }
+}
