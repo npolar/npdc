@@ -1,0 +1,1 @@
+<h2 ng-if="error" ng-class="{ alert: true, 'alert-danger': isError(error.status), 'alert-success': isSuccess(error.status)}" role="alert"><strong>{{error.status}} {{error.statusText}}</strong> {{error.data.error.explanation }} ({{error.data.error.time }})</h2>
