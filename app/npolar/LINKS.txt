@@ -1,0 +1,8 @@
+LINKS
+
+// * http://kirkbushell.me/angular-js-using-ng-resource-in-a-more-restful-manner/
+// * https://www.npmjs.com/package/secure-ng-resource
+// * https://auth0.com/blog/2014/01/07/angularjs-authentication-with-cookies-vs-token/
+//    http://beletsky.net/2013/11/simple-authentication-in-angular-dot-js-app.html
+// http://brewhouse.io/blog/2014/12/09/authentication-made-simple-in-single-page-angularjs-applications.html
+// https://github.com/auth0/angular-token-auth/blob/master/auth.client.js
