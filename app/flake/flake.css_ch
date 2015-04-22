@@ -22,15 +22,8 @@ html {
 	font-family:Helvetica, Arial, sans-serif;
 }
 a {
-	color:#06d;
+	color:#adf;
 	transition:all 0.4s ease;
-	text-decoration:none;
-	/*border-bottom:1px solid #06d;*/
-  text-decoration:none;
-}
-a:hover {
-	text-decoration:none;
-	border-bottom:1px solid #fff;
 }
 ul,
 ol,
@@ -43,12 +36,18 @@ li a {
 	padding:0.2em;
 }
 
+.content-main a {
+	color: teal;
+  text-decoration:none;
+}
+
 .content-main ul,
 .content-main ol,
-
+.content-main dl,
 .list,
 .list ul, 
-.list ol {
+.list ol, 
+.list dl {
 	display:list;
 	padding:0 0 0.5em 2em;	
 }
@@ -59,6 +58,7 @@ li a {
 }
 .content-main ul a,
 .content-main ol a,
+.content-main dl a,
 .list li a {
 	display:inline;
 	padding:0;
@@ -115,15 +115,13 @@ li a {
 	max-height:500px; /* must be high enough to fit everything (and then some) */
 	transition:max-height .5s ease;
 }
-#nav a {
-	color:#adf;
-}
+
 #nav ul a {
 	text-decoration:none;
 	border-bottom:1px solid #4a4a4a;
 }
 #nav ul a:hover {
-	color:#bef;
+	color:#adf;
 	background:#4a4a4a;
 }
 
@@ -140,8 +138,8 @@ li a {
 .content-related {
 	background:#f5f5f5;
 	/* remove these last rules if you want no height limit on the aside container */
-	/*max-height:400px;
-	overflow:auto;*/
+	max-height:400px;
+	overflow:auto;
 }
 .content-main {
 	border-top:1px solid #ccc;
