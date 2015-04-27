@@ -3,7 +3,7 @@
 Next-generation http://data.npolar.no
 
 * 100 % client side code
-* Independantly deployable [app](https://github.com/npolar/npdc/tree/master/app)s
+* Independently deployable [app](https://github.com/npolar/npdc/tree/master/app)s
 
 ### Run
 ```
