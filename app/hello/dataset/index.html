@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="npdcApp" ng-cloak>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base href="/hello/dataset/"/>
+	<title>Dataset</title>
+
+	<!-- angular -->
+	<script src="/bower/angular/angular.js"></script>
+	<script src="/bower/angular-route/angular-route.js"></script>
+	<script src="/bower/angular-resource/angular-resource.js"></script>
+
+	<!-- lodash -->
+	<script src="/bower/lodash/dist/lodash.js"></script>
+	
+	<!-- formula -->
+	<script src="/bower/tv4/tv4.js"></script>
+	<script src="/bower/formula/dist/formula.js"></script>
+				
+	<!-- npolarApi -->
+	<script src="/bower/angular-base64/angular-base64.js"></script>
+	<script src="/bower/angular-jwt/dist/angular-jwt.js"> </script>
+	<script src="/bower/angular-npolar/npolar_api.js"></script>
+	
+	<!-- npdcApp -->
+	<script src="app.js"></script>
+	<script src="search/search_controller.js"></script>
+	<script src="show/show_controller.js"></script>
+	<script src="edit/edit_controller.js"></script>
+	
+	<!-- pure http://yui.yahooapis.com/pure/0.6.0/pure-min.css -->
+	<link rel="stylesheet" href="/bower/pure/pure.css">
+	
+</head>
+<body>
+	Norwegian Polar Data Centre - [Hello] Dataset
+	<!--<div npdc-nav></div>	-->
+	<div ng-view>
+		
+		
+	</div>
+	<login-logout></login-logout>
+<!--	<div npdc-foot></div>-->
+</body>
+</html>
