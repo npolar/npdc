@@ -35,7 +35,7 @@ angular.module("npolarUiLoginLogoutDirective", []).directive('loginLogout', func
   return {
    scope: {},
    controller: "NpolarApiEditController",
-   templateUrl: '/npolar/html/_user.html',
+   templateUrl: '/bower/angular-npolar/html/_user.html',
    link: function(scope) {
       scope.user = {};
    }
@@ -45,7 +45,7 @@ angular.module("npolarUiLoginLogoutDirective", []).directive('loginLogout', func
 angular.module("npdcNavDirective", []).directive('npdcNav', function() {
   return {
     //scope: { },
-    templateUrl: '/npolar/html/_nav.html'
+    templateUrl: '/bower/angular-npolar/html/_nav.html'
   };
 });
 
