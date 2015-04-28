@@ -3,7 +3,9 @@
     {
       "title": "Dataset",
       "fields": [
-        { "id": "title"},
+        {
+          "id": "title"
+        },
         "progress",
         "draft",
         "licences",
@@ -14,7 +16,8 @@
       "title": "Texts",
       "fields": [
         {
-          "id": "summary", "type": "textarea"
+          "id": "summary",
+          "type": "textarea"
         },
         "rights",
         "restrictions",
@@ -34,21 +37,20 @@
     {
       "title": "Classification",
       "fields": [
-                "sets",{
-          
-          "id": "topicis"},
-          "iso_topics",
-          "tags"
-        
+        "sets",
+        {
+          "id": "topicis"
+        },
+        "iso_topics",
+        "tags"
       ]
     },
     {
       "title": "Coverage",
       "fields": [
-          "activity",
-          "coverage",
-          "placenames"
-        
+        "activity",
+        "coverage",
+        "placenames"
       ]
     },
     {
@@ -75,7 +77,7 @@
         }
       ]
     },
-        {
+    {
       "title": "Edits",
       "fields": [
         "created",
