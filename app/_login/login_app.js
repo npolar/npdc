@@ -1,7 +1,6 @@
 "use strict"; (function() {
 
-  // loginApp
-  // = angular (v1) app for [data.npolar.no](http://data.npolar.no/login)
+  // loginApp: angular (v1) app for [data.npolar.no](http://data.npolar.no/login)
   console.log("loginApp started "+ new Date().toISOString());
   
   // Init loginApp module
@@ -15,7 +14,7 @@
   var models = [
     {"path": "/nav.json", "resource": "NavResource", base: "/_shared/config" },
     {"path": "/user", "resource": "User"},
-    {"path": "", "resource": "JWT", base: "https://apptest.data.npolar.no:8950"}
+    {"path": "/authenticate", "resource": "Auth", base: "https://api.npolar.no/user"}
    
   ];
   angular.forEach(models, function(service) {
@@ -47,7 +46,7 @@
   
       var environment = config.environment || npolarApiConfig.environment;    
       config = _.find(config.config, { environment: environment});
-      angular.extend(npolarApiConfig, config);
+      angular.extend(npolarApiConfig, config, { security: { authorization: "basic" }});
       console.log("npolarApiConfig", npolarApiConfig);
       
     }).error(function(response) {
