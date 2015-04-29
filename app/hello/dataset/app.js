@@ -10,35 +10,35 @@ require('formula');
 require('angular-route');
 require('angular-npolar');
 
-var npdcApp = angular.module('npdcApp', ['ngRoute', 'formula', 'npolarApi', 'npolarUi']);
+var npdcDatasetApp = angular.module('npdcDatasetApp', ['ngRoute', 'formula', 'npolarApi', 'npolarUi']);
 
-// Bootstrap ngResource models using npolarApiResource
+// Bootstrap ngResource models using NpolarApiResource
 var helloResources = [
   {'path': '/user', 'resource': 'User'},
   {'path': '/dataset', 'resource': 'Dataset' }
 ];
 
 helloResources.forEach(function (service) {
-  npdcApp.factory(service.resource, function (npolarApiResource) {
-    return npolarApiResource.resource(service);
+  npdcDatasetApp.factory(service.resource, function (NpolarApiResource) {
+    return NpolarApiResource.resource(service);
   });
 });
 
 // Routing
-npdcApp.config(require('./router'));
+npdcDatasetApp.config(require('./router'));
 
 // Auth interceptor
-npdcApp.config(function ($httpProvider) {
+npdcDatasetApp.config(function ($httpProvider) {
   $httpProvider.interceptors.push('npolarApiAuthInterceptor');
 });
 
 // Controllers
-npdcApp.controller('ShowController', require('./show/show_controller'));
-npdcApp.controller('SearchController', require('./search/search_controller'));
-npdcApp.controller('EditController', require('./edit/edit_controller'));
+npdcDatasetApp.controller('DatasetShowController', require('./show/DatasetShowController'));
+npdcDatasetApp.controller('DatasetSearchController', require('./search/DatasetSearchController'));
+npdcDatasetApp.controller('DatasetEditController', require('./edit/DatasetEditController'));
 
 // Inject config and run
-npdcApp.run(function (npolarApiConfig, $http) {
+npdcDatasetApp.run(function (npolarApiConfig, $http) {
 
   $http.get('/_shared/config/npolarApiConfig.json').success(function (config) {
 

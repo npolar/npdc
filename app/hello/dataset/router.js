@@ -3,21 +3,21 @@
 /**
  * @ngInject
  */
-var Router = function ($routeProvider, $locationProvider) {
+var router = function ($routeProvider, $locationProvider) {
 
   $locationProvider.html5Mode(true).hashPrefix('!');
 
   $routeProvider.when('/:id', {
     templateUrl: 'show/show.html',
-    controller: 'ShowController',
+    controller: 'DatasetShowController',
     breadcrumbs: [{'href': '/path'}]}
    ).when('/:id/edit', {
     templateUrl: 'edit/edit.html',
-    controller: 'EditController'
+    controller: 'DatasetEditController'
   }).when('/', {
     templateUrl: 'search/search.html',
-    controller: 'SearchController'
+    controller: 'DatasetSearchController'
   });
 };
 
-module.exports = Router;
+module.exports = router;
