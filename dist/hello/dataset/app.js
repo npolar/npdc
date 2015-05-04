@@ -20,9 +20,10 @@ var helloResources = [
 ];
 
 helloResources.forEach(function (service) {
-  npdcDatasetApp.factory(service.resource, function (NpolarApiResource) {
+  // Expressive DI syntax is needed here because of the loop..
+  npdcDatasetApp.factory(service.resource, ['NpolarApiResource', function (NpolarApiResource) {
     return NpolarApiResource.resource(service);
-  });
+  }]);
 });
 
 // Routing
@@ -54,7 +55,7 @@ npdcDatasetApp.run(["npolarApiConfig", "$http", function (npolarApiConfig, $http
 }]);
 
 
-},{"./edit/DatasetEditController":2,"./router":3,"./search/DatasetSearchController":4,"./show/DatasetShowController":5,"angular":33,"angular-npolar":21,"angular-route":31,"formula":34,"lodash":35,"tv4":36}],36:[function(require,module,exports){
+},{"./edit/DatasetEditController":2,"./router":4,"./search/DatasetSearchController":5,"./show/DatasetShowController":7,"angular":36,"angular-npolar":24,"angular-route":34,"formula":37,"lodash":38,"tv4":39}],39:[function(require,module,exports){
 /*
 Author: Geraint Luff and others
 Year: 2013
@@ -1682,7 +1683,7 @@ tv4.tv4 = tv4;
 return tv4; // used by _header.js to globalise.
 
 }));
-},{}],35:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 (function (global){
 /**
  * @license
@@ -8473,7 +8474,7 @@ return tv4; // used by _header.js to globalise.
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{}],34:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 /**
  * formula.js
  * Generic JSON Schema form builder
@@ -10534,11 +10535,11 @@ angular.module('formula')
 
 angular.module("formula").run(["$templateCache", function($templateCache) {$templateCache.put("bootstrap3.html","<form class=\"form-horizontal\" ng-if=\"form.fieldsets\"><header ng-if=\"form.title\" class=\"page-header\" style=\"margin-top: -10px\"><h2>{{ form.title }}</h2></header><ul class=\"nav nav-tabs\"><li ng-repeat=\"fieldset in form.fieldsets\" ng-if=\"form.fieldsets.length > 1\" ng-class=\"{ active: fieldset.active }\"><a href=\"\" ng-click=\"form.activate(fieldset)\">{{ fieldset.title }}</a></li></ul><fieldset ng-repeat=\"fieldset in form.fieldsets\" ng-if=\"fieldset.active\" style=\"border: 1px solid #ddd; border-radius: 0 0 5px 5px; border-top: 0; padding: 15px; padding-bottom: 0;\"><div ng-repeat=\"field in fieldset.fields\" ng-show=\"field.visible\" formula:field-definition=\"\"><div ng-if=\"field.typeOf(\'input\')\" title=\"{{ field.description }}\" class=\"form-group has-feedback\"><label for=\"{{ field.uid }}\" class=\"col-sm-3 control-label\">{{ field.title }}</label><div class=\"col-sm-9\" ng-class=\"{ \'has-error\': field.error, \'has-success\': field.valid, \'has-warning\': (field.required && field.value === null) }\"><div ng-if=\"!field.typeOf(\'select\')\"><input class=\"form-control input-md\" formula:field=\"field\"><div ng-if=\"!field.typeOf(\'checkbox\') && (field.error || field.valid)\"><span ng-if=\"field.valid\" class=\"glyphicon glyphicon-ok form-control-feedback\"></span> <span ng-if=\"field.error\" class=\"glyphicon glyphicon-remove form-control-feedback\"></span></div></div><select ng-if=\"field.typeOf(\'select\')\" class=\"form-control input-md\" formula:field=\"field\"><option ng-repeat=\"value in field.values\" value=\"{{ value.id }}\">{{ value.label }}</option></select><span class=\"help-block\">{{ field.error || field.description }}</span></div></div><div ng-if=\"field.typeOf(\'object\')\"><div class=\"panel\" ng-class=\"{ \'panel-danger\': field.error, \'panel-success\': field.valid }\" formula:field=\"field\"><div class=\"panel-heading\">{{ field.title }}</div><div class=\"panel-body\"><div ng-repeat=\"field in field.fields\" ng-show=\"field.visible\"><formula:field-instance field=\"field\"></formula:field-instance></div></div></div></div><div ng-if=\"field.typeOf(\'array\')\"><div formula:field=\"field\"><div ng-if=\"field.typeOf(\'fieldset\')\" class=\"panel\" ng-class=\"{ \'panel-danger\': field.error, \'panel-success\': field.valid }\"><div class=\"panel-heading\">{{ field.title }} ({{ field.values.length || 0 }})</div><ul class=\"list-group\"><li class=\"list-group-item\" ng-repeat=\"value in field.values\"><fieldset><legend style=\"border: none; margin-bottom: 10px; text-align: right;\"><span ng-class=\"{ \'text-danger\': !value.valid, \'text-success\': value.valid }\" class=\"pull-left\" ng-if=\"!value.visible\">{{ value.fields | formulaInlineValues }}</span> <button style=\"font-family: monospace;\" class=\"btn btn-sm btn-info\" ng-click=\"field.itemToggle($index)\" type=\"button\" title=\"{{ value.visible ? form.i18n.minimize[1] : form.i18n.maximize[1] }}\">{{ value.visible ? \'_\' : \'‾\' }}</button> <button class=\"btn btn-sm btn-danger\" ng-click=\"field.itemRemove($index)\" type=\"button\" title=\"{{ form.i18n.remove[1] }}\">X</button></legend><div ng-repeat=\"field in field.fields\" ng-show=\"value.visible\"><formula:field-instance field=\"value.fields[$index]\" ng-show=\"value.fields[$index].visible\"></formula:field-instance></div></fieldset></li></ul><div class=\"panel-footer clearfix has-feedback\" ng-class=\"{ \'has-error\': field.error, \'has-success\': field.valid }\"><span class=\"help-block\"><span>{{ field.error || field.description }}</span> <button class=\"btn btn-sm btn-primary pull-right\" ng-click=\"field.itemAdd()\" type=\"button\" title=\"{{ form.i18n.add[1] }}\">{{ form.i18n.add[0] }}</button></span></div></div><div ng-if=\"field.typeOf(\'field\')\" class=\"panel\" ng-class=\"{ \'panel-danger\': field.error, \'panel-success\': field.valid }\"><div class=\"panel-heading\">{{ field.title }}</div><ul class=\"list-group\"><li class=\"list-group-item\" ng-repeat=\"value in field.values\"><div class=\"input-group\"><input formula:field=\"value\" class=\"form-control input-md\"> <span class=\"input-group-btn\"><button class=\"btn btn-danger\" ng-click=\"field.itemRemove($index)\" type=\"button\" title=\"{{ form.i18n.remove[1] }}\">X</button></span></div></li></ul><div class=\"panel-footer clearfix has-feedback\" ng-class=\"{ \'has-error\': field.error, \'has-success\': field.valid }\"><span class=\"help-block\"><span>{{ field.error || field.description }}</span> <button class=\"btn btn-sm btn-primary pull-right\" ng-click=\"field.itemAdd()\" type=\"button\" title=\"{{ form.i18n.add[1] }}\">{{ form.i18n.add[0] }}</button></span></div></div></div></div></div></fieldset><div class=\"has-feedback\" ng-class=\"{ \'has-error\': !form.valid, \'has-success\': form.valid }\" style=\"margin-top: 10px;\"><span class=\"help-block\"><span ng-if=\"form.errors\" title=\"{{ form.errors.join(\'\\n\') }}\">{{ form.i18n.invalid | formulaReplace : { count: form.errors.length } }}</span><div class=\"btn-group pull-right\"><button type=\"button\" class=\"btn btn-info\" ng-click=\"form.validate()\" title=\"{{ form.i18n.validate[1] }}\">{{ form.i18n.validate[0] }}</button> <button type=\"button\" class=\"btn btn-success\" ng-class=\"{ disabled: !form.valid }\" ng-click=\"form.save()\" title=\"{{ form.i18n.save[1] }}\">{{ form.i18n.save[0] }}</button></div></span></div></form><div ng-if=\"!form.fieldsets\" class=\"alert alert-info\" style=\"text-align: center; overflow: hidden;\"><span>Loading schema...</span></div>");
 $templateCache.put("default.html","<form class=\"formula\" ng-if=\"form.fieldsets\"><header ng-if=\"form.title\">{{ form.title }}</header><nav ng-if=\"form.fieldsets.length > 1\"><a ng-repeat=\"fieldset in form.fieldsets\" ng-class=\"{ active: fieldset.active }\" href=\"\" ng-click=\"form.activate(fieldset)\">{{ fieldset.title }}</a></nav><fieldset ng-repeat=\"fieldset in form.fieldsets\" ng-if=\"fieldset.active\"><legend ng-if=\"fieldset.title\">{{ fieldset.title }}</legend><div ng-repeat=\"field in fieldset.fields\" ng-show=\"field.visible\" formula:field-definition=\"\"><div ng-if=\"field.typeOf(\'input\')\" title=\"{{ field.description }}\" ng-class=\"{ valid: field.valid, error: field.error, required: (field.required && field.value === null) }\"><label for=\"{{ field.uid }}\">{{ field.title }}</label> <input formula:field=\"field\"> <span>{{ field.error || field.description }}</span></div><div ng-if=\"field.typeOf(\'object\')\"><fieldset formula:field=\"field\"><legend>{{ field.title }}</legend><div ng-repeat=\"field in field.fields\" ng-show=\"field.visible\"><formula:field-instance field=\"field\"></formula:field-instance></div></fieldset></div><div ng-if=\"field.typeOf(\'array\')\"><div formula:field=\"field\"><fieldset ng-class=\"{ valid: field.valid, error: field.error }\"><legend>{{ field.title }} ({{ field.values.length || 0 }})</legend><ul ng-if=\"field.typeOf(\'fieldset\')\"><li ng-repeat=\"value in field.values\"><fieldset ng-class=\"{ valid: value.valid }\"><legend><span ng-if=\"!value.visible\">{{ value.fields | formulaInlineValues }}</span> <a href=\"\" class=\"toggle\" ng-click=\"field.itemToggle($index)\" title=\"{{ value.visible ? form.i18n.minimize[1] : form.i18n.maximize[1] }}\">{{ value.visible ? \'_\' : \'‾\' }}</a> <a href=\"\" class=\"remove\" ng-click=\"field.itemRemove($index)\" title=\"{{ form.i18n.remove[1] }}\">X</a></legend><div ng-repeat=\"subfield in field.fields\" ng-show=\"value.visible\"><formula:field-instance field=\"value.fields[$index]\" ng-show=\"value.fields[$index].visible\"></formula:field-instance></div></fieldset></li><li><span>{{ field.error || field.description }}</span> <button class=\"add\" ng-click=\"field.itemAdd()\" type=\"button\" title=\"{{ form.i18n.add[1] }}\"><strong>+</strong> {{ form.i18n.add[0] }}</button></li></ul><ul ng-if=\"field.typeOf(\'field\')\"><li ng-repeat=\"value in field.values\" ng-class=\"{ valid: value.valid, error: value.error }\"><input formula:field=\"value\"> <a href=\"\" class=\"remove\" ng-click=\"field.itemRemove($index)\" title=\"{{ form.i18n.remove[1] }}\">X</a> <span ng-if=\"value.error\">{{ value.error }}</span></li><li><span>{{ field.error || field.description }}</span> <button class=\"add\" ng-click=\"field.itemAdd()\" type=\"button\" title=\"{{ form.i18n.add[1] }}\"><strong>+</strong> {{ form.i18n.add[0] }}</button></li></ul></fieldset></div></div></div></fieldset><footer><span ng-if=\"form.errors\" title=\"{{ form.errors.join(\'\\n\') }}\">{{ form.i18n.invalid | formulaReplace : { count: form.errors.length } }}</span> <button ng-click=\"form.validate()\" title=\"{{ form.i18n.validate[1] }}\"><strong>&#10003;</strong> {{ form.i18n.validate[0] }}</button> <button ng-disabled=\"!form.valid\" ng-click=\"form.save()\" title=\"{{ form.i18n.save[1] }}\"><strong>&#9921;</strong> {{ form.i18n.save[0] }}</button></footer></form><div class=\"formula\" ng-if=\"!form.fieldsets\"><div class=\"loading\"><div class=\"spinner\"></div><span>Loading...</span></div></div>");}]);
-},{}],31:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 require('./angular-route');
 module.exports = 'ngRoute';
 
-},{"./angular-route":30}],30:[function(require,module,exports){
+},{"./angular-route":33}],33:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.0-rc.1
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -11531,7 +11532,7 @@ function ngViewFillContentFactory($compile, $controller, $route) {
 
 })(window, window.angular);
 
-},{}],21:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -11539,7 +11540,7 @@ module.exports = {
   npolarUi: require('./ui/')
 };
 
-},{"./api/":17,"./ui/":27}],27:[function(require,module,exports){
+},{"./api/":20,"./ui/":30}],30:[function(require,module,exports){
 'use strict';
 var angular = require('angular');
 
@@ -11555,7 +11556,7 @@ npolarUi.directive('npolarUiAppVersion', require('./breadcrumbs/breadcrumbs'));
 
 module.exports = npolarUi;
 
-},{"./auth/loginLogout":23,"./breadcrumbs/breadcrumbs":24,"./controller/BaseController":25,"./controller/EditController":26,"./navigation/nav":29,"angular":11}],29:[function(require,module,exports){
+},{"./auth/loginLogout":26,"./breadcrumbs/breadcrumbs":27,"./controller/BaseController":28,"./controller/EditController":29,"./navigation/nav":32,"angular":14}],32:[function(require,module,exports){
 'use strict';
 
 var nav = function () {
@@ -11567,9 +11568,9 @@ var nav = function () {
 
 module.exports = nav;
 
-},{"./_nav.html":28}],28:[function(require,module,exports){
+},{"./_nav.html":31}],31:[function(require,module,exports){
 module.exports = '\n <nav class="navbar top-menu">\n        <div class="container-fluid">\n          <!-- Small screen menu toggle -->\n          <div class="navbar-header">\n            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-menu-collapse">\n              <span class="sr-only">Toggle navigation</span>\n              <span class="icon-bar"></span>\n              <span class="icon-bar"></span>\n              <span class="icon-bar"></span>\n            </button>\n          </div>\n          <!-- Collect the nav links, forms, and other content for toggling -->\n          <div class="collapse navbar-collapse" id="top-menu-collapse" style="height: auto !important;">\n            <ul class="nav navbar-nav menu">\n              <li><a href="">Norwegian polar data centre</a></li>\n              <li class="dropdown">\n               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">\n                 <span class="glyphicon glyphicon-hdd" aria-hidden="true"></span> Data <span class="caret"></span></a>\n               \n               \n               <ul class="dropdown-menu" role="menu">\n    <!-- ngRepeat: link in nav --><li ng-repeat="link in nav" class="ng-scope"><a href="/home" title="Home" class="ng-binding">home</a></li><!-- end ngRepeat: link in nav --><li ng-repeat="link in nav" class="ng-scope"><a href="/dataset" title="Datasets" class="ng-binding">datasets</a></li><!-- end ngRepeat: link in nav --><li ng-repeat="link in nav" class="ng-scope"><a href="/publication" title="Publications" class="ng-binding">publications</a></li><!-- end ngRepeat: link in nav --><li ng-repeat="link in nav" class="ng-scope"><a href="/projects" title="Projects" class="ng-binding">projects</a></li><!-- end ngRepeat: link in nav --><li ng-repeat="link in nav" class="ng-scope"><a href="/people" title="People" class="ng-binding">people</a></li><!-- end ngRepeat: link in nav --><li ng-repeat="link in nav" class="ng-scope"><a href="/geodata" title="Geographic services and map data" class="ng-binding">geodata</a></li><!-- end ngRepeat: link in nav --><li ng-repeat="link in nav" class="ng-scope"><a href="/dashboard" title="Dashboard" class="ng-binding">dashboard</a></li><!-- end ngRepeat: link in nav --><li ng-repeat="link in nav" class="ng-scope"><a href="/latest" title="Latest of everything" class="ng-binding">latest</a></li><!-- end ngRepeat: link in nav --><li ng-repeat="link in nav" class="ng-scope"><a href="/indicator" title="Long-term environmental monitoring indicators" class="ng-binding">indicators</a></li><!-- end ngRepeat: link in nav --><li ng-repeat="link in nav" class="ng-scope"><a href="/vessel" title="Kjell-G. Kjær\'s Historic Vessel archive" class="ng-binding">vessel</a></li><!-- end ngRepeat: link in nav --><li ng-repeat="link in nav" class="ng-scope"><a href="/_login" title="Sign in" class="ng-binding">login</a></li><!-- end ngRepeat: link in nav -->\n  </ul>\n               \n               <ul class="dropdown-menu" role="menu">\n                 <li><a href="https://data.npolar.no/datasets">Datasets</a></li>\n                 <li><a href="https://data.npolar.no/biology/marine">Marine biology</a></li>\n                 <li><a href="/hello">People</a></li>\n                 <li><a href="https://data.npolar.no/projects">Projects</a></li>\n                 <li><a href="https://data.npolar.no/publications">Publications</a></li>\n                 \n                 \n                 \n               </ul>\n             </li>\n             <li><a href="https://data.npolar.no/geodata"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Map services</a></li>\n             <li><a href="http://api.npolar.no"><span class="glyphicon glyphicon-console" aria-hidden="true"></span> Developer</a></li>\n            </ul>\n            <form class="navbar-form" role="search">\n              <div class="input-group">\n                <input type="text" class="form-control" placeholder="Search for...">\n                <span class="input-group-btn">\n                  <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>\n                </span>\n              </div><!-- /input-group -->\n            </form>\n            <ul class="nav navbar-nav navbar-right login">\n              <li>\n                     \n               <a href="#" class="navbar-link" data-toggle="popover" role="button" aria-expanded="false">\n                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login <span class="caret"></span></a>\n               <a href="#" class="navbar-link" data-toggle="modal" data-target="#login-modal" role="button" aria-expanded="false">\n                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login</a>\n               <div class="popover-wrapper">\n                 <div class="popover-content">\n                   <form>\n                     <div class="form-group">\n                       <label for="exampleInputEmail1">Email address</label>\n                       <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">\n                     </div>\n                     <div class="form-group">\n                       <label for="exampleInputPassword1">Password</label>\n                       <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">\n                     </div>\n                     <button type="button" class="btn btn-default do-login">Submit</button>\n                    </form>\n                 </div>\n               </div>\n             </li>\n           </ul>\n          </div><!-- /.navbar-collapse -->\n        </div><!-- /.container-fluid -->\n      </nav>';
-},{}],26:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 /**
  * NpolarUiEditController provides methods for manipulating documents (using ngResource)
  * and controller action methods like edit().
@@ -11715,7 +11716,7 @@ EditController.$inject = ["$scope", "$location", "$route", "$routeParams", "$win
 
 module.exports = EditController;
 
-},{"angular":11}],25:[function(require,module,exports){
+},{"angular":14}],28:[function(require,module,exports){
 /**
 * NpolarUiBaseController is meant to be the parent of a safe Controller,
 * ie. a controller dealing with only with presentation. See also NpolarUiEditController.
@@ -11848,7 +11849,7 @@ BaseController.$inject = ["$scope", "$location", "$route", "$routeParams", "$win
 
 module.exports = BaseController;
 
-},{"lodash":12}],24:[function(require,module,exports){
+},{"lodash":15}],27:[function(require,module,exports){
 'use strict';
 
 var breadcrumbs = ['version', function (user) {
@@ -11860,7 +11861,7 @@ var breadcrumbs = ['version', function (user) {
 
 module.exports = breadcrumbs;
 
-},{}],23:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 'use strict';
 
 var loginLogout = function () {
@@ -11876,9 +11877,9 @@ var loginLogout = function () {
 
 module.exports = loginLogout;
 
-},{"./_user.html":22}],22:[function(require,module,exports){
+},{"./_user.html":25}],25:[function(require,module,exports){
 module.exports = '<div ng-if="user.name">\n <b>{{user.name}}</b> <button ng-click="logout()">Logout</button>\n</div>\n<div ng-if="!user.name">\n\n <form role="form" class="pure-form pure-form-stacked">\n        <div class="form-group">\n          <label for="username">Username</label>\n          <input type="text" class="form-control" ng-model="user.username" id="username" placeholder="Username (email)">\n        </div>\n        <div class="form-group">\n          <label for="password">Password</label>\n          <input type="password" class="form-control" id="password" ng-model="user.password" placeholder="Password">\n        </div>\n        <button type="submit" class="btn btn-default" ng-click="login()">Login</button>\n      </form>\n\n</div>\n';
-},{}],17:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 'use strict';
 var angular = require('angular');
 
@@ -11902,7 +11903,7 @@ npolarApi.directive('npolarJsonText', require('./util/jsonText'));
 
 module.exports = npolarApi;
 
-},{"./config":13,"./http/Resource":14,"./http/Security":15,"./http/authInterceptor":16,"./session/User":18,"./util/Text":19,"./util/jsonText":20,"angular":11,"angular-jwt":6,"angular-resource":8,"angular-utf8-base64":9}],20:[function(require,module,exports){
+},{"./config":16,"./http/Resource":17,"./http/Security":18,"./http/authInterceptor":19,"./session/User":21,"./util/Text":22,"./util/jsonText":23,"angular":14,"angular-jwt":9,"angular-resource":11,"angular-utf8-base64":12}],23:[function(require,module,exports){
 /**
  * Adapted from [Stackoverflow?]...
  *
@@ -11931,7 +11932,7 @@ var jsonText = function() {
 
 module.exports = jsonText;
 
-},{}],19:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 'use strict';
 var _ = require('lodash');
 
@@ -11957,7 +11958,7 @@ var Texxt = function () {
 
 module.exports = Texxt;
 
-},{"lodash":12}],18:[function(require,module,exports){
+},{"lodash":15}],21:[function(require,module,exports){
 // FIXME This service is misnamed and will probably die (it's just a thin session storage wrapper)
 'use strict';
 var angular = require('angular');
@@ -11994,7 +11995,7 @@ User.$inject = ["base64"];
 
 module.exports = User;
 
-},{"angular":11}],16:[function(require,module,exports){
+},{"angular":14}],19:[function(require,module,exports){
 /**
 * Authorization interceptor, adds Basic or Bearer tokens to (FIXME: currently all) API requests
 *
@@ -12049,7 +12050,7 @@ authInterceptor.$inject = ["$rootScope", "$q", "$window", "npolarApiConfig", "Np
 
 module.exports = authInterceptor;
 
-},{}],15:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 'use strict';
 
 /**
@@ -12106,7 +12107,7 @@ Security.$inject = ["base64", "jwtHelper", "npolarApiConfig", "NpolarApiUser"];
 
 module.exports = Security;
 
-},{}],14:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 /**
 *
 *
@@ -12213,7 +12214,7 @@ Resource.$inject = ["npolarApiConfig", "NpolarApiSecurity", "$resource", "$locat
 
 module.exports = Resource;
 
-},{"angular":11,"lodash":12}],12:[function(require,module,exports){
+},{"angular":14,"lodash":15}],15:[function(require,module,exports){
 (function (global){
 /**
  * @license
@@ -19004,7 +19005,7 @@ module.exports = Resource;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{}],13:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 /**
  * npolarApiConfig, meant to be .run and merged with overrides for the current environment
  *
@@ -19036,7 +19037,7 @@ var config = {
 
 module.exports = config;
 
-},{}],9:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 'use strict';
 
 function Base64 () {
@@ -19243,11 +19244,11 @@ else
 {
     Base64();
 }
-},{}],8:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 require('./angular-resource');
 module.exports = 'ngResource';
 
-},{"./angular-resource":7}],7:[function(require,module,exports){
+},{"./angular-resource":10}],10:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.0-rc.1
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -19917,7 +19918,7 @@ angular.module('ngResource', ['ng']).
 
 })(window, window.angular);
 
-},{}],6:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 (function() {
 
 
@@ -20038,7 +20039,7 @@ angular.module('angular-jwt',
   });
 
 }());
-},{}],5:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 'use strict';
 /**
  * @ngInject
@@ -20053,7 +20054,7 @@ DatasetShowController.$inject = ["$scope", "$controller", "Dataset"];
 module.exports = DatasetShowController;
 
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 'use strict';
 var angular = require('angular');
 /**
@@ -20082,15 +20083,15 @@ DatasetSearchController.$inject = ["$scope", "$location", "$controller", "Datase
 module.exports = DatasetSearchController;
 
 
-},{"angular":33}],33:[function(require,module,exports){
-arguments[4][11][0].apply(exports,arguments)
-},{"./angular":32,"dup":11}],32:[function(require,module,exports){
-arguments[4][10][0].apply(exports,arguments)
-},{"dup":10}],11:[function(require,module,exports){
+},{"angular":36}],36:[function(require,module,exports){
+arguments[4][14][0].apply(exports,arguments)
+},{"./angular":35,"dup":14}],35:[function(require,module,exports){
+arguments[4][13][0].apply(exports,arguments)
+},{"dup":13}],14:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":10}],10:[function(require,module,exports){
+},{"./angular":13}],13:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.0-rc.1
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -47963,7 +47964,7 @@ var minlengthDirective = function() {
 })(window, document);
 
 !window.angular.$$csp() && window.angular.element(document).find('head').prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-animate-anchor{position:absolute;}</style>');
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 'use strict';
 
 /**
@@ -47974,14 +47975,14 @@ var router = function ($routeProvider, $locationProvider) {
   $locationProvider.html5Mode(true).hashPrefix('!');
 
   $routeProvider.when('/:id', {
-    templateUrl: 'show/show.html',
+    template: require('./show/show.html'),
     controller: 'DatasetShowController',
     breadcrumbs: [{'href': '/path'}]}
    ).when('/:id/edit', {
-    templateUrl: 'edit/edit.html',
+    template: require('./edit/edit.html'),
     controller: 'DatasetEditController'
   }).when('/', {
-    templateUrl: 'search/search.html',
+    template: require('./search/search.html'),
     controller: 'DatasetSearchController'
   });
 };
@@ -47990,6 +47991,12 @@ router.$inject = ["$routeProvider", "$locationProvider"];
 module.exports = router;
 
 
+},{"./edit/edit.html":3,"./search/search.html":6,"./show/show.html":8}],8:[function(require,module,exports){
+module.exports = '<div ng-include="\'/angular-npolar/html/_head.html\'"></div>\n\n<h3>{{document.title}}</h3>\n<a ng-if="document.id && user.name" ng-href="{{document.id}}/edit"><button class="btn btn-danger">edit</button></a>\n<button ng-click="locationBase()" class="btn btn-default">back</button></a>\n<div ng-repeat="(k,v) in document">\n  <h4>{{k}}</h4>\n  <p>{{v|json}}</p>\n</div>\n';
+},{}],6:[function(require,module,exports){
+module.exports = '<div class="pure-g">\n  <div class="pure-u-1 pure-u-md-1-3">\n    <div ng-include="\'/angular-npolar/html/_head.html\'"></div>\n  </div>\n  <div class="pure-u-1 pure-u-md-1-3">\n    <div ng-include="\'/angular-npolar/html/_search.html\'"></div>\n  </div>\n  <div class="pure-u-1 pure-u-md-1-3">\n    <div ng-include="\'/angular-npolar/html/_foot.html\'"></div>\n  </div>\n</div>\n';
+},{}],3:[function(require,module,exports){
+module.exports = '<!-- formula css -->\n<link rel="stylesheet" href="/css/bootstrap.min.css" >\n<!-- <link rel="stylesheet" href="/bower/formula/dist/formula.css"> -->\n\n<div ng-include="\'/angular-npolar/html/_head.html\'"></div>\n\n<article>\n  <button ng-click="locationBase()"class="btn btn-info">cancel</button></a>\n  <button ng-if="!isExpert()" ng-click="expert()" class="btn btn-default">expert</button>\n  <button ng-if="isExpert()" ng-click="initFormula()" class="btn btn-default">simple</button>\n\n  <span ng-if="user.name">\n    <button ng-if="document.id" ng-click="delete()" class="btn btn-danger" ng-disabled="deleting || saving">delete</button>\n    <button ng-if="document" ng-click="save()" class="btn btn-success" ng-disabled="deleting || saving">save</button>\n    <div ng-init="deleteClicked=false" ng-if="deleteClicked" ng-include="\'/angular-npolar/html/_delete.html\'"></div>\n  </span>\n\n  <h3>{{ document._rev ? \'Editing\' : \'New\' }}<a ng-href="{{document.id}}">{{document.title}}</a></h3>\n  <div formula="formula"></div>\n</article>\n\n<div ng-include="\'/angular-npolar/html/_foot.html\'"></div>\n';
 },{}],2:[function(require,module,exports){
 'use strict';
 /**

@@ -19,9 +19,10 @@ var helloResources = [
 ];
 
 helloResources.forEach(function (service) {
-  npdcDatasetApp.factory(service.resource, function (NpolarApiResource) {
+  // Expressive DI syntax is needed here because of the loop..
+  npdcDatasetApp.factory(service.resource, ['NpolarApiResource', function (NpolarApiResource) {
     return NpolarApiResource.resource(service);
-  });
+  }]);
 });
 
 // Routing
