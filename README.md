@@ -9,4 +9,3 @@ Next-generation http://data.npolar.no
 ```
 npm start
 ```
-http://localhost:8000/

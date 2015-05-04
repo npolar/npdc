@@ -5,5 +5,5 @@ var gulp   = require('gulp');
 var del    = require('del');
 
 gulp.task('clean', function(cb) {
-  del([config.dist.root], { forec: true }, cb);
+  del([config.dist.root], { force: true }, cb);
 });
