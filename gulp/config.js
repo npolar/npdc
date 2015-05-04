@@ -11,6 +11,7 @@ module.exports = {
     // View templates should be required so they are included in the app bundles..
     // Make sure everything thats ng-included is copied to dist folder
     'html': ['app/**/index.html', './app/**/html/*.html'],
+    'js': ['app/**/*.js'],
     'css': ['./app/**/*.css'],
     'config': ['./app/**/*.json']
   },
