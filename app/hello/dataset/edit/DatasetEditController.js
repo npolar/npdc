@@ -12,7 +12,6 @@ var DatasetEditController = function ($scope, $controller, $routeParams, Dataset
     $scope.formula.schema = '//api.npolar.no/schema/dataset';
     $scope.formula.form = 'edit/formula.json';
     $scope.formula.template = 'bootstrap3';
-
   };
 
   // Dataset -> npolarApiResource -> ngResource

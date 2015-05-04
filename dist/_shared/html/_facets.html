@@ -1,0 +1,5 @@
+<div ng-repeat="k in feed.facets">
+  <span ng-repeat="(facet,o) in k">
+    <strong>{{}}</strong><span ng-repeat="f in o">{{f.term}} ({{f.count}})</span>
+  </span>
+</div>
