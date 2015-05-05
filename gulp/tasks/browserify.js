@@ -12,14 +12,14 @@ var uglify       = require('gulp-uglify');
 var handleErrors = require('../util/handleErrors');
 var concat       = require('concat-stream');
 var file         = require('gulp-file');
-var glob         = require("glob");
+var glob         = require('glob');
 
 // Based on: http://blog.avisi.nl/2014/04/25/how-to-keep-a-fast-build-with-browserify-and-reactjs/
 // http://stackoverflow.com/questions/29362583/possible-eventemitter-memory-leak-detected-with-gulp-watchify-factor-bundl
 gulp.task('browserify', function () {
 
   var sources = config.src.apps.reduce(function(memo, entry) {
-    return memo.concat(glob.sync(entry));
+    return memo.concat(glob.sync('./'+entry));
   }, []);
 
   var bundler = browserify({
@@ -41,13 +41,13 @@ gulp.task('browserify', function () {
 
     // Enable factor-bundle plugin to create shared.js
     bundler.plugin('factor-bundle', { outputs: sources.map(function (o) {
-      return write(o.replace('app/', ''));
+      return write(o.replace(config.src.root, ''));
     })});
 
     // Browseriy
     var stream = bundler.bundle()
       .on('error', handleErrors)
-      .pipe(write('shared.js'));
+      .pipe(write('_shared/shared.js'));
 
     gutil.log('Bundling done.');
     return stream;

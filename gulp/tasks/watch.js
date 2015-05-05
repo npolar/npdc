@@ -1,8 +1,10 @@
 'use strict';
 
-var config        = require('../config');
-var gulp          = require('gulp');
-var fs            = require('fs');
+var config = require('../config');
+var gulp = require('gulp');
+var gutil = require('gulp-util');
+var fs = require('fs');
+var path = require('path');
 
 gulp.task('watch', ['browserSync'], function() {
 
@@ -11,8 +13,16 @@ gulp.task('watch', ['browserSync'], function() {
   gulp.watch(config.src.css, ['copy-src-css']);
   gulp.watch(config.src.config, ['copy-src-config']);
 
-  // Watch angular-npolar if it is 'npm link'ed
-  if (fs.lstatSync('./node_modules/angular-npolar').isSymbolicLink()) {
-    gulp.watch(config.assets.html, ['copy-asset-html']);
-  }
+  // Watch assets if 'npm link'ed
+  fs.readdirSync(config.assets.root).forEach(function (file) {
+    var stats = fs.lstatSync(path.join(config.assets.root, file));
+    if (stats.isSymbolicLink()) {
+      [].concat(config.assets.css, config.assets.html).forEach(function (glob) {
+        if (glob.indexOf(file) > -1) {
+          gulp.watch(glob, ['copy-assets']);
+          gutil.log('Watching npm linked asset ' + file);
+        }
+      });
+    }
+  });
 });

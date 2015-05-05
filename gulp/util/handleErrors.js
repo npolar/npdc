@@ -13,7 +13,6 @@ module.exports = function(error) {
       title: 'Compile Error',
       message: error
     }).apply(this, args);
-
     // Keep gulp from hanging on this task
     this.emit('end');
 

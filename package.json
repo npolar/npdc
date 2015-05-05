@@ -31,6 +31,7 @@
     "factor-bundle": "git://github.com/ypt/factor-bundle.git",
     "glob": "^5.0.5",
     "gulp": "^3.8.11",
+    "gulp-changed": "^1.2.1",
     "gulp-file": "^0.2.0",
     "gulp-if": "^1.2.5",
     "gulp-jshint": "^1.10.0",
