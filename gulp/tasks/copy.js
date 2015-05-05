@@ -2,11 +2,14 @@
 
 var config = require('../config');
 var gulp = require('gulp');
+var gulpif = require('gulp-if');
+var cachebust = require('gulp-cache-bust');
 var changed = require('gulp-changed');
 
 gulp.task('copy-src-html', function () {
   gulp.src(config.src.html)
     .pipe(changed(config.dist.root))
+    .pipe(gulpif(global.isProd, cachebust()))
     .pipe(gulp.dest(config.dist.root));
 });
 
@@ -28,11 +31,4 @@ gulp.task('copy-asset-css', function () {
     .pipe(gulp.dest(config.dist.assets));
 });
 
-gulp.task('copy-asset-html', function () {
-  gulp.src(config.assets.html, { base: config.assets.root })
-    .pipe(changed(config.dist.assets))
-    .pipe(gulp.dest(config.dist.assets));
-});
-
-gulp.task('copy-assets', ['copy-asset-css' ,'copy-asset-html']);
-gulp.task('copy-all', ['copy-src-html', 'copy-src-css', 'copy-src-config', 'copy-asset-css' ,'copy-asset-html']);
+gulp.task('copy-all', ['copy-src-html', 'copy-src-css', 'copy-src-config', 'copy-asset-css']);

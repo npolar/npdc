@@ -9,8 +9,9 @@ window.tv4 = require('tv4');
 require('formula');
 require('angular-route');
 require('angular-npolar');
+require('../../_shared/templates'); // Compiled by gulp
 
-var npdcDatasetApp = angular.module('npdcDatasetApp', ['ngRoute', 'formula', 'npolarApi', 'npolarUi']);
+var npdcDatasetApp = angular.module('npdcDatasetApp', ['ngRoute', 'formula', 'npolarApi', 'npolarUi', 'templates']);
 
 // Bootstrap ngResource models using NpolarApiResource
 var helloResources = [

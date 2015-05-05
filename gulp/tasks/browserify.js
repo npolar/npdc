@@ -1,18 +1,18 @@
 'use strict';
 
-var config       = require('../config');
-var gulp         = require('gulp');
-var gulpif       = require('gulp-if');
-var gutil        = require('gulp-util');
-var sourcemaps   = require('gulp-sourcemaps');
-var streamify    = require('gulp-streamify');
-var watchify     = require('watchify');
-var browserify   = require('browserify');
-var uglify       = require('gulp-uglify');
+var config = require('../config');
+var gulp = require('gulp');
+var gulpif = require('gulp-if');
+var gutil = require('gulp-util');
+var sourcemaps = require('gulp-sourcemaps');
+var streamify = require('gulp-streamify');
+var watchify = require('watchify');
+var browserify = require('browserify');
+var uglify = require('gulp-uglify');
 var handleErrors = require('../util/handleErrors');
-var concat       = require('concat-stream');
-var file         = require('gulp-file');
-var glob         = require('glob');
+var concat = require('concat-stream');
+var file = require('gulp-file');
+var glob = require('glob');
 
 // Based on: http://blog.avisi.nl/2014/04/25/how-to-keep-a-fast-build-with-browserify-and-reactjs/
 // http://stackoverflow.com/questions/29362583/possible-eventemitter-memory-leak-detected-with-gulp-watchify-factor-bundl

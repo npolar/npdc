@@ -3,7 +3,7 @@
 var base = {
   'app': 'app',
   'dist': 'dist',
-  'node_modules': './node_modules'
+  'node_modules': 'node_modules'
 };
 
 var config = {
@@ -19,7 +19,8 @@ var config = {
     'apps': [base.app+'/**/app.js'],
     // View templates should be required so they are included in the app bundles..
     // Make sure everything thats ng-included is copied to dist folder
-    'html': [base.app+'/**/index.html', base.app+'/**/html/*.html'],
+    'html': [base.app+'/**/index.html'],
+    'ngTemplates': [base.app+'/**/*.html'],
     'js': [base.app+'/**/*.js'],
     'css': [base.app+'/**/*.css'],
     'config': [base.app+'/**/*.json'],
@@ -29,7 +30,7 @@ var config = {
   'assets': {
     'root': base.node_modules,
     'css': [base.node_modules+'/purecss/build/pure.css', base.node_modules+'/bootstrap/dist/css/bootstrap.min.css'],
-    'html': [base.node_modules+'/angular-npolar/html/*']
+    'ngTemplates': [base.node_modules+'/angular-npolar/html/*.html']
   }
 };
 

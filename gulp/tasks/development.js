@@ -6,7 +6,7 @@ var runSequence = require('run-sequence');
 gulp.task('dev', ['clean'], function(cb) {
   cb = cb || function() {};
   global.isProd = false;
-  runSequence(['lint', 'browserify', 'copy-all'], 'watch', cb);
+  runSequence('templates', ['lint', 'browserify', 'copy-all'], 'watch', cb);
 });
 
 gulp.task('default', ['dev']);

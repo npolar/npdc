@@ -17,10 +17,16 @@ gulp.task('watch', ['browserSync'], function() {
   fs.readdirSync(config.assets.root).forEach(function (file) {
     var stats = fs.lstatSync(path.join(config.assets.root, file));
     if (stats.isSymbolicLink()) {
-      [].concat(config.assets.css, config.assets.html).forEach(function (glob) {
+      config.assets.css.forEach(function (glob) {
         if (glob.indexOf(file) > -1) {
-          gulp.watch(glob, ['copy-assets']);
-          gutil.log('Watching npm linked asset ' + file);
+          gulp.watch(glob, ['copy-asset-css']);
+          gutil.log('Watching npm linked asset ' + file + ' for css changes');
+        }
+      });
+      config.assets.ngTemplates.forEach(function (glob) {
+        if (glob.indexOf(file) > -1) {
+          gulp.watch(glob, ['templates']);
+          gutil.log('Watching npm linked asset ' + file + ' for template changes');
         }
       });
     }
