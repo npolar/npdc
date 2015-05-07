@@ -21,7 +21,7 @@ var config = {
     // Make sure everything thats ng-included is copied to dist folder
     'html': [base.app+'/**/index.html'],
     'ngTemplates': [base.app+'/**/*.html'],
-    'js': [base.app+'/**/*.js'],
+    'js': [base.app+'/**/*.js', '!/**/templates.js'],
     'css': [base.app+'/**/*.css'],
     'config': [base.app+'/**/*.json'],
     'shared': base.app+'/_shared'
