@@ -18,6 +18,7 @@ var glob = require('glob');
 // http://stackoverflow.com/questions/29362583/possible-eventemitter-memory-leak-detected-with-gulp-watchify-factor-bundl
 gulp.task('browserify', function () {
 
+  // Glob all our apps
   var sources = config.src.apps.reduce(function(memo, entry) {
     return memo.concat(glob.sync('./'+entry));
   }, []);
@@ -27,14 +28,11 @@ gulp.task('browserify', function () {
     entries: sources,
     // Enable source maps
     debug: true
-  }, watchify.args);
-
-  var transforms = [
+    }, watchify.args)
     // Enable require on non js files
-    'partialify',
+    .transform('partialify')
     // Expand angular DI to enable minififaction
-    'browserify-ngannotate'
-  ];
+    .transform('browserify-ngannotate');
 
   var bundle = function () {
     gutil.log('Bundling...');
@@ -45,12 +43,9 @@ gulp.task('browserify', function () {
     })});
 
     // Browseriy
-    var stream = bundler.bundle()
+    return bundler.bundle()
       .on('error', handleErrors)
       .pipe(write('_shared/shared.js'));
-
-    gutil.log('Bundling done.');
-    return stream;
   };
 
   /**
@@ -67,11 +62,6 @@ gulp.task('browserify', function () {
         .pipe(gulp.dest(config.dist.root));
     });
   };
-
-  // Add transforms to bundler
-  transforms.forEach(function(transform) {
-    bundler.transform(transform);
-  });
 
   // Watch for changes and rebuild
   if ( !global.isProd ) {

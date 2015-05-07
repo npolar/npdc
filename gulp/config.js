@@ -30,7 +30,7 @@ var config = {
   'assets': {
     'root': base.node_modules,
     'css': [base.node_modules+'/purecss/build/pure.css', base.node_modules+'/bootstrap/dist/css/bootstrap.min.css'],
-    'ngTemplates': [base.node_modules+'/angular-npolar/html/*.html']
+    'ngTemplates': [base.node_modules+'/angular-npolar/ui/**/*.html']
   }
 };
 

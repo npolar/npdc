@@ -16,7 +16,9 @@ gulp.task('browserSync', function() {
       }
     },
     // Watch for updates in dist
-    files: ['dist/**/*']
+    files: ['dist/**/*'],
+    // Disable input mirroring between connected browsers
+    ghostMode: false
   });
 
 });

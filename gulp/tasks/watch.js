@@ -12,6 +12,7 @@ gulp.task('watch', ['browserSync'], function() {
   gulp.watch(config.src.html, ['copy-src-html']);
   gulp.watch(config.src.css, ['copy-src-css']);
   gulp.watch(config.src.config, ['copy-src-config']);
+  gulp.watch(config.src.ngTemplates, ['templates']);
 
   // Watch assets if 'npm link'ed
   fs.readdirSync(config.assets.root).forEach(function (file) {

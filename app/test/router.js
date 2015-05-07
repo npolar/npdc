@@ -8,15 +8,15 @@ var router = function ($routeProvider, $locationProvider) {
   $locationProvider.html5Mode(true).hashPrefix('!');
 
   $routeProvider.when('/:id', {
-    templateUrl: 'hello/dataset/show/show.html',
-    controller: 'DatasetShowController',
+    templateUrl: 'test/show/show.html',
+    controller: 'TestShowController',
     breadcrumbs: [{'href': '/path'}]}
    ).when('/:id/edit', {
-    templateUrl: 'hello/dataset/edit/edit.html',
-    controller: 'DatasetEditController'
+    templateUrl: 'test/edit/edit.html',
+    controller: 'TestEditController'
   }).when('/', {
-    templateUrl: 'hello/dataset/search/search.html',
-    controller: 'DatasetSearchController'
+    templateUrl: 'test/search/search.html',
+    controller: 'TestSearchController'
   });
 };
 
