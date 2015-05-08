@@ -21,7 +21,7 @@ var config = {
     // Make sure everything thats ng-included is copied to dist folder
     'html': [base.app+'/**/index.html'],
     'ngTemplates': [base.app+'/**/*.html'],
-    'js': [base.app+'/**/*.js', '!/**/templates.js'],
+    'js': [base.app+'/**/*.js', '!./**/templates.js'],
     'css': [base.app+'/**/*.css'],
     'config': [base.app+'/**/*.json'],
     'shared': base.app+'/_shared'
@@ -31,7 +31,9 @@ var config = {
     'root': base.node_modules,
     'css': [base.node_modules+'/purecss/build/pure.css', base.node_modules+'/bootstrap/dist/css/bootstrap.min.css'],
     'ngTemplates': [base.node_modules+'/angular-npolar/ui/**/*.html']
-  }
+  },
+
+  'tests': ['test/**/*Spec.js']
 };
 
 module.exports = config;

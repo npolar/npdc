@@ -59,7 +59,7 @@
     "dojo"          : false,
     "jasmine"       : false,
     "jquery"        : false,
-    "mocha"         : false,
+    "mocha"         : true,
     "mootools"      : false,
     "node"          : false,
     "nonstandard"   : false,

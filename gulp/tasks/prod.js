@@ -6,5 +6,5 @@ var runSequence = require('run-sequence');
 gulp.task('prod', ['clean'], function(cb) {
   cb = cb || function() {};
   global.isProd = true;
-  runSequence('templates', ['lint', 'browserify', 'copy-all'], cb);
+  runSequence('templates', ['lint', 'test'], ['browserify', 'copy-all'], cb);
 });

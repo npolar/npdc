@@ -9,17 +9,17 @@ window.tv4 = require('tv4');
 require('formula');
 require('angular-route');
 require('angular-npolar');
-require('../../_shared/templates'); // Compiled by gulp
+require('../_shared/templates'); // Compiled by gulp
 
 var npdcDatasetApp = angular.module('npdcDatasetApp', ['ngRoute', 'formula', 'npolarApi', 'npolarUi', 'templates']);
 
 // Bootstrap ngResource models using NpolarApiResource
-var helloResources = [
+var resources = [
   {'path': '/user', 'resource': 'User'},
   {'path': '/dataset', 'resource': 'Dataset' }
 ];
 
-helloResources.forEach(function (service) {
+resources.forEach(function (service) {
   // Expressive DI syntax is needed here because of the loop..
   npdcDatasetApp.factory(service.resource, ['NpolarApiResource', function (NpolarApiResource) {
     return NpolarApiResource.resource(service);

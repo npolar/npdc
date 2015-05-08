@@ -39,6 +39,8 @@
     "gulp-file": "^0.2.0",
     "gulp-if": "^1.2.5",
     "gulp-jshint": "^1.10.0",
+    "gulp-minify-css": "^1.1.1",
+    "gulp-mocha": "^2.0.1",
     "gulp-notify": "^2.2.0",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-streamify": "0.0.5",
@@ -48,7 +50,9 @@
     "morgan": "^1.5.2",
     "partialify": "^3.1.3",
     "run-sequence": "^1.1.0",
+    "rr": "git://github.com/npolar/require-helper.git",
     "scp": "0.0.3",
+    "should": "^6.0.1",
     "vinyl-buffer": "^1.0.0",
     "watchify": "^3.2.0"
   },
