@@ -17,10 +17,8 @@ var config = {
   'src': {
     'root': base.app,
     'apps': [base.app+'/**/app.js'],
-    // View templates should be required so they are included in the app bundles..
-    // Make sure everything thats ng-included is copied to dist folder
     'html': [base.app+'/**/index.html'],
-    'ngTemplates': [base.app+'/**/*.html'],
+    'ngTemplates': [base.app+'/*/*/**/*.html'],
     'js': [base.app+'/**/*.js', '!./**/templates.js'],
     'css': [base.app+'/**/*.css'],
     'config': [base.app+'/**/*.json'],
