@@ -3,7 +3,7 @@
  * @ngInject
  */
 var DatasetShowController = function ($scope, $controller, Dataset) {
-  $controller('NpolarUiBaseController', {$scope: $scope});
+  $controller('NpolarBaseController', {$scope: $scope});
   $scope.resource = Dataset;
   $scope.show();
 };

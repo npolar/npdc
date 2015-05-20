@@ -5,7 +5,7 @@
 var DatasetEditController = function ($scope, $controller, $routeParams, Dataset) {
 
   // EditController -> NpolarUiEditController
-  $controller('NpolarUiEditController', { $scope: $scope });
+  $controller('NpolarEditController', { $scope: $scope });
 
   $scope.initFormula = function() {
     // Inject schema and form(ula)

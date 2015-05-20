@@ -5,7 +5,7 @@ var angular = require('angular');
  */
 var DatasetSearchController = function ($scope, $location, $controller, Dataset) {
 
-  $controller('NpolarUiEditController', { $scope: $scope });
+  $controller('NpolarEditController', { $scope: $scope });
   $scope.resource = Dataset;
 
   $scope.query = function() {
