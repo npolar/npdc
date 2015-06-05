@@ -5,4 +5,4 @@ node_modules
 .lock-wscript
 dist
 app/_shared/templates.js
-
+.tags*
