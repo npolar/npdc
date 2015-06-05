@@ -1,15 +1,15 @@
 {
-  "environment": "development",
+  "environment": "production",
   "lang": "nb",
   "config": [
 
-    { "environment": "development", 
+    { "environment": "development",
       "base": "//localhost:9393"
     },
-    { "environment": "test", 
+    { "environment": "test",
       "base": "//apptest.data.npolar.no"
     },
-    { "environment": "production", 
+    { "environment": "production",
       "base": "//api.npolar.no"
     }
   ]
