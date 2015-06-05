@@ -7,7 +7,7 @@
       "base": "//localhost:9393"
     },
     { "environment": "test",
-      "base": "//apptest.data.npolar.no:9000"
+      "base": "//apptest.data.npolar.no"
     },
     { "environment": "production",
       "base": "//api.npolar.no"
