@@ -3,18 +3,38 @@
  * @ngInject
  */
 var Config = function(environment) {
-  var config;
+  
+  this.detectEnvironment = function(hostname) {
+    var environment;
+    if ("localhost" === hostname) {
+      environment = "development";
+    } else if ("apptest.data.npolar.no" === hostname) {
+      environment = "test";
+    } else if ("api.npolar.no" === hostname) {
+      environment = "production";
+    }
+    return environment;
+  };
+  
+  var config = {};
+  
+  // Auto-detect environment
+  if (window && (environment === undefined || environment === null)) {
+    environment = this.detectEnvironment(window.location.hostname);
+    console.log("Environment:", environment, "[auto-detected]");
+  }
+  
+  config.environment = environment;
   
   if ("development" === environment) {
-    config = { "environment": "development", "base": "//localhost:9393" };
+    config.base = "//localhost:9393";
   } else if ("test" === environment) {
-    config = { "environment": "test", "base": "//apptest.data.npolar.no" };
+    config.base = "//apptest.data.npolar.no";
   } else {
-    config = { "environment": "production", "base": "//api.npolar.no" };
+    config.base = "//api.npolar.no";
   }
   
   if ("production" === environment && window) {
-    
     if ("https:" !== window.location.production) {
       console.error("WARNING", "Not using HTTPS in production environment");
     }
@@ -22,7 +42,8 @@ var Config = function(environment) {
       console.error("WARNING", "Running against production API", config.base, "from", window.location.href);
     }
   }
-  return config; 
+  return config;
+
 };
 
 module.exports = Config;
