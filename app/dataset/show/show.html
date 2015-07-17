@@ -2,7 +2,7 @@
 
 <h3>{{document.title}}</h3>
 <a ng-if="document.id && user.name" ng-href="{{document.id}}/edit"><button class="btn btn-danger">edit</button></a>
-<button ng-click="locationBase()" class="btn btn-default">back</button></a>
+<a ng-href="./"><button class="btn btn-default">back</button></a>
 <div ng-repeat="(k,v) in document">
   <h4>{{k}}</h4>
   <p>{{v|json}}</p>

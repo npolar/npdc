@@ -1,6 +1,5 @@
 'use strict';
 var angular = require('angular');
-var _ = require('lodash');
 
 // Formula dependency, TODO move to formula and don't use globals...
 window.tv4 = require('tv4');
@@ -10,6 +9,7 @@ require('formula');
 require('angular-route');
 require('angular-npolar');
 require('../_shared/templates'); // Compiled by gulp
+var AutoConfig = require('../../config/AutoConfig');
 
 var npdcDatasetApp = angular.module('npdcDatasetApp', ['ngRoute', 'formula', 'npolarApi', 'npolarUi', 'templates']);
 
@@ -39,17 +39,10 @@ npdcDatasetApp.controller('DatasetShowController', require('./show/DatasetShowCo
 npdcDatasetApp.controller('DatasetSearchController', require('./search/DatasetSearchController'));
 npdcDatasetApp.controller('DatasetEditController', require('./edit/DatasetEditController'));
 
-// Inject config and run
-npdcDatasetApp.run(function (npolarApiConfig, $http) {
-
-  $http.get('/_shared/config/npolarApiConfig.json').success(function (config) {
-
-    var environment = config.environment || npolarApiConfig.environment;
-    angular.extend(npolarApiConfig, _.find(config.config, { environment: environment}));
-    console.log('npolarApiConfig', npolarApiConfig);
-
-  }).error(function () {
-    console.log('npolarApiConfig', npolarApiConfig);
-  });
-
+// Inject environment configuration and run
+npdcDatasetApp.run(function(npolarApiConfig) {
+  var environment; // development | test | production
+  var autoconfig = new AutoConfig(environment);
+  angular.extend(npolarApiConfig, autoconfig);
+  console.log("npolarApiConfig", npolarApiConfig);
 });
