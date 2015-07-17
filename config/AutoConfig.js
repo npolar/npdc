@@ -3,7 +3,6 @@
  * @ngInject
  */
 var AutoConfig = function(environment) {
-  
   var config = {}; 
   
   this.isTest = function(hostname) {
@@ -28,10 +27,10 @@ var AutoConfig = function(environment) {
       base = "//localhost:9393";
     } else if ("test" === environment) {
       base = "//apptest.data.npolar.no";
-    } else if ("production" === environment){
+    } else if ("production" === environment || undefined === environment || null === environment){
       base = "//api.npolar.no";
     } else {
-      throw "Unknown environment: "+environment;
+      throw "Unknown environment";
     }
     return base;
   };
