@@ -2,7 +2,7 @@
 /**
  * @ngInject
  */
-var Config = function(environment) {
+var AutoConfig = function(environment) {
   
   this.detectEnvironment = function(hostname) {
     var environment;
@@ -25,7 +25,6 @@ var Config = function(environment) {
   }
   
   config.environment = environment;
-  
   if ("development" === environment) {
     config.base = "//localhost:9393";
   } else if ("test" === environment) {
@@ -46,4 +45,4 @@ var Config = function(environment) {
 
 };
 
-module.exports = Config;
+module.exports = AutoConfig;
