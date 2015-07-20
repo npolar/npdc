@@ -10,5 +10,3 @@ See the [wiki] for more details.
 ```
 npm start
 ```
-=======
-Next-generation http://data.npolar.no
