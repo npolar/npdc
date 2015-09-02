@@ -6,8 +6,7 @@ Each NPDC application ([list](https://github.com/npolar?utf8=%E2%9C%93&query=npd
 gets common UI and other shared code from [npdc-common](https://github.com/npolar/npdc-common), and interacts with the [Npolar API](https://api.npolar.no) using [angular-npolar](https://github.com/npolar/angular-npolar).
 
 ## Develop
-
-For the impatient (see the [wiki](https://github.com/npolar/npdc/wiki) for details):
+Before development on any npdc project, please read the [wiki](https://github.com/npolar/npdc/wiki)!
 
 ```
 $ npm install
