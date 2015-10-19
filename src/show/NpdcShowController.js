@@ -1,9 +1,8 @@
 'use strict';
 
 //@ngInclude
-
-let NpdcShowController = function($scope, Npdc) {
-  console.log($scope);
+let NpdcShowController = function($scope, npdcAppConfig) {
+  $scope.options = npdcAppConfig;
 };
 
 module.exports = NpdcShowController;
