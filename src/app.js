@@ -36,5 +36,4 @@ npdc.run(function(npolarApiConfig, npdcAppConfig) {
   var environment = "test"; // development | test | production
   var autoconfig = new AutoConfig(environment);
   angular.extend(npolarApiConfig, autoconfig);
-  npdcAppConfig.toolbarTitle = 'NPDC';
 });

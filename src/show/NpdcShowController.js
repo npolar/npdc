@@ -1,9 +1,11 @@
 'use strict';
 
 //@ngInclude
-let NpdcShowController = function($scope, $http, npdcAppConfig, NpolarApiResource) {
+let NpdcShowController = function($scope, $http, npdcAppConfig, NpolarApiResource, NpdcAutocompleteConfig) {
 
   $scope.options = npdcAppConfig;
+  $scope.options.search.autocomplete = true;
+  NpdcAutocompleteConfig.showCollections = true;
   $scope.latest=[];
 
   let x = [
