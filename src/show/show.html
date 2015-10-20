@@ -11,87 +11,168 @@
 
 <!-- Section 1 -->
 
-<a class="np-card-link" href="/dataset">
-  <div class="start-section p3" layout="row">
-    <div flex="50">
-      <h1>Data</h1>
-      <h3>Scientific data repository from the Arctic and Antarctic</h3>
+<div class="start-section p3" layout="row">
+  <div flex="50">
+    <h1>Data</h1>
+    <h3>Scientific data repository from the Arctic and Antarctic</h3>
+    <a class="np-card-link" href="/dataset">
       <div class="card-circle">
         <md-icon>storage</md-icon>
       </div>
-    </div>
-    <div flex="50">
-
-    </div>
+    </a>
   </div>
-</a>
+  <div flex="50">
+    <md-card class="start-card">
+      <md-content>
+        <md-list>
+          <div ng-repeat="dataset in latest['dataset']">
+            <a href="/dataset/{{dataset.id}}" class="card-link">
+              <md-list-item class="md-2-line card-list" >
+                <div class="md-list-item-text" layout="column">
+                  <h3>{{ dataset.title }}</h3>
+                  <p>{{ dataset.created }}</p>
+                </div>
+              </md-list-item>
+              <md-divider></md-divider>
+            </md-list>
+          </a>
+        </div>
+      </md-content>
+    </md-card>
+  </div>
+</div>
 
 <!-- Section 2 -->
 
-<a class="np-card-link" href="/map/archive">
-  <div class="start-section p1" layout="row">
-    <div flex="50">
-    </div>
-    <div flex="50">
-      <h1>Map Archive</h1>
-      <h3>Archive of historical maps from the Arctic and Antarctic</h3>
+<div class="start-section p1" layout="row">
+  <div flex="50">
+    <md-card class="start-card">
+      <md-content>
+        <md-list>
+          <div ng-repeat="map in latest['map/archive']">
+            <a href="/map/archive/{{map.id}}" class="card-link">
+              <md-list-item class="md-2-line card-list" >
+                <div class="md-list-item-text" layout="column">
+                  <h3>{{ map.title }}</h3>
+                  <p>{{ map.created }}</p>
+                </div>
+              </md-list-item>
+              <md-divider></md-divider>
+            </md-list>
+          </a>
+        </div>
+      </md-content>
+    </md-card>
+  </div>
+  <div flex="50">
+    <h1>Map Archive</h1>
+    <h3>Archive of historical maps from the Arctic and Antarctic</h3>
+    <a class="np-card-link" href="/map/archive">
       <div class="card-circle">
         <md-icon>room</md-icon>
       </div>
-    </div>
+    </a>
   </div>
-</a>
+</div>
 
 <!-- Section 3 -->
 
-<a class="np-card-link" href="/expedition">
-  <div class="start-section p2" layout="row">
-    <div flex="50">
-      <h1>Expeditions</h1>
-      <h3>Overview of scientific field campaigns and cruises</h3>
+<div class="start-section p2" layout="row">
+  <div flex="50">
+    <h1>Expeditions</h1>
+    <h3>Overview of scientific field campaigns and cruises</h3>
+    <a class="np-card-link" href="/expedition">
       <div class="card-circle">
         <md-icon>explore</md-icon>
       </div>
-    </div>
-    <div flex="50">
-
-    </div>
+    </a>
   </div>
-</a>
+  <div flex="50">
+    <md-card class="start-card">
+      <md-content>
+        <md-list>
+          <div ng-repeat="expedition in latest['expedition']">
+            <a href="/expedition/{{expedition.id}}" class="card-link">
+              <md-list-item class="md-2-line card-list" >
+                <div class="md-list-item-text" layout="column">
+                  <h3>{{ expedition.code }}</h3>
+                  <p>{{ expedition.progress }}</p>
+                </div>
+              </md-list-item>
+              <md-divider></md-divider>
+            </md-list>
+          </a>
+        </div>
+      </md-content>
+    </md-card>
+  </div>
+</div>
 
 <!-- Section 4 -->
 
-<a class="np-card-link" href="/publication">
-  <div class="start-section p1" layout="row">
-    <div flex="50">
-
-    </div>
-    <div flex="50">
-      <h1>Papers</h1>
-      <h3>Scientific papers produced at the Norwegian Polar Institute</h3>
+<div class="start-section p1" layout="row">
+  <div flex="50">
+    <md-card class="start-card">
+      <md-content>
+        <md-list>
+          <div ng-repeat="publication in latest['publication']">
+            <a href="/publication/{{publication.id}}" class="card-link">
+              <md-list-item class="md-2-line card-list" >
+                <div class="md-list-item-text" layout="column">
+                  <h3>{{ publication.title }}</h3>
+                  <p>{{ publication.created }}</p>
+                </div>
+              </md-list-item>
+              <md-divider></md-divider>
+            </md-list>
+          </a>
+        </div>
+      </md-content>
+    </md-card>
+  </div>
+  <div flex="50">
+    <h1>Papers</h1>
+    <h3>Scientific papers produced at the Norwegian Polar Institute</h3>
+    <a class="np-card-link" href="/publication">
       <div class="card-circle">
         <md-icon>description</md-icon>
       </div>
-    </div>
+    </a>
   </div>
-</a>
+</div>
 
 <!-- Section 5 -->
 
-<a class="np-card-link" href="/project">
-  <div class="start-section p4" layout="row">
-    <div flex="50">
-      <h1>Projects</h1>
-      <h3>Arctic and Antarctic projects at the Norwegian Polar Institute</h3>
+<div class="start-section p4" layout="row">
+  <div flex="50">
+    <h1>Projects</h1>
+    <h3>Arctic and Antarctic projects at the Norwegian Polar Institute</h3>
+    <a class="np-card-link" href="/project">
       <div class="card-circle">
         <md-icon>business</md-icon>
       </div>
-    </div>
-    <div flex="50">
-
-    </div>
+    </a>
   </div>
-</a>
+  <div flex="50">
+    <md-card class="start-card">
+      <md-content>
+        <md-list>
+          <div ng-repeat="project in latest['project']">
+            <a href="/project/{{project.id}}" class="card-link">
+              <md-list-item class="md-2-line card-list" >
+                <div class="md-list-item-text" layout="column">
+                  <h3>{{ project.title }}</h3>
+                  <p>{{ project.created }}</p>
+                </div>
+              </md-list-item>
+              <md-divider></md-divider>
+            </md-list>
+          </a>
+        </div>
+      </md-content>
+    </md-card>
+  </div>
+</div>
 
 <!-- Section 6 -->
 

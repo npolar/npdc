@@ -14,8 +14,7 @@ npdc.config(function ($httpProvider) {
 
 // Bootstrap ngResource models using NpolarApiResource
 var resources = [
-  {'path': '/', 'resource': 'Npdc'},
-  {'path': '/user', 'resource': 'User'}
+  {'path': '/', 'resource': 'Npdc'}
 ];
 
 resources.forEach(function (service) {
