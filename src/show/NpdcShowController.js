@@ -20,7 +20,7 @@ let NpdcShowController = function($scope, $http, npdcAppConfig, NpolarApiResourc
     return NpolarApiResource.resource(service);
   };
 
-  const limit = 5;
+  const limit = 4;
   let params = { limit, sort: '-created' };
 
   let fetchLatest = function() {
