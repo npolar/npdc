@@ -8,6 +8,9 @@ var router = function ($routeProvider, $locationProvider) {
   $routeProvider.when('/', {
     templateUrl: 'show/show.html',
     controller: 'NpdcShowController'
+  }).when('/search', {
+    templateUrl: 'search/search.html',
+    controller: 'GlobalSearchController'
   });
 };
 

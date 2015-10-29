@@ -12,23 +12,12 @@ npdc.config(function ($httpProvider) {
   $httpProvider.interceptors.push('npolarApiInterceptor');
 });
 
-// Bootstrap ngResource models using NpolarApiResource
-var resources = [
-  {'path': '/', 'resource': 'Npdc'}
-];
-
-resources.forEach(function (service) {
-  // Expressive DI syntax is needed here because of the loop..
-  npdc.factory(service.resource, ['NpolarApiResource', function (NpolarApiResource) {
-    return NpolarApiResource.resource(service);
-  }]);
-});
-
 // Routing
 npdc.config(require('./router'));
 
 // Controllers
 npdc.controller('NpdcShowController', require('./show/NpdcShowController'));
+npdc.controller('GlobalSearchController', require('./search/GlobalSearchController'));
 
 // Configure the top bar
 

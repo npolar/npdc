@@ -4,8 +4,6 @@
 let NpdcShowController = function($scope, $http, npdcAppConfig, NpolarApiResource, NpdcAutocompleteConfigFactory) {
 
   $scope.options = npdcAppConfig;
-  $scope.options.search.autocomplete = new NpdcAutocompleteConfigFactory({showCollections: true});
-
   $scope.latest=[];
 
   let x = [

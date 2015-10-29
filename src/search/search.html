@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<npdc:toolbar options="options"></npdc:toolbar>
+<div ng-if="warning" class="np-environment-warning">!! Environment: Production !!</div>
+
+<!-- Content wrapper -->
+<md-content class="np-content-wrapper">
+  <!-- Subheader bar -->
+  <div class="np-sub-toolbar"></div>
+  <md-card class="np-content-card">
+    <md-toolbar class="np-content-title">
+      <h3>Search results</h3>
+    </md-toolbar>
+    <md-content class="np-content" layout="column" layout-padding>
+      <npdc:crumbs></npdc:crumbs>
+      <div class="np-content-view" flex>
+        <div class="npdc-search">
+          <md-content>
+
+            <section>
+              <div ng-if="!results">
+                <div layout="row" layout-sm="column" layout-align="space-around">
+                  <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+                </div>
+              </div>
+
+              <div ng-repeat="e in results">
+                <md-content class="np-layout-list">
+                  <a ng-href="{{ entryHref(e.id) }}">
+                    <md-list>
+                      <md-list-item class="md-2-line">
+                        <div class="np-search-icon md-avatar" title="ID: {{ e.id }}">
+                          <span>{{ e.id.substr(0,3) }}</span>
+                        </div>
+                        <div class="md-list-item-text">
+                          <h3 class="md-headline">
+                            <span class="np-search-collection">[{{e.collection}}]</span>  {{ title(e) }}
+                            <em ng-if="e.created_by">
+                              「{{ e.created_by }}」
+                            </em>
+                          </h3>
+                          <h4>{{ e.updated.split("T")[0] }}</h4>
+                        </div>
+                      </md-list-item>
+                    </md-list>
+                    <md-divider></md-divider>
+                  </a>
+
+                </md-content>
+              </div>
+            </section>
+          </md-content>
+        </div>
+      </div>
+    </md-content>
+  </md-card>
+</md-content>
+
+<div npolar-api-message></div>
