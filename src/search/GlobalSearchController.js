@@ -6,6 +6,15 @@ let GlobalSearchController = function($scope, $controller, $location, $q, npdcAp
   let collections = npdcAppConfig.search.autocomplete.collections;
 
   $scope.options = npdcAppConfig;
+  $scope.q = $location.search().q;
+
+  $scope.entryHref = function (entry) {
+    let id = entry.id;
+    if ((/[.]/).test(id)) {
+      id += ".json";
+    }
+    return '/' + entry.collection + '/' + id;
+  };
 
   let defaults = {
     limit: 10,
@@ -26,7 +35,7 @@ let GlobalSearchController = function($scope, $controller, $location, $q, npdcAp
         $scope.results = results.reduce((a, b) => a.concat(b)).sort((a, b) => a._score < b._score);
       });
   };
-
+  
   search();
 };
 

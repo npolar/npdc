@@ -5,7 +5,7 @@ let AutoConfig = npdcCommon.AutoConfig;
 
 require('angular-npolar');
 
-var npdc = angular.module('npdc', ['npolarApi', 'npdcUi', 'templates']);
+var npdc = angular.module('npdc', ['ngRoute', 'npolarUi', 'npolarApi', 'npdcUi', 'templates']);
 
 // Auth interceptor
 npdc.config(function ($httpProvider) {

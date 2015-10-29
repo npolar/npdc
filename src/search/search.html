@@ -25,7 +25,7 @@
 
               <div ng-repeat="e in results">
                 <md-content class="np-layout-list">
-                  <a ng-href="{{ entryHref(e.id) }}">
+                  <a ng-href="{{ entryHref(e) }}">
                     <md-list>
                       <md-list-item class="md-2-line">
                         <div class="np-search-icon md-avatar" title="ID: {{ e.id }}">
@@ -47,6 +47,10 @@
 
                 </md-content>
               </div>
+
+              <md-subheader class="md-primary">
+                <span ng-if="results && results.length === 0">No results when searching for "{{q}}"</span>
+              </md-subheader>
             </section>
           </md-content>
         </div>
