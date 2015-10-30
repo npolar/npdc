@@ -2,15 +2,23 @@
 <html ng-app="npdc" ng-strict-di ng-cloak>
 
   <head>
+    <!-- @ifdef TOP_LEVEL -->
+    <base href="/"/>
+    <!-- @endif -->
+
+    <!-- @ifndef TOP_LEVEL -->
     <base href="/home/"/>
+    <!-- @endif -->
+
     <title>Norwegian Polar Data Centre</title>
     <link href="/assets/npdc-common-master-latest.css" rel="stylesheet">
-    <link href="npdc-home-master-latest.css" rel="stylesheet">
+    <link href="/home/npdc-home-master-latest.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="initial-scale=1" />
   </head>
   <body>
     <div ng-view style="height: 100%"></div>
-    <script src="app.js"></script>
+
+    <script src="/home/app.js"></script>
   </body>
 </html>
