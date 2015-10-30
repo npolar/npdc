@@ -3,10 +3,8 @@
 var gulp = require('gulp');
 var npdcGulp = require('npdc-gulp');
 var gulpif = require('gulp-if');
-var cachebust = require('gulp-cache-bust');
 var symlink = require('gulp-symlink');
 var path = require('path');
-var preprocess = require('gulp-preprocess');
 var config = npdcGulp.baseConfig;
 
 npdcGulp.loadAppTasks(gulp);
@@ -27,16 +25,4 @@ gulp.task('symlink', ['dev'], function () {
     }, {force: true})));
 });
 
-gulp.task('index', ['dev'], function () {
-  return gulp.src(config.src.html)
-    .pipe(preprocess({
-      context: {
-        TOP_LEVEL: true,
-        VERSION: config.version()
-      }
-    }))
-    .pipe(gulpif(global.isProd, cachebust()))
-    .pipe(gulp.dest(config.dist.root));
-});
-
-gulp.task('default', ['symlink', 'index']);
+gulp.task('default', ['symlink']);
