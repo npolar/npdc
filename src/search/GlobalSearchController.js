@@ -3,7 +3,7 @@
 // @ngInject
 let GlobalSearchController = function($scope, $controller, $location, $q, npdcAppConfig, NpolarApiResource) {
   $controller('NpdcSearchResultsController', { $scope: $scope });
-  let collections = npdcAppConfig.search.autocomplete.collections;
+  let collections = npdcAppConfig.search.global.collections;
 
   $scope.options = npdcAppConfig;
   $scope.q = $location.search().q;
