@@ -26,16 +26,16 @@ var NpdcShowController = function($scope, $http, $anchorScroll, npdcAppConfig, N
 
 
 // Aestethic page dynamics
-(function(body) {
+(function(container) {
 	document.addEventListener("DOMContentLoaded", function() {
-		if((body = document.querySelector(body))) {
+		if((container = document.querySelector(container))) {
 			var ease = function(pos, initial, target, len) { return (target - initial) * Math.pow(2.0, 10.0 * (pos / len - 1.0)) + initial; };
-			var header = body.querySelector("header");
-			var toolbar = body.querySelector("md-toolbar");
+			var header = container.querySelector("header");
+			var toolbar = container.querySelector("md-toolbar");
 			var quicknav = header.querySelector(".quicknav");
-			var pagenav = body.querySelector(".pagenav");
+			var pagenav = container.querySelector(".pagenav");
 			var boxShadow = window.getComputedStyle(toolbar).boxShadow;
-			var scrollUp = document.getElementById("scroll-up");
+			var scrollUp = container.querySelector("#scroll-up");
 
 			var pageSets = [
 				{
@@ -58,7 +58,7 @@ var NpdcShowController = function($scope, $http, $anchorScroll, npdcAppConfig, N
 			var updateCallback = function() {
 				var scrollY = window.pageYOffset, scale = 1.0;
 
-				if(body.offsetWidth > 700) {
+				if(container.offsetWidth > 700) {
 					if(scrollY) {
 						scale = Math.max(0.0, ease(scrollY, 1.0, 0.0, header.offsetHeight - toolbar.offsetHeight));
 					}
