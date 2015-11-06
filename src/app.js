@@ -22,7 +22,7 @@ npdc.controller('GlobalSearchController', require('./search/GlobalSearchControll
 // Configure the top bar
 
 npdc.run(function(npolarApiConfig, npdcAppConfig) {
-  var environment = "test"; // development | test | production
+  var environment = "production"; // development | test | production
   var autoconfig = new AutoConfig(environment);
   angular.extend(npolarApiConfig, autoconfig);
 });
