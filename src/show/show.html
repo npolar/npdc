@@ -1,224 +1,157 @@
 <!DOCTYPE html>
-<npdc:toolbar options="options"></npdc:toolbar>
+<div class="npdc-home">
+  <npdc:toolbar options="options"></npdc:toolbar>
 
-<!-- Page Header -->
+  <header>
+    <nav class="quicknav">
+      <a href="//data.npolar.no/publications">
+        <md-icon>search</md-icon>
+        <span class="label">Browse</span>
+        <span class="text">4k+ publications</span>
+        <md-tooltip md-direction="down">Publications</md-tooltip>
+      </a>
 
-<div class="start-header">
-  <img class="start-header-logo" alt="Norsk Polarinstutt [logo]" src="http://www.npolar.no/npcms/export/sites/np/images/logos/norsk-polarinstitutt-logo-norsk-hvit.png">
-  <h1 class="start-header-title">Norwegian Polar Data Centre</h1>
-  <h2 class="start-header-subtitle">Search, visualize, and download scientific data about the polar regions</h2>
-</div>
+      <a href="//data.npolar.no/geodata">
+        <md-icon>map</md-icon>
+        <span class="label">Discover</span>
+        <span class="text">Open Geographic Data</span>
+        <md-tooltip md-direction="down">Geodata</md-tooltip>
+      </a>
 
-<!-- Section 1 -->
+      <a href="//api.npolar.no">
+        <md-icon>computer</md-icon>
+        <span class="label">Develop</span>
+        <span class="text">Using 30+ REST API's</span>
+        <md-tooltip md-direction="down">API's</md-tooltip>
+      </a>
+    </nav>
 
-<div class="start-section p3">
-  <div class="left-section primary-section">
-    <h1>Data</h1>
-    <h3>Scientific data repository from the Arctic and Antarctic</h3>
-    <a class="np-card-link" href="/dataset/">
-      <div class="card-circle">
-        <md-icon>storage</md-icon>
-      </div>
-    </a>
-  </div>
-  <div class="right-section secondary-section">
-    <md-card class="start-card">
-      <md-content>
-        <md-list>
-          <div ng-repeat="dataset in latest['dataset']">
-            <a href="/dataset/{{dataset.id}}" class="card-link">
-              <md-list-item class="md-2-line card-list" >
-                <div class="md-list-item-text" layout="column">
-                  <h3>{{ dataset.title }}</h3>
-                  <p>{{ dataset.created }}</p>
-                </div>
-              </md-list-item>
-              <md-divider></md-divider>
-            </a>
-          </div>
-        </md-list>
-      </md-content>
-    </md-card>
-  </div>
-</div>
+    <nav class="pagenav">
+      <a href="##news">
+        <md-icon>whatshot</md-icon>
+        <md-tooltip md-direction="down">News</md-tooltip>
+      </a>
 
-<!-- Section 2 -->
+      <a href="##expeditions">
+        <md-icon>explore</md-icon>
+        <md-tooltip md-direction="down">Expeditions</md-tooltip>
+      </a>
 
-<div class="start-section p1">
-  <div class="left-section secondary-section">
-    <md-card class="start-card">
-      <md-content>
-        <md-list>
-          <div ng-repeat="map in latest['map/archive']">
-            <a href="/map/archive/{{map.id}}" class="card-link">
-              <md-list-item class="md-2-line card-list" >
-                <div class="md-list-item-text" layout="column">
-                  <h3>{{ map.title }}</h3>
-                  <p>{{ map.created }}</p>
-                </div>
-              </md-list-item>
-              <md-divider></md-divider>
-            </a>
-          </div>
-        </md-list>
-      </md-content>
-    </md-card>
-  </div>
-  <div class="right-section primary-section">
-    <h1>Map Archive</h1>
-    <h3>Archive of historical maps from the Arctic and Antarctic</h3>
-    <a class="np-card-link" href="/map/archive">
-      <div class="card-circle">
-        <md-icon>room</md-icon>
-      </div>
-    </a>
-  </div>
-</div>
-
-<!-- Section 3 -->
-
-<div class="start-section p2">
-  <div class="left-section primary-section">
-    <h1>Expeditions</h1>
-    <h3>Overview of scientific field campaigns and cruises</h3>
-    <a class="np-card-link" href="/expedition">
-      <div class="card-circle">
-        <md-icon>terrain</md-icon>
-      </div>
-    </a>
-  </div>
-  <div class="right-section secondary-section">
-    <md-card class="start-card">
-      <md-content>
-        <md-list>
-          <div ng-repeat="expedition in latest['expedition']">
-            <a href="/expedition/{{expedition.id}}" class="card-link">
-              <md-list-item class="md-2-line card-list" >
-                <div class="md-list-item-text" layout="column">
-                  <h3>{{ expedition.code }}</h3>
-                  <p>{{ expedition.progress }}</p>
-                </div>
-              </md-list-item>
-              <md-divider></md-divider>
-            </a>
-          </div>
-        </md-list>
-      </md-content>
-    </md-card>
-  </div>
-</div>
-
-<!-- Section 4 -->
-
-<div class="start-section p1">
-  <div class="left-section secondary-section">
-    <md-card class="start-card">
-      <md-content>
-        <md-list>
-          <div ng-repeat="publication in latest['publication']">
-            <a href="/publication/{{publication.id}}" class="card-link">
-              <md-list-item class="md-2-line card-list" >
-                <div class="md-list-item-text" layout="column">
-                  <h3>{{ publication.title }}</h3>
-                  <p>{{ publication.created }}</p>
-                </div>
-              </md-list-item>
-              <md-divider></md-divider>
-            </a>
-          </div>
-        </md-list>
-      </md-content>
-    </md-card>
-  </div>
-  <div class="right-section primary-section">
-    <h1>Papers</h1>
-    <h3>Scientific papers produced at the Norwegian Polar Institute</h3>
-    <a class="np-card-link" href="/publication">
-      <div class="card-circle">
+      <a href="##documents">
         <md-icon>description</md-icon>
-      </div>
+        <md-tooltip md-direction="down">Documents</md-tooltip>
+      </a>
+    </nav>
+  </header>
+
+  <section id="splash">
+    <p>Open Norwegian Polar Data</p>
+  </section>
+
+  <section id="news">
+    <h2>News</h2>
+    <md-icon>whatshot</md-icon>
+
+    <p>
+      <!-- Some information about what's hot... -->
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus.
+      Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit.
+      Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue.
+      Nam tincidunt congue enim, ut porta lorem lacinia consectetur.
+      Donec ut libero sed arcu vehicula ultricies a non tortor.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem.
+      Ut turpis felis, pulvinar a semper sed, adipiscing id dolor.
+      Pellentesque auctor nisi id magna consequat sagittis.
+      Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet.
+      Ut convallis libero in urna ultrices accumsan. Donec sed odio eros.
+      Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus.
+      Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+      In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.
+    </p>
+
+    <!-- List of news -->
+  </section>
+
+  <section id="expeditions">
+    <h2>Expeditions</h2>
+    <md-icon>explore</md-icon>
+
+    <p>
+      <!-- Some information about our expeditions... -->
+      The following is a list of the latest expeditions the Environmental Data Section has been involved with.
+      For a complete list of expeditions, check out the <a href="/expedition">Expedition</a> application.
+    </p>
+
+    <md-grid-list md-cols="4" md-gutter="1em" md-row-height="180px">
+      <md-grid-tile ng-repeat="expedition in latest['expedition']">
+        <a ng-href="/expedition/{{ expedition.id }}">
+          <!-- Image of expedition -->
+          <md-progress-circular></md-progress-circular>
+
+          <md-grid-tile-footer>
+            <h3>{{ expedition.code }}</h3>
+          </md-grid-tile-footer>
+        </a>
+      </md-grid-tile>
+    </md-grid-list>
+  </section>
+
+  <section id="documents">
+    <h2>Documents</h2>
+    <md-icon>description</md-icon>
+
+    <p>
+      <!-- Some information about our documents... -->
+      Suspendisse lectus leo, consectetur in tempor sit amet, placerat quis neque.
+      Etiam luctus porttitor lorem, sed suscipit est rutrum non. Curabitur lobortis nisl a enim congue semper.
+      Aenean commodo ultrices imperdiet. Vestibulum ut justo vel sapien venenatis tincidunt.
+      Phasellus eget dolor sit amet ipsum dapibus condimentum vitae quis lectus.
+      Aliquam ut massa in turpis dapibus convallis. Praesent elit lacus, vestibulum at malesuada et, ornare et est.
+      Ut augue nunc, sodales ut euismod non, adipiscing vitae orci.
+      Mauris ut placerat justo. Mauris in ultricies enim.
+      Quisque nec est eleifend nulla ultrices egestas quis ut quam.
+      Donec sollicitudin lectus a mauris pulvinar id aliquam urna cursus. Cras quis ligula sem, vel elementum mi.
+      Phasellus non ullamcorper urna.
+    </p>
+
+    <md-grid-list md-cols="2" md-gutter="1em" md-row-height="220px">
+      <md-grid-tile>
+        <a ng-href="//data.npolar.no/policy/NP-datapolitikk.pdf">
+          <!-- Image of data policy document -->
+          <md-progress-circular></md-progress-circular>
+
+          <md-grid-tile-footer>
+            <h3>Data Policy</h3>
+          </md-grid-tile-footer>
+        </a>
+      </md-grid-tile>
+
+      <md-grid-tile>
+        <a ng-href="">
+          <!-- Image of publication guidelines -->
+          <md-progress-circular></md-progress-circular>
+
+          <md-grid-tile-footer>
+            <h3>Publication Guidelines</h3>
+          </md-grid-tile-footer>
+        </a>
+      </md-grid-tile>
+    </md-grid-list>
+
+  </section>
+
+  <footer>
+    <h3>Norwegian Polar Data Centre</h3>
+    <ol class="address">
+      <li><a href="//npolar.no">Norwegian Polar Institute</a></li>
+      <li><a href="//framsenteret.no">Framsenteret</a></li>
+      <li>9296 Tromsø</li>
+      <li><a href="//norway.no">Norway</a></li>
+    </ol>
+
+    <a href="" id="scroll-up" onclick="window.scrollTo(0, 0);">
+      <md-icon>keyboard_arrow_up</md-icon>
+      <md-tooltip md-direction="left">Scroll to top</md-tooltip>
     </a>
-  </div>
-</div>
-
-<!-- Section 5 -->
-
-<div class="start-section p4">
-  <div class="left-section primary-section">
-    <h1>Projects</h1>
-    <h3>Arctic and Antarctic projects at the Norwegian Polar Institute</h3>
-    <a class="np-card-link" href="/project">
-      <div class="card-circle">
-        <md-icon>business</md-icon>
-      </div>
-    </a>
-  </div>
-  <div class="right-section secondary-section">
-    <md-card class="start-card">
-      <md-content>
-        <md-list>
-          <div ng-repeat="project in latest['project']">
-            <a href="/project/{{project.id}}" class="card-link">
-              <md-list-item class="md-2-line card-list" >
-                <div class="md-list-item-text" layout="column">
-                  <h3>{{ project.title }}</h3>
-                  <p>{{ project.created }}</p>
-                </div>
-              </md-list-item>
-              <md-divider></md-divider>
-            </a>
-          </div>
-        </md-list>
-      </md-content>
-    </md-card>
-  </div>
-</div>
-
-<!-- Section 6 -->
-
-<a class="np-card-link" href="https://data.npolar.no/policy/NP-datapolitikk.pdf">
-  <div class="start-section p1">
-    <div class="left-section secondary-section">
-      <img src="https://data.npolar.no/img/menu-carousel/policy.jpg" style="border: 1px solid #aaa; margin-top: 10%; max-width: 90%; max-height: 80%">
-    </div>
-    <div class="right-section primary-section">
-      <h1>Data Policy</h1>
-      <h3>Information about the Norwegian Polar Datacentre's policys</h3>
-      <div class="card-circle">
-        <md-icon>work</md-icon>
-      </div>
-    </div>
-  </div>
-</a>
-
-<!-- Section 7 -->
-
-<div class="start-section p5">
-  <div class="left-section secondary-section">
-    <h1>Browse...</h1>
-    <h3>Other content and services at the Norwegian Polar Datacentre</h3>
-    <div class="card-circle">
-      <md-icon>dashboard</md-icon>
-    </div>
-  </div>
-  <div class="right-section primary-section">
-      <md-grid-list md-cols-gt-md="3" md-cols="2" md-row-height="fit" md-gutter="8px" style="height: 100%">
-        <md-grid-tile md-rowspan="2" md-colspan="1" style="background-color:#8F2B37;">
-          <md-icon>code</md-icon>
-          <md-grid-tile-footer><h3>Develop</h3></md-grid-tile-footer>
-        </md-grid-tile>
-        <md-grid-tile md-rowspan="1" md-colspan="1" style="background-color:#95712C;">
-          <md-icon>share</md-icon>
-          <md-grid-tile-footer><h3>Services</h3></md-grid-tile-footer>
-        </md-grid-tile>
-        <md-grid-tile md-rowspan="1" md-colspan="1" style="background-color:#3B2781;">
-          <md-icon>public</md-icon>
-          <md-grid-tile-footer><h3>Geodata</h3></md-grid-tile-footer>
-        </md-grid-tile>
-        <md-grid-tile md-rowspan="1" md-colspan="2" style="background-color:#387E25;">
-          <md-icon>person</md-icon>
-          <md-grid-tile-footer><h3>People</h3></md-grid-tile-footer>
-        </md-grid-tile>
-      </md-grid-list>
-  </div>
+  </footer>
 </div>
