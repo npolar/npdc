@@ -6,12 +6,7 @@ var NpdcShowController = function($scope, $http, $anchorScroll, npdcAppConfig, N
 	$scope.latest	= {};
 
 	[
-		// { path: '/dataset'     , params: { 'not-draft': 'yes' } } ,
-		// { path: '/map/archive' , params: { 'not-draft': 'yes' } } ,
-		// { path: '/expedition'  , params: { 'not-draft': 'yes' } } ,
-		// { path: '/publication' , params: { 'not-draft': 'yes' } } ,
-		// { path: '/project'     , params: { 'not-draft': 'yes' } } ,
-		{ path: "/expedition"  , params: { "not-draft": "yes" } }
+		{ path: "/expedition", params: { "not-draft": "yes" } }
 	].forEach(function(service) {
 		var resource = NpolarApiResource.resource({ path: service.path });
 		var params = { limit: 4, sort: "-created" };
