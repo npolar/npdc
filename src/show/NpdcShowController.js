@@ -1,28 +1,27 @@
-'use strict';
+"use strict";
 
 // @ngInject
-let NpdcShowController = function($scope, $http, npdcAppConfig, NpolarApiResource, NpdcAutocompleteConfigFactory) {
-  $scope.options	= npdcAppConfig;
+var NpdcShowController = function($scope, $http, $anchorScroll, npdcAppConfig, NpolarApiResource, NpdcAutocompleteConfigFactory) {
+	$scope.options	= npdcAppConfig;
 	$scope.latest	= {};
 
 	[
-    // { path: '/dataset'     , params: { 'not-draft': 'yes' } } ,
-    // { path: '/map/archive' , params: { 'not-draft': 'yes' } } ,
-    // { path: '/expedition'  , params: { 'not-draft': 'yes' } } ,
-    // { path: '/publication' , params: { 'not-draft': 'yes' } } ,
-    // { path: '/project'     , params: { 'not-draft': 'yes' } } ,
-    { path: '/expedition'  , params: { } }
+		// { path: '/dataset'     , params: { 'not-draft': 'yes' } } ,
+		// { path: '/map/archive' , params: { 'not-draft': 'yes' } } ,
+		// { path: '/expedition'  , params: { 'not-draft': 'yes' } } ,
+		// { path: '/publication' , params: { 'not-draft': 'yes' } } ,
+		// { path: '/project'     , params: { 'not-draft': 'yes' } } ,
+		{ path: "/expedition"  , params: { "not-draft": "yes" } }
 	].forEach(function(service) {
 		var resource = NpolarApiResource.resource({ path: service.path });
 		var params = { limit: 4, sort: "-created" };
 
 		resource.array(Object.assign(params, service.params), response => {
 			$scope.latest[service.path.slice(1)] = response;
-
-			console.log($scope.latest, response, arguments);
 		});
 	});
 
+	$anchorScroll();
 };
 
 
