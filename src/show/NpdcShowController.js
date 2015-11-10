@@ -26,7 +26,7 @@ var NpdcShowController = function($scope, $http, $anchorScroll, npdcAppConfig, N
 		var boxShadow = window.getComputedStyle(document.querySelector(".npdc-home md-toolbar")).boxShadow;
 
 		function ease(pos, initial, target, len) {
-			return (target - initial) * Math.pow(2.0, 10.0 * (pos / len - 1.0)) + initial;
+			return Math.min(initial, Math.max(target, (target - initial) * Math.pow(2, 4 * (pos / len - 1)) * Math.sin(pos / len * (Math.PI / 2)) + initial));
 		};
 
 		function updateCallback() {
@@ -55,8 +55,9 @@ var NpdcShowController = function($scope, $http, $anchorScroll, npdcAppConfig, N
 			];
 
 			if(container.offsetWidth > 700) {
-				(scrollY && (scale = Math.max(0.0, ease(scrollY, 1.0, 0.0, header.offsetHeight - toolbar.offsetHeight))));
+				(scrollY && (scale = ease(scrollY, 1.0, 0.0, header.offsetHeight - toolbar.offsetHeight)));
 				quicknav.style.transform = "translateY(calc(-50% + " + (scrollY / 2) + "px)) scale(" + scale + ")";
+				quicknav.style.opacity   = scale;
 			} else {
 				quicknav.style.transform = "none";
 			}
