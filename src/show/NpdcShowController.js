@@ -6,12 +6,12 @@ var NpdcShowController = function($scope, $http, $anchorScroll, npdcAppConfig, N
 	$scope.latest	= {};
 
 	[
-		{ path: "/expedition", params: { "not-draft": "yes" } }
+		{ path: "/dataset",     params: { "not-draft": "yes", limit: 4, sort: "-created" } },
+		{ path: "/expedition",  params: { "not-draft": "yes", limit: 4, sort: "-created" } }
 	].forEach(function(service) {
 		var resource = NpolarApiResource.resource({ path: service.path });
-		var params = { limit: 4, sort: "-created" };
 
-		resource.array(Object.assign(params, service.params), response => {
+		resource.array(Object.assign(service.params), response => {
 			$scope.latest[service.path.slice(1)] = response;
 		});
 	});
@@ -41,7 +41,7 @@ var NpdcShowController = function($scope, $http, $anchorScroll, npdcAppConfig, N
 
 			var pageSets = [
 				{
-					section: document.getElementById("news"),
+					section: document.getElementById("datasets"),
 					link: document.querySelectorAll(".pagenav a")[0]
 				},
 				{

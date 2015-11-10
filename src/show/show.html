@@ -27,9 +27,9 @@
     </nav>
 
     <nav class="pagenav">
-      <a href="#news">
-        <md-icon>whatshot</md-icon>
-        <md-tooltip md-direction="down">News</md-tooltip>
+      <a href="#datasets">
+        <md-icon>storage</md-icon>
+        <md-tooltip md-direction="down">Datasets</md-tooltip>
       </a>
 
       <a href="#expeditions">
@@ -48,12 +48,12 @@
     <p>Open Norwegian Polar Data</p>
   </section>
 
-  <section id="news">
-    <h2>News</h2>
-    <md-icon>whatshot</md-icon>
+  <section id="datasets">
+    <h2>Datasets</h2>
+    <md-icon>storage</md-icon>
 
     <p>
-      <!-- Some information about what's hot... -->
+      <!-- Some information about our datasets... -->
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus.
       Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit.
       Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue.
@@ -69,7 +69,16 @@
       In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.
     </p>
 
-    <!-- List of news -->
+    <!-- List of datasets -->
+    <md-list>
+      <md-list-item class="md-3-line" ng-repeat="dataset in latest['dataset']">
+        <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
+        <div class="md-list-item-text" layout="column">
+          <h3>{{ dataset.title }}</h3>
+          <h4>{{ dataset.created }}</h4>
+        </div>
+      </md-list-item>
+    </md-list>
   </section>
 
   <section id="expeditions">
@@ -102,16 +111,9 @@
 
     <p>
       <!-- Some information about our documents... -->
-      Suspendisse lectus leo, consectetur in tempor sit amet, placerat quis neque.
-      Etiam luctus porttitor lorem, sed suscipit est rutrum non. Curabitur lobortis nisl a enim congue semper.
-      Aenean commodo ultrices imperdiet. Vestibulum ut justo vel sapien venenatis tincidunt.
-      Phasellus eget dolor sit amet ipsum dapibus condimentum vitae quis lectus.
-      Aliquam ut massa in turpis dapibus convallis. Praesent elit lacus, vestibulum at malesuada et, ornare et est.
-      Ut augue nunc, sodales ut euismod non, adipiscing vitae orci.
-      Mauris ut placerat justo. Mauris in ultricies enim.
-      Quisque nec est eleifend nulla ultrices egestas quis ut quam.
-      Donec sollicitudin lectus a mauris pulvinar id aliquam urna cursus. Cras quis ligula sem, vel elementum mi.
-      Phasellus non ullamcorper urna.
+      The following documents serve as guidelines for all data published by the Environmental Data Secton,
+      and should be taken into consideration both for new publications, and when harvesting existent data.
+      Feel free to contact us if you have any enqueries regarding our data policy or publications guidelines.
     </p>
 
     <md-grid-list md-cols="2" md-gutter="1em" md-row-height="220px">
