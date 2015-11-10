@@ -6,7 +6,7 @@ var NpdcShowController = function($scope, $http, $anchorScroll, npdcAppConfig, N
 	$scope.latest	= {};
 
 	[
-		{ path: "/dataset",     params: { "not-draft": "yes", limit: 4, sort: "-created" } },
+		{ path: "/dataset",     params: { "not-draft": "yes", limit: 6, sort: "-created" } },
 		{ path: "/expedition",  params: { "not-draft": "yes", limit: 4, sort: "-created" } }
 	].forEach(function(service) {
 		var resource = NpolarApiResource.resource({ path: service.path });
