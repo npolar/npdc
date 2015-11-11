@@ -4,17 +4,33 @@
 var NpdcShowController = function($scope, $http, $anchorScroll, npdcAppConfig, NpolarApiResource, NpdcAutocompleteConfigFactory) {
 	$scope.options	= npdcAppConfig;
 	$scope.latest	= {};
+	$scope.results	= [];
 
 	[
 		{ path: "/dataset",     params: { "not-draft": "yes", limit: 6, sort: "-created" } },
 		{ path: "/expedition",  params: { "not-draft": "yes", limit: 4, sort: "-created" } }
-	].forEach(function(service) {
+	]
+	.forEach(function(service) {
 		var resource = NpolarApiResource.resource({ path: service.path });
 
-		resource.array(Object.assign(service.params), response => {
+		resource.array(service.params, response => {
 			$scope.latest[service.path.slice(1)] = response;
 		});
 	});
+
+
+	/* TODO: Programatically obtain total counts of the following services
+	[
+		{ title: "API's",                   path: "/service"        },
+		{ title: "Datasets",                path: "/dataset"        },
+		{ title: "Publications",            path: "/publication"    },
+		{ title: "Placenames",              path: "/placename"      },
+		{ title: "Edits",                   path: "/editlog"        },
+		{ title: "Oceanographic Points",    path: "/oceanography"   }
+	]
+	.forEach(function(service) {
+	});
+	*/
 
 	$anchorScroll();
 };
@@ -27,7 +43,7 @@ var NpdcShowController = function($scope, $http, $anchorScroll, npdcAppConfig, N
 
 		function ease(pos, initial, target, len) {
 			return Math.min(initial, Math.max(target, (target - initial) * Math.pow(2, 4 * (pos / len - 1)) * Math.sin(pos / len * (Math.PI / 2)) + initial));
-		};
+		}
 
 		function updateCallback() {
 			var container   = document.querySelector(".npdc-home");
