@@ -26,3 +26,11 @@ npdc.run(function(npolarApiConfig, npdcAppConfig) {
   var autoconfig = new AutoConfig(environment);
   angular.extend(npolarApiConfig, autoconfig);
 });
+
+// Datetime filter
+npdc.filter("datetime", function() {
+  return function(input, params) {
+    var date = new Date(input);
+    return isNaN(date.valueOf()) ? input : date.toLocaleDateString();
+  };
+});
