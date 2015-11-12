@@ -4,10 +4,10 @@
 var NpdcShowController = function($scope, $http, $anchorScroll, npdcAppConfig, NpolarApiResource, NpdcAutocompleteConfigFactory) {
 	$scope.options	= npdcAppConfig;
 	$scope.latest	= {};
-	$scope.results	= [];
+	$scope.stats	= [];
 
 	[
-		{ path: "/dataset",     params: { "not-draft": "yes", limit: 6, sort: "-created" } },
+		{ path: "/publication", params: { "not-draft": "yes", limit: 6, sort: "-created" } },
 		{ path: "/expedition",  params: { "not-draft": "yes", limit: 4, sort: "-created" } }
 	]
 	.forEach(function(service) {
@@ -19,7 +19,6 @@ var NpdcShowController = function($scope, $http, $anchorScroll, npdcAppConfig, N
 	});
 
 
-	/* TODO: Programatically obtain total counts of the following services
 	[
 		{ title: "API's",                   path: "/service"        },
 		{ title: "Datasets",                path: "/dataset"        },
@@ -29,8 +28,16 @@ var NpdcShowController = function($scope, $http, $anchorScroll, npdcAppConfig, N
 		{ title: "Oceanographic Points",    path: "/oceanography"   }
 	]
 	.forEach(function(service) {
+		var resource = NpolarApiResource.resource({ path: service.path });
+
+		resource.feed({ limit: 0 }, response => {
+			$scope.stats.push({
+				title: service.title,
+				count: response.feed.opensearch.totalResults,
+				href: "//api.npolar.no" + service.path
+			});
+		});
 	});
-	*/
 
 	$anchorScroll();
 };
@@ -57,7 +64,7 @@ var NpdcShowController = function($scope, $http, $anchorScroll, npdcAppConfig, N
 
 			var pageSets = [
 				{
-					section: document.getElementById("datasets"),
+					section: document.getElementById("publications"),
 					link: document.querySelectorAll(".pagenav a")[0]
 				},
 				{
