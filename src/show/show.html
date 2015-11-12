@@ -46,12 +46,9 @@
 
   <section id="splash">
     <ul>
-      <li><a href=""><span>29</span> API's</a></li>
-      <li><a href=""><span>230</span> datasets</a></li>
-      <li><a href=""><span>5 062</span> publications</a></li>
-      <li><a href=""><span>23 184</span> placenames</a></li>
-      <li><a href=""><span>635 659</span> edits</a></li>
-      <li><a href=""><span>7 242 119</span> oceanographic points</a></li>
+      <li ng-repeat="stat in stats">
+        <a href="{{ stat.href }}"><span>{{ stat.count }}</span> {{ stat.title }}</a>
+      </li>
     </ul>
   </section>
 
