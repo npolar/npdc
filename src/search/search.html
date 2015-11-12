@@ -17,11 +17,7 @@
           <md-content>
 
             <section>
-              <div ng-if="!results">
-                <div layout="row" layout-sm="column" layout-align="space-around">
-                  <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-                </div>
-              </div>
+              <npdc:loader ng-if="!results"></npdc:loader>
 
               <div ng-repeat="e in results">
                 <md-content class="np-layout-list">
