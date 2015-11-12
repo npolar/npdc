@@ -7,7 +7,7 @@ var NpdcShowController = function($scope, $http, $anchorScroll, npdcAppConfig, N
 	$scope.stats	= [];
 
 	[
-		{ path: "/dataset",     params: { "not-draft": "yes", limit: 6, sort: "-created" } },
+		{ path: "/publication", params: { "not-draft": "yes", limit: 6, sort: "-created" } },
 		{ path: "/expedition",  params: { "not-draft": "yes", limit: 4, sort: "-created" } }
 	]
 	.forEach(function(service) {
@@ -64,7 +64,7 @@ var NpdcShowController = function($scope, $http, $anchorScroll, npdcAppConfig, N
 
 			var pageSets = [
 				{
-					section: document.getElementById("datasets"),
+					section: document.getElementById("publications"),
 					link: document.querySelectorAll(".pagenav a")[0]
 				},
 				{

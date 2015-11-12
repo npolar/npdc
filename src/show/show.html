@@ -4,32 +4,32 @@
 
   <header>
     <nav class="quicknav">
-      <a href="//data.npolar.no/publications">
-        <md-icon>search</md-icon>
-        <span class="label">Browse</span>
-        <span class="text">4k+ publications</span>
+      <a href="//data.npolar.no/dataset">
+        <md-icon>storage</md-icon>
+        <span class="label">Datasets</span>
+        <span class="text">Polar Datasets</span>
         <md-tooltip md-direction="down">Publications</md-tooltip>
       </a>
 
       <a href="//data.npolar.no/geodata">
         <md-icon>map</md-icon>
-        <span class="label">Discover</span>
-        <span class="text">Open Geographic Data</span>
+        <span class="label">Geodata</span>
+        <span class="text">Geographic Data</span>
         <md-tooltip md-direction="down">Geodata</md-tooltip>
       </a>
 
       <a href="//api.npolar.no">
         <md-icon>computer</md-icon>
-        <span class="label">Develop</span>
-        <span class="text">Using 30+ REST API's</span>
+        <span class="label">Development</span>
+        <span class="text">RESTful Data Services</span>
         <md-tooltip md-direction="down">API's</md-tooltip>
       </a>
     </nav>
 
     <nav class="pagenav">
-      <a href="#datasets">
-        <md-icon>storage</md-icon>
-        <md-tooltip md-direction="down">Datasets</md-tooltip>
+      <a href="#publications">
+        <md-icon>book</md-icon>
+        <md-tooltip md-direction="down">Publications</md-tooltip>
       </a>
 
       <a href="#expeditions">
@@ -52,12 +52,12 @@
     </ul>
   </section>
 
-  <section id="datasets">
-    <h2>Datasets</h2>
+  <section id="publications">
+    <h2>Publications</h2>
     <md-icon>storage</md-icon>
 
     <p>
-      <!-- Some information about our datasets... -->
+      <!-- Some information about our publications... -->
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus.
       Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit.
       Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue.
@@ -73,12 +73,12 @@
       In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.
     </p>
 
-    <!-- List of datasets -->
+    <!-- List of publications -->
     <md-list>
-      <md-list-item class="md-3-line" ng-repeat="dataset in latest['dataset']">
+      <md-list-item class="md-3-line" ng-repeat="publication in latest['publication']">
         <div class="md-list-item-text" layout="column">
-          <h3>{{ dataset.title }}</h3>
-          <h4>{{ dataset.created | datetime }}</h4>
+          <h3>{{ publication.title }}</h3>
+          <h4>{{ publication.created | datetime }}</h4>
         </div>
       </md-list-item>
     </md-list>
