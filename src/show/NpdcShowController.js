@@ -81,7 +81,7 @@ var NpdcShowController = function($scope, $http, $anchorScroll, $mdDialog, npdcA
 				}
 			];
 
-			if(container.offsetWidth > 700) {
+			if(window.innerWidth >= 700) {
 				(scrollY && (scale = ease(scrollY, 1.0, 0.0, header.offsetHeight - toolbar.offsetHeight)));
 				quicknav.style.transform = "translateY(calc(-50% + " + (scrollY / 2) + "px)) scale(" + scale + ")";
 				quicknav.style.opacity   = scale;
