@@ -58,7 +58,6 @@ var NpdcShowController = function($scope, $http, $anchorScroll, npdcAppConfig, N
 			var toolbar     = container.querySelector("md-toolbar");
 			var quicknav    = header.querySelector(".quicknav");
 			var pagenav     = container.querySelector(".pagenav");
-			var scroller    = container.querySelector("#scroll-up");
 
 			var scrollY     = window.pageYOffset, scale = 1.0;
 
@@ -89,12 +88,10 @@ var NpdcShowController = function($scope, $http, $anchorScroll, npdcAppConfig, N
 				header.style.boxShadow = "none";
 				toolbar.style.boxShadow = boxShadow;
 				pagenav.classList.add("docked");
-				scroller.style.transform = "scale(1.0)";
 			} else {
 				header.style.boxShadow = boxShadow;
 				toolbar.style.boxShadow = "none";
 				pagenav.classList.remove("docked");
-				scroller.style.transform = "scale(0.0)";
 			}
 
 			pageSets.forEach(function(set, index, arr) {
