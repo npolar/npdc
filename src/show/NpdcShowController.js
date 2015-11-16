@@ -1,13 +1,14 @@
 "use strict";
 
 // @ngInject
-var NpdcShowController = function($scope, $http, $anchorScroll, npdcAppConfig, NpolarApiResource, NpdcAutocompleteConfigFactory) {
+var NpdcShowController = function($scope, $http, $anchorScroll, $mdDialog, npdcAppConfig, NpolarApiResource, NpdcAutocompleteConfigFactory) {
 	$scope.options	= npdcAppConfig;
 	$scope.latest	= {};
 	$scope.stats	= [];
 
 	[
 		{ path: "/publication", params: { "not-draft": "yes", limit: 6, sort: "-created" } },
+		{ path: "/project",     params: { "not-draft": "yes", limit: 4, sort: "-created" } },
 		{ path: "/expedition",  params: { "not-draft": "yes", limit: 4, sort: "-created" } }
 	]
 	.forEach(function(service) {
@@ -68,12 +69,16 @@ var NpdcShowController = function($scope, $http, $anchorScroll, npdcAppConfig, N
 					link: document.querySelectorAll(".pagenav a")[0]
 				},
 				{
-					section: document.getElementById("expeditions"),
+					section: document.getElementById("projects"),
 					link: document.querySelectorAll(".pagenav a")[1]
 				},
 				{
-					section: document.getElementById("documents"),
+					section: document.getElementById("expeditions"),
 					link: document.querySelectorAll(".pagenav a")[2]
+				},
+				{
+					section: document.getElementById("documents"),
+					link: document.querySelectorAll(".pagenav a")[3]
 				}
 			];
 
