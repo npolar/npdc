@@ -1,7 +1,7 @@
 "use strict";
 
 // @ngInject
-var NpdcShowController = function($scope, $http, $anchorScroll, $mdDialog, npdcAppConfig, NpolarApiResource, NpdcAutocompleteConfigFactory) {
+var NpdcShowController = function($scope, $http, $anchorScroll, npdcAppConfig, NpolarApiResource, NpdcAutocompleteConfigFactory) {
 	$scope.options	= npdcAppConfig;
 	$scope.latest	= {};
 	$scope.stats	= [];
@@ -41,6 +41,14 @@ var NpdcShowController = function($scope, $http, $anchorScroll, $mdDialog, npdcA
 	});
 
 	$anchorScroll();
+
+	// Tutorial logics
+	var cookies = document.cookie.split(";"), cookieString = "npdcHomePastery=plznotutorial";
+	$scope.canihastutorial = !!(cookies.indexOf(cookieString) == -1);
+	$scope.kthxbai = function() {
+		document.cookie = cookieString;
+		$scope.canihastutorial = false;
+	};
 };
 
 

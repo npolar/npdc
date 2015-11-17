@@ -2,15 +2,11 @@
 <div class="npdc-home">
   <npdc:toolbar options="options"></npdc:toolbar>
 
-  <!--
-  <div id="tutorial">
-    <h1>Yo, newbie!</h1>
-    <p>For internal navigation, click here for a list of applications.</p>
-
-    <md-button href="">Tell me more!</md-button>
-    <md-button href="">Got it!</md-button>
+  <div id="tutorial" ng-show="canihastutorial">
+    <h1>Welcome to NPDC Web!</h1>
+    <p>For easy navigation, user login, registration, and global searching, click on the respective icon on the toolbar!</p>
+    <md-button href="" ng-click="kthxbai()">kthxbai...</md-button>
   </div>
-  -->
 
   <header>
     <nav class="quicknav">
