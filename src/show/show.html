@@ -80,10 +80,12 @@
     <!-- List of publications -->
     <md-list>
       <md-list-item class="md-3-line" ng-repeat="publication in latest['publication']">
-        <div class="md-list-item-text" layout="column">
-          <h3>{{ publication.title }}</h3>
-          <h4>{{ publication.created | datetime }}</h4>
-        </div>
+        <a ng-href="/publication/{{ publication.id }}">
+          <div class="md-list-item-text" layout="column">
+            <h3>{{ publication.title }}</h3>
+            <h4>{{ publication.created | datetime }}</h4>
+          </div>
+        </a>
       </md-list-item>
     </md-list>
   </section>
@@ -101,10 +103,12 @@
     <!-- List of projects -->
     <md-list>
       <md-list-item class="md-3-line" ng-repeat="project in latest['project']">
-        <div class="md-list-item-text" layout="column">
-          <h3>{{ project.title }}</h3>
-          <h4>{{ project.created | datetime }}</h4>
-        </div>
+        <a ng-href="/project/{{ project.id }}">
+          <div class="md-list-item-text" layout="column">
+            <h3>{{ project.title }}</h3>
+            <h4>{{ project.created | datetime }}</h4>
+          </div>
+        </a>
       </md-list-item>
     </md-list>
   </section>
@@ -134,10 +138,12 @@
 
     <md-list>
       <md-list-item class="md-3-line" ng-repeat="expedition in latest['expedition']">
-        <div class="md-list-item-text" layout="column">
-          <h3>{{ expedition.code }}</h3>
-          <h4>{{ expedition.created | datetime }}</h4>
-        </div>
+        <a ng-href="/expedition/{{ expedition.id }}">
+          <div class="md-list-item-text" layout="column">
+            <h3>{{ expedition.code }}</h3>
+            <h4>{{ expedition.created | datetime }}</h4>
+          </div>
+        </a>
       </md-list-item>
     </md-list>
   </section>
