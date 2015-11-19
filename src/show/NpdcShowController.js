@@ -44,7 +44,7 @@ var NpdcShowController = function($scope, $http, $anchorScroll, npdcAppConfig, N
 
 	// Tutorial cookie logics
 	var cookies = document.cookie.split(";"), cookieString = "canihastutorial=omgnoplz";
-	$scope.canihastutorial = !!(cookies.indexOf(cookieString) == -1);
+	$scope.canihastutorial = (cookies.indexOf(cookieString) === -1);
 	$scope.kthxbai = function() { $scope.canihastutorial = false; };
 	$scope.gtfoplz = function() {
 		// Kill the cookie when time_t dies
