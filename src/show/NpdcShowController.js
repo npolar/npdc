@@ -42,11 +42,13 @@ var NpdcShowController = function($scope, $http, $anchorScroll, npdcAppConfig, N
 
 	$anchorScroll();
 
-	// Tutorial logics
-	var cookies = document.cookie.split(";"), cookieString = "npdcHomePastery=plznotutorial";
+	// Tutorial cookie logics
+	var cookies = document.cookie.split(";"), cookieString = "canihastutorial=omgnoplz";
 	$scope.canihastutorial = !!(cookies.indexOf(cookieString) == -1);
-	$scope.kthxbai = function() {
-		document.cookie = cookieString;
+	$scope.kthxbai = function() { $scope.canihastutorial = false; };
+	$scope.gtfoplz = function() {
+		// Kill the cookie when time_t dies
+		document.cookie = cookieString + ";expires=Tue, 19 Jan 2038 03:14:07 GMT";
 		$scope.canihastutorial = false;
 	};
 };
