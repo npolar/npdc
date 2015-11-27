@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<div class="npdc-home">
-  <npdc:toolbar options="options"></npdc:toolbar>
+<npdc:toolbar options="options"></npdc:toolbar>
 
+<md-content class="npdc-home">
   <div id="tutorial" ng-show="canihastutorial">
     <h1>Welcome to NPDC Web!</h1>
     <p>For easy navigation, user login, registration, and global searching, click on the respective icon on the toolbar!</p>
@@ -10,7 +10,7 @@
   </div>
 
   <header>
-    <nav class="quicknav">
+    <nav class="quicknav" layout="row" layout-align="center center">
       <a href="/dataset">
         <md-icon>storage</md-icon>
         <span class="label">Datasets</span>
@@ -180,6 +180,6 @@
     </md-grid-list>
 
   </section>
+</md-content>
 
-  <npdc:footer></npdc:footer>
-</div>
+<npdc:footer></npdc:footer>
