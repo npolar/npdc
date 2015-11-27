@@ -21,17 +21,16 @@ var NpdcShowController = function($scope, $http, $anchorScroll, npdcAppConfig, N
 
 
 	[
-		{ title: "API's",                   path: "/service"        },
-		{ title: "Datasets",                path: "/dataset"        },
-		{ title: "Publications",            path: "/publication"    },
-		{ title: "Placenames",              path: "/placename"      },
-		{ title: "Edits",                   path: "/editlog"        },
-		{ title: "Oceanographic Points",    path: "/oceanography"   }
+		{ title: "API's",                   path: "/service",       params: { } },
+		{ title: "Datasets",                path: "/dataset",       params: { "not-draft": "yes", "filter-links.rel": "data" } },
+		{ title: "Publications",            path: "/publication",   params: { "not-draft": "yes" } },
+		{ title: "Placenames",              path: "/placename",     params: { variant: null, limit: 1 } },
+		{ title: "Oceanographic Points",    path: "/oceanography",  params: {  } }
 	]
 	.forEach(function(service) {
 		var resource = NpolarApiResource.resource({ path: service.path });
 
-		resource.feed({ limit: 0 }, response => {
+		resource.feed(Object.assign({ limit: 0 }, service.params), response => {
 			$scope.stats.push({
 				title: service.title,
 				count: response.feed.opensearch.totalResults,
@@ -60,7 +59,6 @@ var NpdcShowController = function($scope, $http, $anchorScroll, npdcAppConfig, N
 		var boxShadow = window.getComputedStyle(document.querySelector("md-toolbar")).boxShadow;
 
 		function ease(pos, initial, target, len) {
-			console.log('ease', arguments);
 			return Math.min(initial, Math.max(target, (target - initial) *
 				Math.pow(2, 4 * (pos / len - 1)) * Math.sin(pos / (len * (Math.PI / 2))) + initial));
 		}
@@ -96,7 +94,6 @@ var NpdcShowController = function($scope, $http, $anchorScroll, npdcAppConfig, N
 			if (window.innerWidth >= 700) {
 				if (scrollY) {
 					scale = ease(scrollY, 1.0, 0.0, header.offsetHeight - toolbar.offsetHeight);
-					console.log('scale', scale);
 				}
 				quicknav.style.transform = "translateY(-50%) translateY(" + (scrollY / 2) + "px) scale(" + scale + ")";
 				quicknav.style.opacity = scale;
