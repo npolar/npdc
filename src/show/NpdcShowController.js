@@ -1,7 +1,7 @@
 "use strict";
 
 // @ngInject
-var NpdcShowController = function($scope, $http, $anchorScroll, npdcAppConfig, NpolarApiResource, NpdcAutocompleteConfigFactory) {
+var NpdcShowController = function($scope, $http, $mdDialog, $anchorScroll, npdcAppConfig, NpolarApiResource, NpdcAutocompleteConfigFactory) {
 	$scope.options	= npdcAppConfig;
 	$scope.latest	= {};
 	$scope.stats	= [];
@@ -39,6 +39,7 @@ var NpdcShowController = function($scope, $http, $anchorScroll, npdcAppConfig, N
 		});
 	});
 
+	$anchorScroll.yOffset = 64;
 	$anchorScroll();
 
 	// Tutorial cookie logics
@@ -49,6 +50,19 @@ var NpdcShowController = function($scope, $http, $anchorScroll, npdcAppConfig, N
 		// Kill the cookie when time_t dies
 		document.cookie = cookieString + ";expires=Tue, 19 Jan 2038 03:14:07 GMT";
 		$scope.canihastutorial = false;
+	};
+
+
+	$scope.notImpl = function (ev) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .clickOutsideToClose(true)
+        .title('Not yet implemented')
+        .content('Sorry, coming soon.')
+        .ariaLabel('Not yet implemented dialog')
+        .ok('Got it!')
+        .targetEvent(ev)
+    );
 	};
 };
 

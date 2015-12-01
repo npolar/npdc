@@ -35,403 +35,416 @@ $anim-speed: .4s;
 }
 
 .npdc-home {
-  background-attachment: fixed;
-  background-color: #fff;
-  background-image: repeating-linear-gradient(30deg, rgba(15, 63, 76, .4) 10%, rgba(65, 114, 128, .2) 30%, rgba(36, 87, 102, .2) 60%), repeating-linear-gradient(170deg, rgba(65, 114, 128, .2) 20%, rgba(15, 63, 76, .2) 40%, rgba(2, 41, 52, .4) 80%), repeating-linear-gradient(250deg, rgba(15, 63, 76, .2) 10%, rgba(36, 87, 102, .2) 40%, rgba(1, 23, 29, .4) 90%);
-  height: auto;
+	background-attachment: fixed;
+	background-color: #fff;
+	background-image: repeating-linear-gradient(30deg, rgba(15, 63, 76, .4) 10%, rgba(65, 114, 128, .2) 30%, rgba(36, 87, 102, .2) 60%), repeating-linear-gradient(170deg, rgba(65, 114, 128, .2) 20%, rgba(15, 63, 76, .2) 40%, rgba(2, 41, 52, .4) 80%), repeating-linear-gradient(250deg, rgba(15, 63, 76, .2) 10%, rgba(36, 87, 102, .2) 40%, rgba(1, 23, 29, .4) 90%);
+	height: auto;
 
-  #tutorial {
-    background-color: $color-1-ex;
-    border-radius: 15px;
-    box-shadow: 1px 2px 3px $color-1-ex;
-    color: $color-1-fg;
-    font-size: 1em;
-    left: 15px;
-    opacity: .95;
-    padding: 15px;
-    position: fixed;
-    right: 15px;
-    text-align: center;
-    text-transform: uppercase;
-    top: 64px;
-    z-index: 1005;
+	#tutorial {
+		background-color: $color-1-ex;
+		border-radius: 15px;
+		box-shadow: 1px 2px 3px $color-1-ex;
+		color: $color-1-fg;
+		font-size: 1em;
+		left: 15px;
+		opacity: .95;
+		padding: 15px;
+		position: fixed;
+		right: 15px;
+		text-align: center;
+		text-transform: uppercase;
+		top: 64px;
+		z-index: 1005;
 
-    &:before,
-    &:after {
-      border-bottom: 1em solid $color-1-ex;
-      border-left: 1em solid transparent;
-      border-right: 1em solid transparent;
-      content: '';
-      position: absolute;
-      top: -1em;
-    }
+		&:before,
+		&:after {
+			border-bottom: 1em solid $color-1-ex;
+			border-left: 1em solid transparent;
+			border-right: 1em solid transparent;
+			content: '';
+			position: absolute;
+			top: -1em;
+		}
 
-    &:before {
-      right: 135px;
-    }
+		&:before {
+			right: 135px;
+		}
 
-    &:after {
-      right: 75px;
-    }
-  }
+		&:after {
+			right: 75px;
+		}
+	}
 
-  header {
-    background-color: $color-1-bg;
-    padding-top: 64px;
-    position: relative;
+	header {
+		background-color: $color-1-bg;
+		padding-top: 64px;
+		position: relative;
 
-    .quicknav {
-      padding: 15px;
-      //text-align: center;
+		.quicknav {
+			padding: 15px;
+			//text-align: center;
 
-      a {
-        color: $color-2-fg;
-        display: inline-block;
-        font-size: 15px;
-        margin: 0 15px;
+			a {
+				color: $color-2-fg;
+				display: inline-block;
+				font-size: 15px;
+				margin: 0 15px;
 				text-align: center;
-        text-decoration: none;
-        text-shadow: 1px 1px 2px $color-1-ex;
-        transition: all $anim-speed;
+				text-decoration: none;
+				text-shadow: 1px 1px 2px $color-1-ex;
+				transition: all $anim-speed;
 
-        md-icon {
-          color: #fff;
-          text-shadow: 0 0 10px $color-1-ex;
-        }
+				md-icon {
+					color: #fff;
+					text-shadow: 0 0 10px $color-1-ex;
+				}
 
-        .text {
-          display: none;
-        }
+				.text {
+					display: none;
+				}
 
-        &:hover {
-          transform: scale(1.2);
-        }
-      }
-    }
+				&:hover {
+					transform: scale(1.2);
+				}
+			}
+		}
 
-    .pagenav {
-      display: none;
-    }
-  }
+		.pagenav {
+			display: none;
+		}
+	}
 
-  section {
-    font-size: 1.2em;
-    margin: 0;
-    padding: 2em;
-    position: relative;
+	section {
+		font-size: 1.2em;
+		margin: 0;
+		padding: 2em;
+		position: relative;
 
-    h2 {
-      color: $color-1-bg;
-      font-size: 2em;
-      margin: 0;
-      opacity: .7;
-      padding: 0;
-      text-align: left;
-    }
+		h2 {
+			color: $color-1-bg;
+			font-size: 2em;
+			margin: 0;
+			opacity: .7;
+			padding: 0;
+			text-align: left;
+		}
 
-    > md-icon {
-      bottom: 15px;
-      color: $color-1-bg;
-      font-size: 5vw; //80px;
-      opacity: .2;
-      position: absolute;
-      right: 15px;
-      text-shadow: -1px -1px 0 $color-1-ex, 1px 1px 0 $color-1-fg;
-    }
+		> md-icon {
+			bottom: 15px;
+			color: $color-1-bg;
+			font-size: 5vw; //80px;
+			opacity: .2;
+			position: absolute;
+			right: 15px;
+			text-shadow: -1px -1px 0 $color-1-ex, 1px 1px 0 $color-1-fg;
+		}
 
-    p {
-      margin: 2em 0 0;
-      padding: 0;
-      text-align: justify;
-    }
+		p {
+			margin: 2em 0 0;
+			padding: 0;
+			text-align: justify;
+		}
 
-    a {
-      text-decoration: none;
-    }
+		a {
+			text-decoration: none;
+		}
 
-    md-list {
-      margin: 2em 0 0;
+		md-list {
+			margin: 2em 0 0;
 
-      md-list-item a {
-        display: block;
-        height: 100%;
-        overflow: ellipsis;
-        width: 100%;
+			md-list-item a {
+				display: block;
+				height: 100%;
+				overflow: ellipsis;
+				width: 100%;
 
-        div {
-          position: relative;
-          top: 50%;
-          transform: translateY(-50%);
-        }
-      }
-    }
+				div {
+					position: relative;
+					top: 50%;
+					transform: translateY(-50%);
+				}
+			}
+		}
 
-    md-grid-list {
-      margin: 2em 0 0;
+		md-grid-list {
+			margin: 2em 0 0;
 
-      md-grid-tile {
-        transform: scale(.9);
-        transition: all $anim-speed;
+			md-grid-tile {
+				cursor: pointer;
+				transform: scale(.9);
+				transition: all $anim-speed;
 
-        &:hover {
-          box-shadow: 0 0 15px 0 #000;
-          transform: scale(1);
+				&:hover {
+					box-shadow: 0 0 15px 0 #000;
+					transform: scale(1);
 
-          md-icon {
-            transform: rotateY(360deg);
-          }
-        }
+					md-icon {
+						transform: rotateY(360deg);
+					}
+				}
 
-        img {
-          height: 100%;
-          left: 0;
-          object-fit: cover;
-          position: absolute;
-          top: 0;
-          width: 100%;
-        }
+				img {
+					height: 100%;
+					left: 0;
+					object-fit: cover;
+					position: absolute;
+					top: 0;
+					width: 100%;
+				}
 
-        md-icon {
-          font-size: 3em;
-          transition: all $anim-speed;
-        }
-      }
-    }
-  }
+				md-icon {
+					font-size: 3em;
+					transition: all $anim-speed;
+				}
+			}
+		}
+	}
 
-  #splash {
-    box-sizing: border-box;
-    height: 20vh;
+	#splash {
+		box-sizing: border-box;
+		height: 20vh;
 
-    ul {
-      left: 0;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      position: absolute;
-      text-align: center;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 100%;
+		ul {
+			left: 0;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			position: absolute;
+			text-align: center;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 100%;
 
-      li {
-        display: inline-block;
-        font-size: 20px;
-        margin: 5px 15px;
+			li {
+				display: inline-block;
+				font-size: 20px;
+				margin: 5px 15px;
 
-        span {
-          font-weight: bold;
-        }
-      }
-    }
+				span {
+					font-weight: bold;
+				}
+			}
+		}
 
-    p {
-      color: $color-1-bg;
-      font-size: 2em;
-      margin: 0;
-      padding: 0;
-      position: relative;
-      text-align: center;
-      text-shadow: 1px 1px 0 $color-1-ex;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-  }
+		p {
+			color: $color-1-bg;
+			font-size: 2em;
+			margin: 0;
+			padding: 0;
+			position: relative;
+			text-align: center;
+			text-shadow: 1px 1px 0 $color-1-ex;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+	}
 
-  // Customize defined sections
-  @each $id,
-  $bg,
-  $fg,
-  $ex in $section-map {
-    section[id="#{$id}"] {
-      background-color: $bg;
-      color: $fg;
+	// Customize defined sections
+	@each $id,
+	$bg,
+	$fg,
+	$ex in $section-map {
+		section[id="#{$id}"] {
+			background-color: $bg;
+			color: $fg;
 
-      h2 {
-        color: $ex;
-        text-shadow: -1px -1px 0 $bg, 1px 1px 0 $fg;
-      }
+			h2 {
+				color: $ex;
+				text-shadow: -1px -1px 0 $bg, 1px 1px 0 $fg;
+			}
 
-      p a {
-        color: lighten($fg, 35%);
+			p a {
+				color: lighten($fg, 35%);
 
-        &:hover {
-          text-decoration: underline;
-        }
-      }
+				&:hover {
+					text-decoration: underline;
+				}
+			}
 
-      > md-icon {
-        color: $bg;
-      }
+			> md-icon {
+				color: $bg;
+			}
 
-      md-list-item {
-        background-color: $ex;
-        color: $fg;
-        margin: 1px 0;
+			md-list-item {
+				background-color: $ex;
+				color: $fg;
+				margin: 1px 0;
 
-        //opacity:			.4;
-        transform: scale(.92);
-        transition: all $anim-speed;
+				//opacity:			.4;
+				transform: scale(.92);
+				transition: all $anim-speed;
 
-        &:hover {
-          box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, .4);
-          transform: scale(.95);
-        }
+				&:hover {
+					box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, .4);
+					transform: scale(.95);
+				}
 
-        h3 {
-          color: $fg;
-        }
+				h3 {
+					color: $fg;
+				}
 
-        h4 {
-          color: lighten($bg, 20%);
-        }
-      }
+				h4 {
+					color: lighten($bg, 20%);
+				}
+			}
 
-      md-grid-tile {
-        background-color: $ex;
+			md-grid-tile {
+				background-color: $ex;
 
-        md-grid-tile-footer,
-        md-icon {
-          color: #fff;
-          text-shadow: 0 0 1px #000;
-        }
-      }
-    }
-  }
+				md-grid-tile-footer,
+				md-icon {
+					color: #fff;
+					text-shadow: 0 0 1px #000;
+				}
+			}
+		}
+	}
 
-  @media (min-width: 700px) {
-    header {
-      height: 80vh;
-      padding: 0;
+	@media (min-width: 700px) {
+		header {
+			height: 80vh;
+			padding: 0;
 
-      .quicknav {
-        font-size: 0;
-        position: relative;
-        top: 50%;
+			.quicknav {
+				font-size: 0;
+				position: relative;
+				top: 50%;
 
-        a {
-          margin: 3vh 0;
-          padding: 2vh 4vw;
-          position: relative;
+				a {
+					margin: 3vh 0;
+					padding: 2vh 4vw;
+					position: relative;
 					width: 350px;
 
-          md-icon {
-            display: block;
-            font-size: 4em;
-            height: 1em;
-            transition: all $anim-speed;
-            width: 1em;
-          }
+					md-icon {
+						display: block;
+						font-size: 4em;
+						height: 1em;
+						transition: all $anim-speed;
+						width: 1em;
+					}
 
-          span.label {
-            font-size: 2em;
-          }
+					span.label {
+						font-size: 2em;
+					}
 
-          span.text {
-            color: $color-1-fg;
-            display: block;
-            font-size: 1.2em;
-            text-shadow: 0 0 2px $color-1-ex;
-            transition: all $anim-speed;
-          }
+					span.text {
+						color: $color-1-fg;
+						display: block;
+						font-size: 1.2em;
+						text-shadow: 0 0 2px $color-1-ex;
+						transition: all $anim-speed;
+					}
 
-          &:hover {
-            color: $color-2-ex;
-            text-shadow: 0 0 10px $color-2-fg;
-            transform: none;
+					&:hover {
+						color: $color-2-ex;
+						text-shadow: 0 0 10px $color-2-fg;
+						transform: none;
 
-            md-icon {
-              transform: scale(1.2);
-            }
-          }
+						md-icon {
+							transform: scale(1.2);
+						}
+					}
 
-          &:not(:last-of-type) {
-            border-right: 1px solid $color-1-ex;
-          }
+					&:not(:last-of-type) {
+						border-right: 1px solid $color-1-ex;
+					}
 
-          &:not(:first-of-type) {
-            border-left: 1px solid $color-1-fg;
-          }
-        }
-      }
+					&:not(:first-of-type) {
+						border-left: 1px solid $color-1-fg;
+					}
+				}
+			}
 
-      .pagenav {
-        bottom: 0;
-        display: block;
-        height: 0;
-        position: absolute;
-        text-align: center;
-        width: 100%;
-        z-index: 1;
+			.pagenav {
+				bottom: 0;
+				display: block;
+				height: 0;
+				position: absolute;
+				text-align: center;
+				width: 100%;
+				z-index: 1;
 
-        a {
-          background-color: $color-1-ex;
-          border-radius: 50% 50% 0 0;
-          color: $color-1-fg;
-          display: inline-block;
-          font-size: 1.5em;
-          margin: 0 5px;
-          padding: .5em .5em .2em;
-          position: relative;
-          top: -1.5em;
-          transition: $anim-speed;
+				a {
+					background-color: $color-1-ex;
+					border-radius: 50% 50% 0 0;
+					color: $color-1-fg;
+					display: inline-block;
+					font-size: 1.5em;
+					margin: 0 5px;
+					padding: .5em .5em .2em;
+					position: relative;
+					top: -1.5em;
+					transition: $anim-speed;
 
-          md-icon {
-            color: inherit;
-          }
+					md-icon {
+						color: inherit;
+					}
 
-          &:hover {
-            box-shadow: 0 0 15px 0 rgba(0, 0, 0, .5);
-            transform: translateY(10px);
-          }
+					&:hover {
+						box-shadow: 0 0 15px 0 rgba(0, 0, 0, .5);
+						transform: translateY(10px);
+					}
 
-          &:after {
-            border-left: 1em solid transparent;
-            border-right: 1em solid transparent;
-            border-top: 1em solid $color-1-ex;
-            bottom: -1em;
-            content: '';
-            left: 0;
-            position: absolute;
-          }
-        }
+					&:after {
+						border-left: 1em solid transparent;
+						border-right: 1em solid transparent;
+						border-top: 1em solid $color-1-ex;
+						bottom: -1em;
+						content: '';
+						left: 0;
+						position: absolute;
+					}
+				}
 
-        &.docked {
-          bottom: auto;
-          position: fixed;
-          top: 64px;
+				&.docked {
+					bottom: auto;
+					position: fixed;
+					top: 64px;
 
-          a {
-            opacity: .6;
+					a {
+						opacity: .6;
 
-            &:hover {
-              opacity: 1;
-            }
-          }
-        }
-      }
+						&:hover {
+							opacity: 1;
+						}
+					}
+				}
+			}
 
-      // Customize defined sections
-      @each $id,
-      $bg,
-      $fg,
-      $ex in $section-map {
-        a[href="##{$id}"] {
-          background-color: $bg;
-          color: $fg;
+			// Customize defined sections
+			@each $id,
+			$bg,
+			$fg,
+			$ex in $section-map {
+				a[href="##{$id}"] {
+					background-color: $bg;
+					color: $fg;
 
-          &:after {
-            border-top: 1em solid $bg;
-          }
-        }
-      }
-    }
+					&:after {
+						border-top: 1em solid $bg;
+					}
+				}
+			}
+		}
 
-    section {
-      h2 {
-        font-size: 3em;
-        text-align: center;
-      }
-    }
-  }
+		section {
+			h2 {
+				font-size: 3em;
+				text-align: center;
+			}
+		}
+	}
+
+	#documents {
+		md-grid-list {
+			md-grid-tile {
+				background-color: #000;
+
+				img {
+					object-fit: contain;
+				}
+			}
+		}
+	}
 }
