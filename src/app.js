@@ -4,7 +4,7 @@ var angular     = require("angular");
 var npdcCommon  = require("npdc-common");
 var AutoConfig  = npdcCommon.AutoConfig;
 
-var npdc = angular.module("npdcHome", ["npdcUi"]);
+var npdc = angular.module("npdcHome", ["npdcCommon"]);
 
 // Auth interceptor
 npdc.config(function ($httpProvider) {
