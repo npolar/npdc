@@ -152,16 +152,22 @@ $anim-speed: .4s;
 		md-list {
 			margin: 2em 0 0;
 
-			md-list-item a {
-				display: block;
-				height: 100%;
-				overflow: ellipsis;
-				width: 100%;
+			md-list-item {
+				height: 88px;
+				padding: 0;
 
-				div {
-					position: relative;
-					top: 50%;
-					transform: translateY(-50%);
+				a {
+					display: block;
+					height: 100%;
+					overflow: ellipsis;
+					padding: 0 16px;
+					width: calc(100% - 32px);
+
+					div {
+						position: relative;
+						top: 50%;
+						transform: translateY(-50%);
+					}
 				}
 			}
 		}
