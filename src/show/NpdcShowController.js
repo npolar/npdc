@@ -58,7 +58,7 @@ var NpdcShowController = function($scope, $http, $mdDialog, $anchorScroll, npdcA
       $mdDialog.alert()
         .clickOutsideToClose(true)
         .title('Not yet implemented')
-        .content('Sorry, coming soon.')
+        .textContent('Sorry, coming soon.')
         .ariaLabel('Not yet implemented dialog')
         .ok('Got it!')
         .targetEvent(ev)
