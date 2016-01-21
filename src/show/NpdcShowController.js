@@ -6,6 +6,7 @@ var NpdcShowController = function($scope, $http, $mdDialog, $anchorScroll, npdcA
 	$scope.latest	= {};
 	$scope.stats	= [];
 
+	// Quick navigation
 	[
 		{ path: "/publication", params: { "not-draft": "yes", limit: 6, sort: "-created" } },
 		{ path: "/project",     params: { "not-draft": "yes", limit: 4, sort: "-created" } },
@@ -19,7 +20,7 @@ var NpdcShowController = function($scope, $http, $mdDialog, $anchorScroll, npdcA
 		});
 	});
 
-
+	// Statistics
 	[
 		{ title: "API's",                   path: "/service",       params: { } },
 		{ title: "Datasets",                path: "/dataset",       params: { "not-draft": "yes", "filter-links.rel": "data" } },
@@ -52,17 +53,15 @@ var NpdcShowController = function($scope, $http, $mdDialog, $anchorScroll, npdcA
 		$scope.canihastutorial = false;
 	};
 
-
+	// Pop-up for not-yet implemented functionality
 	$scope.notImpl = function (ev) {
-    $mdDialog.show(
-      $mdDialog.alert()
-        .clickOutsideToClose(true)
-        .title('Not yet implemented')
-        .textContent('Sorry, coming soon.')
-        .ariaLabel('Not yet implemented dialog')
-        .ok('Got it!')
-        .targetEvent(ev)
-    );
+		$mdDialog.show(
+			$mdDialog.alert()
+			.clickOutsideToClose(true)
+			.title("Not yet implemented!")
+			.ok("Got it!")
+			.targetEvent(ev)
+		);
 	};
 };
 
@@ -115,7 +114,7 @@ var NpdcShowController = function($scope, $http, $mdDialog, $anchorScroll, npdcA
 				quicknav.style.transform = "none";
 			}
 
-			if(scrollY >= header.offsetHeight - toolbar.offsetHeight) {
+			if(toolbar.offsetHeight && (scrollY >= header.offsetHeight - toolbar.offsetHeight)) {
 				header.style.boxShadow = "none";
 				toolbar.style.boxShadow = boxShadow;
 				pagenav.classList.add("docked");
