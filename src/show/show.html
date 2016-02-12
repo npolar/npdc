@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<npdc:toolbar options="options"></npdc:toolbar>
+<npdc:toolbar></npdc:toolbar>
 <md-content>
   <section id="search" class="home-section" layout layout-align="center center">
     <div flex="50">
@@ -11,6 +11,21 @@
       <md-button class="md-raised md-icon-button" ng-click="search();"><md-icon>search</md-icon></md-button>
     </div>
   </section>
+  <section class="home-section" layout>
+    <div flex>
+      <md-grid-list
+        md-cols-xs="3" md-cols-sm="4" md-cols-md="5" md-cols-gt-md="6"
+        md-gutter="12px" md-gutter-gt-sm="8px" md-row-height="1:1">
+        <md-grid-tile ng-repeat="app in apps" class="app-tile">
+          <img ng-src="{{app.img}}" />
+          <a ng-href="app.link">{{app.name}}</a>
+          <p>Some short description of this app.</p>
+        </md-grid-tile>
+      </md-grid-list>
+    </div>
+
+  </section>
+
   <section ng-repeat="section in sections" class="home-section">
   </section>
   <section id="documents" class="home-section">

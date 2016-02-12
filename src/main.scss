@@ -59,4 +59,14 @@
     width: 50%;
   }
 
+  .app-tile {
+
+    * {
+      display: block;
+      margin: 0 auto;
+      padding: 10px;
+      text-align: center;
+    }
+  }
+
 }
