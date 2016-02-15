@@ -32,3 +32,8 @@ npdc.filter("datetime", function() {
     return isNaN(date.valueOf()) ? input : date.toLocaleDateString();
   };
 });
+
+
+/**
+ * @TODO fix search results
+ */

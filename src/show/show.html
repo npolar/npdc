@@ -1,188 +1,66 @@
 <!DOCTYPE html>
-<npdc:toolbar options="options"></npdc:toolbar>
-
-<md-content class="npdc-home">
-  <div id="tutorial" ng-show="canihastutorial">
-    <h1>Welcome to NPDC Web!</h1>
-    <p>For easy navigation, user login, registration, and global searching, click on the respective icon on the toolbar!</p>
-    <md-button href="" ng-click="kthxbai()" class="md-raised">Got it!</md-button>
-    <md-button href="" ng-click="gtfoplz()" class="md-raised">Don't bug me again!</md-button>
-  </div>
-
-  <header>
-    <nav class="quicknav" layout="row" layout-align="center center">
-      <a href="/dataset">
-        <md-icon>storage</md-icon>
-        <span class="label">Datasets</span>
-        <span class="text">Data Catalogue</span>
-        <md-tooltip md-direction="down">Publications</md-tooltip>
-      </a>
-
-      <a href="/geodata">
-        <md-icon>map</md-icon>
-        <span class="label">Geodata</span>
-        <span class="text">Maps and Services</span>
-        <md-tooltip md-direction="down">Geodata</md-tooltip>
-      </a>
-
-      <a href="//api.npolar.no">
-        <md-icon>computer</md-icon>
-        <span class="label">Development</span>
-        <span class="text">RESTful Data Services</span>
-        <md-tooltip md-direction="down">API's</md-tooltip>
-      </a>
-    </nav>
-
-    <nav class="pagenav">
-      <a href="#publications">
-        <md-icon>book</md-icon>
-        <md-tooltip md-direction="down">Publications</md-tooltip>
-      </a>
-
-      <a href="#projects">
-        <md-icon>assignment</md-icon>
-        <md-tooltip md-direction="down">Projects</md-tooltip>
-      </a>
-
-      <a href="#expeditions">
-        <md-icon>explore</md-icon>
-        <md-tooltip md-direction="down">Expeditions</md-tooltip>
-      </a>
-
-      <a href="#documents">
-        <md-icon>description</md-icon>
-        <md-tooltip md-direction="down">Documents</md-tooltip>
-      </a>
-    </nav>
-  </header>
-
-  <section id="splash">
-    <ul>
-      <li ng-repeat="stat in stats">
-        <a href="{{ stat.href }}"><span>{{ stat.count }}</span> {{ stat.title }}</a>
-      </li>
-    </ul>
+<npdc:toolbar></npdc:toolbar>
+<md-content class="home">
+  <section id="search" class="home-section" layout layout-align="center center">
+    <div flex="50">
+      <img src="img/tracking.png" class="screenshot" />
+    </div>
+    <div flex="50">
+      <h1>Norwegian Polar Data Centre</h1>
+      <npdc:autocomplete options="searchOptions" class="search"></npdc:autocomplete>
+      <md-button class="md-button md-raised md-hue-1 search-button" ng-click="search();">search</md-button>
+    </div>
   </section>
 
-  <section id="publications">
-    <h2>Publications</h2>
-    <md-icon>book</md-icon>
 
-    <p>
-      <!-- Some information about our publications... -->
-      The <a href="/publication">publication catalogue</a> references all our scientific articles, reports, books, fact sheets and other publications, with direct links to the actual publications.
-      Many of these are open access. For further information about publications from the Norwegian Polar Institute, please see the <a href="http://npolar.no/">NPI website</a>.
-    </p>
-
-    <!-- List of publications -->
-    <md-list>
-      <md-list-item class="md-3-line" ng-repeat="publication in latest['publication']">
-        <a ng-href="/publication/{{ publication.id }}">
-          <div class="md-list-item-text" layout="column">
-            <h3>{{ publication.title }}</h3>
-            <h4>{{ publication.created | datetime }}</h4>
-          </div>
-        </a>
-      </md-list-item>
-    </md-list>
+  <section ng-repeat="section in sections" class="home-section" layout layout-align="center center">
+    <div flex="50" flex-order="{{$odd ? 0 : 1}}">
+      <img ng-src="{{section.img}}" class="screenshot" />
+    </div>
+    <div flex="50" flex-order="{{$odd ? 1 : 0}}">
+      <h1><a ng-href="{{section.link}}">{{section.name}}</a></h1>
+      <p>{{section.description}}</p>
+    </div>
   </section>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <md-icon>assignment</md-icon>
 
-    <p>
-      <!-- Some information about our projects... -->
-      The <a href="/project">project catalogue</a> contains brief descriptions and metadata for completed and ongoing projects at the Norwegian Polar Institute.
-      For further information about scientific research and environmental management at the Institute, please see our <a href="http://npolar.no">website</a>.
-    </p>
+  <section class="app-section" layout="column" layout-padding>
+    <div>
+      <h1>Applications and services</h1>
+      <p>Browse, view and download data, publications, maps etc.</p>
+    </div>
+    <div flex>
+      <md-grid-list
+        md-cols="2" md-cols-md="3" md-cols-gt-md="5"
+        md-gutter="12px" md-gutter-gt-sm="8px" md-row-height="250px" class="apps-grid">
+        <md-grid-tile ng-repeat="app in apps" class="app-tile">
+          <md-whiteframe class="md-whiteframe-1dp" style="height: 100%">
+            <img ng-src="{{app.img}}" />
+            <a ng-href="{{app.link}}">{{app.name}}</a>
+            <p>{{app.description}}</p>
+          </md-whiteframe>
+        </md-grid-tile>
+      </md-grid-list>
+    </div>
 
-    <!-- List of projects -->
-    <md-list>
-      <md-list-item class="md-3-line" ng-repeat="project in latest['project']">
-        <a ng-href="/project/{{ project.id }}">
-          <div class="md-list-item-text" layout="column">
-            <h3>{{ project.title }}</h3>
-            <h4>{{ project.created | datetime }}</h4>
-          </div>
-        </a>
-      </md-list-item>
-    </md-list>
   </section>
-
-  <section id="expeditions">
-    <h2>Expeditions</h2>
-    <md-icon>explore</md-icon>
-
-    <p>
-      <!-- Some information about our expeditions... -->
-      The <a href="/expedition">expedition database</a> provides metadata, cruise tracks and links to relevant information from recent scientific cruises and expeditions.
-    </p>
-
-    <!--
-    <md-grid-list md-cols="4" md-gutter="1em" md-row-height="180px">
-      <md-grid-tile ng-repeat="expedition in latest['expedition']">
-        <a ng-href="/expedition/{{ expedition.id }}">
-          <img src="http://lorempixel.com/300/200/nature/{{ expedition.id }}" alt="{{ expedition.code }}">
-
-          <md-grid-tile-footer>
-            <h3>{{ expedition.code }}</h3>
-          </md-grid-tile-footer>
+  <section id="documents" class="document-section" layout="column" layout-align="start center">
+    <div>
+      <h1>Disclaimers</h1>
+      <p>Data policy etc...</p>
+    </div>
+    <md-grid-list
+      md-cols="2"
+      md-gutter="12px" md-gutter-gt-sm="8px" md-row-height="250px" style="height: 250px; margin-top: 20px;">
+      <md-grid-tile ng-repeat="doc in documents">
+        <a ng-href="{{doc.link}}">
+          <img ng-src="{{doc.img}}" style="width: 500px;" />
+          {{doc.name}}
         </a>
+        <p>{{doc.description}}</p>
       </md-grid-tile>
     </md-grid-list>
-    -->
-
-    <md-list>
-      <md-list-item class="md-3-line" ng-repeat="expedition in latest['expedition']">
-        <a ng-href="/expedition/{{ expedition.id }}">
-          <div class="md-list-item-text" layout="column">
-            <h3>{{ expedition.code }}</h3>
-            <h4>{{ expedition.created | datetime }}</h4>
-          </div>
-        </a>
-      </md-list-item>
-    </md-list>
   </section>
 
-  <section id="documents">
-    <h2>Documents</h2>
-    <md-icon>description</md-icon>
-
-    <p>
-      <!-- Some information about our documents... -->
-      The data policy of the Norwegian Polar Institute is based on the principles of open access and responsible reuse laid down in the data policies and statements of ICSU, IASC, and SCAR, and applies to all data managed by the Norwegian Polar Data Centre.
-      More specific guidelines for NPI scientists are available on the <a href="http://wiki.npolar.no/">internal wiki</a>.
-    </p>
-
-    <md-grid-list md-cols="2" md-gutter="1em" md-row-height="220px">
-      <md-grid-tile>
-        <a ng-href="//data.npolar.no/policy/NP-datapolitikk.pdf">
-          <!-- Image of data policy document -->
-          <img src="show/open-data.jpg">
-
-          <md-grid-tile-footer>
-            <h3>Data Policy (Norwegian)</h3>
-          </md-grid-tile-footer>
-        </a>
-      </md-grid-tile>
-
-      <md-grid-tile ng-click="notImpl($event);">
-        <a>
-          <!-- Image of publication guidelines -->
-          <md-icon>cloud_download</md-icon>
-
-          <md-grid-tile-footer>
-            <h3>Publication Guidelines</h3>
-          </md-grid-tile-footer>
-        </a>
-      </md-grid-tile>
-    </md-grid-list>
-
-  </section>
-  <section>
-    <npdc:autocomplete options="options.search.global"></npdc:autocomplete>
-  </section>
 </md-content>
-
 <npdc:footer></npdc:footer>
