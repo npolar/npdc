@@ -35,9 +35,10 @@
 }
 
 .home-section {
-  height: 60vw;
-  max-height: 740px;
+  box-sizing: border-box;
+  height: 40vmax;
   min-height: 400px;
+  padding: 40px 0;
 
   $section-color-1: $color-primary-0;
   $section-color-2: $color-bg-light;
@@ -46,6 +47,10 @@
   $shadow-color: #000;
 
   perspective: 100vw;
+
+  &:first-child {
+    padding-top: 64px;
+  }
 
   &:nth-child(4n+1) {
     background-color: $section-color-1;
@@ -83,7 +88,7 @@
   }
 
   > div {
-    margin: 0 3vw;
+    padding: 20px 3vw;
   }
 
   h1 {
@@ -93,15 +98,19 @@
     word-spacing: 300px;
   }
 
-  .search {
-    display: inline-block;
-    margin-right: 15px;
-    min-width: 200px;
-    width: 50%;
-  }
+  .search-container {
+    margin-top: 1vw;
 
-  .search-button {
-    margin-left: 0;
+    .search {
+      display: inline-block;
+      margin-right: 15px;
+      min-width: 200px;
+      width: 50vw;
+    }
+
+    .search-button {
+      margin-left: 0;
+    }
   }
 
   .flex-order-1 {

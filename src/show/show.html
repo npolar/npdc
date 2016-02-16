@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <npdc:toolbar></npdc:toolbar>
 <md-content class="home">
-  <section id="search" class="home-section" layout layout-align="center center">
+  <section id="search" class="home-section" layout layout-align="center center" layout-wrap>
     <div flex="50">
       <img src="img/tracking.png" class="screenshot" />
     </div>
     <div flex="50">
       <h1>Norwegian Polar Data Centre</h1>
+    </div>
+    <div class="search-container">
       <npdc:autocomplete options="searchOptions" class="search"></npdc:autocomplete>
       <md-button class="md-button md-raised md-hue-1 search-button" ng-click="search();">search</md-button>
     </div>

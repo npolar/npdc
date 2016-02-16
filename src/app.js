@@ -15,8 +15,6 @@ npdc.config(require("./router"));
 npdc.controller("NpdcShowController", require("./show/NpdcShowController"));
 npdc.controller("GlobalSearchController", require("./search/GlobalSearchController"));
 
-npdc.value('NpdcApplications', require('npdc-common/src/config/npdc-applications.json'));
-
 // Bootstrap ngResource models using NpolarApiResource
 var resources = [
   { path: '/service', 'resource': 'Service', cache: true, base: '//api.npolar.no' },
@@ -33,13 +31,13 @@ resources.forEach(function (service) {
 npdc.run(function($http, npolarApiConfig, npdcAppConfig, NpolarTranslate, NpolarLang, ArcGIS) {
   var environment = "production"; // development | test | production
   Object.assign(npolarApiConfig, new AutoConfig(environment));
-  
+
   // i18n
   $http.get('//api.npolar.no/text/?q=&filter-bundle=npdc-home&format=json&variant=array&limit=all').then(response => {
     NpolarTranslate.appendToDictionary(response.data);
     NpolarLang.setLanguages(npdcAppConfig.i18n.languages);
   });
-  
+
   // http://geodata.npolar.no/arcgis/rest/services/?f=pjson
   // http://geodata.npolar.no/arcgis/rest/services/inspire1?f=pjson
   ArcGIS.get({id: 'inspire1', f: 'pjson'}).$promise.then(f => {
@@ -49,9 +47,9 @@ npdc.run(function($http, npolarApiConfig, npdcAppConfig, NpolarTranslate, Npolar
   // Svalbardkartet
   // Barentsportal
   // Topo?
-  
-  
-  
+
+
+
 });
 
 // Datetime filter

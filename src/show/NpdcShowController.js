@@ -13,12 +13,11 @@ var NpdcShowController = function($scope, $location,
     description: ""
   }];
   $scope.apps = NpdcApplications;
-  
+
   $scope.searchOptions = new NpdcAutocompleteConfigFactory({
     global: true,
     showCollections: false,
-    floatingLabel: false,
-    menuClass: 'home-ac-search'
+    floatingLabel: false
   });
 
   $scope.search = function(q) {
