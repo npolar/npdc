@@ -17,7 +17,7 @@
 
   <section ng-repeat="section in sections" class="home-section" layout layout-align="center center">
     <div flex="50" flex-order="{{$odd ? 0 : 1}}">
-      <img ng-src="{{section.img}}" class="screenshot" />
+      <img ng-src="{{section.screenshots[0]}}" class="screenshot" />
     </div>
     <div flex="50" flex-order="{{$odd ? 1 : 0}}">
       <h1><a ng-href="{{section.link}}">{{section.name}}</a></h1>
@@ -37,7 +37,7 @@
         md-gutter="12px" md-gutter-gt-sm="8px" md-row-height="250px" class="apps-grid">
         <md-grid-tile ng-repeat="app in apps" class="app-tile">
           <md-whiteframe class="md-whiteframe-1dp" style="height: 100%">
-            <img ng-src="{{app.img}}" />
+            <img ng-src="{{icon96(app)}}" />
             <a ng-href="{{app.link}}">{{app.name}}</a>
             <p>{{app.description}}</p>
           </md-whiteframe>

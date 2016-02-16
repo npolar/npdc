@@ -4,7 +4,7 @@ var NpdcShowController = function($scope, $location,
   npdcAppConfig, NpdcApplications, NpdcSearchService, NpdcAutocompleteConfigFactory) {
   'ngInject';
 
-  $scope.sections = NpdcApplications;
+  $scope.sections = NpdcApplications.filter(app => app.category === 'public');
 
   $scope.documents = [{
     link: "https://data.npolar.no/policy/NP-datapolitikk.pdf",
@@ -12,7 +12,7 @@ var NpdcShowController = function($scope, $location,
     img: "/home/img/open-data.jpg",
     description: ""
   }];
-  $scope.apps = NpdcApplications;
+  $scope.apps = NpdcApplications.filter(app => app.category === 'public');
 
   $scope.searchOptions = new NpdcAutocompleteConfigFactory({
     global: true,
@@ -26,6 +26,10 @@ var NpdcShowController = function($scope, $location,
         q: $scope.searchOptions.q
       });
     NpdcSearchService.globalSearch(query);
+  };
+
+  $scope.icon96 = function (app) {
+    return app.icons.find(icon => icon.size === 96).src;
   };
 };
 
