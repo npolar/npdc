@@ -12,7 +12,7 @@ var npdc = angular.module("npdcHome", ["npdcCommon"]);
 npdc.config(require("./router"));
 
 // Controllers
-npdc.controller("NpdcShowController", require("./show/NpdcShowController"));
+npdc.controller("NpdcHomeController", require("./home/NpdcHomeController"));
 npdc.controller("GlobalSearchController", require("./search/GlobalSearchController"));
 
 // Bootstrap ngResource models using NpolarApiResource
