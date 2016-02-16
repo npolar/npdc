@@ -6,55 +6,51 @@
 <md-content class="np-content-wrapper">
   <!-- Subheader bar -->
   <div class="np-sub-toolbar"></div>
-  <md-card class="np-content-card">
+  <div class="np-content-card">
     <md-toolbar class="np-content-title">
       <h3>Search results</h3>
     </md-toolbar>
-    <md-content class="np-content" layout="column" layout-padding>
+    <main class="np-content md-whiteframe-12dp" layout="column">
       <npdc:crumbs></npdc:crumbs>
-      <div class="np-content-view" flex>
+      <div class="np-content-view" layout="column" autoscroll="true">
+
         <div class="npdc-search">
           <md-content>
 
             <section>
               <npdc:loader ng-if="!results"></npdc:loader>
 
-              <div ng-repeat="e in results">
-                <md-content class="np-layout-list">
-                  <a ng-href="{{ entryHref(e) }}">
-                    <md-list>
-                      <md-list-item class="md-2-line">
-                        <div class="np-search-icon md-avatar" title="ID: {{ e.id }}">
-                          <span>{{ e.id.substr(0,3) }}</span>
-                        </div>
-                        <div class="md-list-item-text">
-                          <h3 class="md-headline">
-                            <span class="np-search-collection">[{{e.collection}}]</span>  {{ title(e) }}
-                            <em ng-if="e.created_by">
-                              「{{ e.created_by }}」
-                            </em>
-                          </h3>
-                          <h4>{{ e.updated.split("T")[0] }}</h4>
-                        </div>
-                      </md-list-item>
-                    </md-list>
-                    <md-divider></md-divider>
-                  </a>
-
-                </md-content>
+              <div class="np-layout-list">
+                <md-list>
+                  <md-list-item class="md-2-line" ng-repeat="e in results" ng-href="{{ entryHref(e) }}">
+                    <div class="np-search-icon md-avatar" title="ID: {{ e.id }}">
+                      <span>{{ e.id.substr(0,3) }}</span>
+                    </div>
+                    <div class="md-list-item-text">
+                      <h3 class="md-headline">
+                        <span class="np-search-collection">[{{e.collection}}]</span>  {{ title(e) }}
+                        <em ng-if="e.created_by">
+                          「{{ e.created_by }}」
+                        </em>
+                      </h3>
+                      <h4>{{ e.updated.split("T")[0] }}</h4>
+                    </div>
+                  </md-list-item>
+                </md-list>
+                <md-divider></md-divider>
               </div>
 
-              <md-subheader class="md-primary">
-                <span ng-if="results && results.length === 0">No results when searching for "{{q}}"</span>
+              <md-subheader class="md-primary" ng-if="results && results.length === 0">
+                <span>No results when searching for "{{q}}"</span>
               </md-subheader>
             </section>
           </md-content>
         </div>
-      </div>
-    </md-content>
-  </md-card>
-</md-content>
 
-<div npolar-api-message></div>
+      </div>
+    </main>
+  </div>
+</md-content>
+<npolar-message></npolar-message>
 
 <npdc:footer></npdc:footer>

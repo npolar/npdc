@@ -52,14 +52,6 @@ npdc.run(function($http, npolarApiConfig, npdcAppConfig, NpolarTranslate, Npolar
 
 });
 
-// Datetime filter
-npdc.filter("datetime", function() {
-  return function(input, params) {
-    var date = new Date(input);
-    return isNaN(date.valueOf()) ? input : date.toLocaleDateString();
-  };
-});
-
 
 /**
  * @TODO fix search results
