@@ -55,6 +55,10 @@
   &:nth-child(4n+1) {
     background-color: $section-color-1;
     color: $color-text-light;
+
+    a {
+      color: $color-text-light;
+    }
   }
 
   &:nth-child(4n+2) {
@@ -74,6 +78,10 @@
   &:nth-child(4n+4) {
     background-color: $section-color-4;
     color: $color-text-light;
+
+    a {
+      color: $color-text-light;
+    }
   }
 
   .screenshot {

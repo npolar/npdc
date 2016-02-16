@@ -15,7 +15,7 @@
   </section>
 
 
-  <section ng-repeat="section in sections" class="home-section" layout layout-align="center center">
+  <section ng-repeat="section in sections" class="home-section" layout layout-align="center center" ng-if="section.promote && section.screenshots.length">
     <div flex="50" flex-order="{{$odd ? 0 : 1}}">
       <img ng-src="{{section.screenshots[0]}}" class="screenshot" />
     </div>
