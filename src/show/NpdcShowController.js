@@ -79,7 +79,8 @@ var NpdcShowController = function($scope, $location, npdcAppConfig, NpdcSearchSe
   $scope.searchOptions = new NpdcAutocompleteConfigFactory({
     global: true,
     showCollections: false,
-    floatingLabel: false
+    floatingLabel: false,
+    menuClass: 'home-ac-search'
   });
 
   $scope.search = function(q) {
