@@ -51,8 +51,3 @@ npdc.run(function($http, npolarApiConfig, npdcAppConfig, NpolarTranslate, Npolar
 
 
 });
-
-
-/**
- * @TODO fix search results
- */
