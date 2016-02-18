@@ -41,7 +41,7 @@
               </div>
 
               <md-subheader class="md-primary" ng-if="results && results.length === 0">
-                <span>No results when searching for "{{q}}"</span>
+                <span>{{ 'search.no_results' | t }} "{{q}}"</span>
               </md-subheader>
             </section>
           </md-content>
