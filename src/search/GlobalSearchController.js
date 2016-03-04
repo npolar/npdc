@@ -1,20 +1,11 @@
 'use strict';
 
 // @ngInject
-let GlobalSearchController = function($scope, $controller, $location, $q, npdcAppConfig, NpolarApiResource) {
+let GlobalSearchController = function($scope, $controller, $location, $q, npdcAppConfig, NpdcSearchService) {
   $controller('NpdcSearchResultsController', { $scope: $scope });
-  let collections = npdcAppConfig.search.global.collections;
 
   $scope.options = npdcAppConfig;
   $scope.q = $location.search().q;
-
-  $scope.entryHref = function (entry) {
-    let id = entry.id;
-    if ((/[.]/).test(id)) {
-      id += ".json";
-    }
-    return '/' + entry.collection + '/' + id;
-  };
 
   let defaults = {
     limit: 10,
@@ -23,17 +14,11 @@ let GlobalSearchController = function($scope, $controller, $location, $q, npdcAp
   };
 
   let search = function() {
-    let searchCollections = [];
     let query = Object.assign({}, defaults, $location.search());
-    Object.keys(collections).forEach(c => {
-      if (collections[c]) {
-        searchCollections.push(NpolarApiResource.resource({ path: '/' + c.replace(/^\//, '')}));
-      }
+    let q = query.q;
+    NpdcSearchService.searchCollections(q).then(results => {
+      $scope.results = results;
     });
-    return $q.all(searchCollections.map(resource => resource.array(query).$promise))
-      .then(results => {
-        $scope.results = results.reduce((a, b) => a.concat(b)).sort((a, b) => a._score < b._score);
-      });
   };
 
   search();
