@@ -28,6 +28,10 @@ var NpdcShowController = function($scope, $location,
     NpdcSearchService.globalSearch(query);
   };
 
+  $scope.click = function () {
+    console.log('click');
+  };
+
   $scope.icon96 = function (app) {
     return app.icons.find(icon => icon.size === 96).src;
   };

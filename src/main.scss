@@ -112,6 +112,10 @@
 
   .search-container {
     margin-top: 1vw;
+
+    .search-button {
+      z-index: 55;
+    }
   }
 
   .flex-order-1 {
