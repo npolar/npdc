@@ -1,11 +1,20 @@
 'use strict';
 
 // @ngInject
-let GlobalSearchController = function($scope, $controller, $location, $q, npdcAppConfig, NpdcSearchService) {
+let GlobalSearchController = function($scope, $controller, $location, $q, npdcAppConfig, NpdcSearchService, NpdcApplications) {
   $controller('NpdcSearchResultsController', { $scope: $scope });
 
   $scope.options = npdcAppConfig;
   $scope.q = $location.search().q;
+
+  $scope.icon = function (link) {
+    let app = NpdcApplications.find(app => {
+      return new RegExp(app.link).test(link);
+    });
+    if (app) {
+      return app.icons.find(icon => icon.size === 48).src;
+    }
+  };
 
   let defaults = {
     limit: 10,

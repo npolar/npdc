@@ -23,8 +23,8 @@
               <div class="np-layout-list">
                 <md-list>
                   <md-list-item class="md-2-line" ng-repeat="e in results" ng-href="{{e.path}}">
-                    <div class="np-search-icon md-avatar" title="ID: {{ e.id }}">
-                      <span>{{ e.id.substr(0,3) }}</span>
+                    <div class="md-avatar" title="ID: {{ e.id }}">
+                      <img ng-src={{icon(e.path)}} />
                     </div>
                     <div class="md-list-item-text">
                       <h3 class="md-headline">
