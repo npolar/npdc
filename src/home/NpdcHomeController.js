@@ -1,6 +1,8 @@
 "use strict";
 
-var NpdcShowController = function($scope, $location,
+let angular = require('angular');
+
+let NpdcShowController = function($scope, $location, $window,
   npdcAppConfig, NpdcApplications, NpdcSearchService, NpdcAutocompleteConfigFactory) {
   'ngInject';
 
@@ -35,6 +37,32 @@ var NpdcShowController = function($scope, $location,
   $scope.icon96 = function (app) {
     return app.icons.find(icon => icon.size === 96).src;
   };
+
+  angular.element($window).bind('scroll', (e, d) => {
+    let sections = document.querySelectorAll('.home > section:not(.fixed)');
+    let fixed = document.querySelector('.home > section.fixed');
+    let scrollPos = document.body.scrollTop;
+    if (fixed.nextElementSibling) {
+      fixed.nextElementSibling.style.marginTop = fixed.offsetHeight + 'px';
+    }
+    angular.forEach(sections, (section, i) => {
+      let pos = section.offsetTop - scrollPos;
+      if (0 < pos && pos < 64) {
+        angular.element(fixed).removeClass('fixed');
+        angular.element(section).addClass('fixed');
+        if (fixed.nextElementSibling) {
+          fixed.nextElementSibling.style.marginTop = 0;
+        }
+        if (section.nextElementSibling) {
+          section.nextElementSibling.style.marginTop = fixed.offsetHeight + 'px';
+        }
+      }
+    });
+  });
+
+  $scope.$on("$destroy", function() {
+    angular.element($window).unbind('scroll');
+  });
 };
 
 

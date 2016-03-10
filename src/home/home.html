@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <npdc:toolbar></npdc:toolbar>
 <md-content class="home">
-  <section id="search" class="home-section" layout layout-align="center start" layout-wrap>
+  <section id="search" class="home-section fixed" layout layout-align="center start" layout-wrap>
     <div flex="50">
       <img src="img/tracking.png" class="screenshot" />
     </div>
@@ -15,7 +15,8 @@
   </section>
 
 
-  <section ng-repeat="section in sections" class="home-section" layout layout-align="center center" ng-if="section.promote && section.screenshots.length">
+  <section ng-repeat="section in sections" class="home-section" layout layout-align="center center"
+    ng-if="section.promote && section.screenshots.length" style="margin-top: 100vh">
     <div flex="50" flex-order="{{$odd ? 0 : 1}}">
       <img ng-src="{{section.screenshots[0]}}" class="screenshot" />
     </div>
