@@ -25,7 +25,7 @@ let GlobalSearchController = function($scope, $controller, $location, $q, npdcAp
   let search = function() {
     let query = Object.assign({}, defaults, $location.search());
     let q = query.q;
-    NpdcSearchService.searchCollections(q).then(results => {
+    NpdcSearchService.searchCollections(q, { query }).then(results => {
       $scope.results = results;
     });
   };

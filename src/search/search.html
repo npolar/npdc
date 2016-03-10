@@ -17,33 +17,25 @@
         <div class="npdc-search">
           <md-content>
 
-            <section>
-              <npdc:loader ng-if="!results"></npdc:loader>
+            <npdc:loader ng-if="!results"></npdc:loader>
 
-              <div class="np-layout-list">
-                <md-list>
-                  <md-list-item class="md-2-line" ng-repeat="e in results" ng-href="{{e.path}}">
-                    <div class="md-avatar" title="ID: {{ e.id }}">
-                      <img ng-src={{icon(e.path)}} />
-                    </div>
-                    <div class="md-list-item-text">
-                      <h3 class="md-headline">
-                        <span class="np-search-collection">[{{e.collection}}]</span>  {{ title(e) }}
-                        <em ng-if="e.created_by">
-                          「{{ e.created_by }}」
-                        </em>
-                      </h3>
-                      <h4>{{ e.updated.split("T")[0] }}</h4>
-                    </div>
-                  </md-list-item>
-                </md-list>
-                <md-divider></md-divider>
-              </div>
+            <div class="np-layout-list">
+              <md-list flex>
+                <md-list-item class="md-2-line" ng-repeat="e in results" ng-href="{{e.path}}">
+                  <img class="md-avatar" ng-src={{icon(e.path)}} title="ID: {{ e.id }}" />
+                  <div class="md-list-item-text">
+                    <h3>{{ title(e) }}<em>「{{ e.collection }}」</em></h3>
+                    <h4>{{ e.updated.split("T")[0] }}</h4>
+                  </div>
+                </md-list-item>
+              </md-list>
+              <md-divider></md-divider>
+            </div>
 
-              <md-subheader class="md-primary" ng-if="results && results.length === 0">
-                <span>{{ 'search.no_results' | t }} "{{q}}"</span>
-              </md-subheader>
-            </section>
+            <md-subheader class="md-primary" ng-if="results && results.length === 0">
+              <span>{{ 'search.no_results' | t }} "{{q}}"</span>
+            </md-subheader>
+
           </md-content>
         </div>
 
