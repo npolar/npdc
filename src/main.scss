@@ -42,7 +42,7 @@
   box-sizing: border-box;
   height: auto;
   min-height: 350px;
-  padding: 40px 0;
+  padding: 5% 0;
 
   $section-color-1: $color-primary-0;
   $section-color-2: $color-bg-light;
@@ -53,7 +53,7 @@
   perspective: 100vw;
 
   &:first-child {
-    padding-top: 74px;
+    margin-top: 64px;
   }
 
   &:nth-child(4n+1) {
@@ -111,7 +111,7 @@
   }
 
   .search-container {
-    margin-top: 1vw;
+    margin-top: 2%;
 
     .search-button {
       z-index: 55;
