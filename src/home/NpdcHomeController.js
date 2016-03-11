@@ -41,21 +41,29 @@ let NpdcShowController = function($scope, $location, $window,
   angular.element($window).bind('scroll', (e, d) => {
     let sections = document.querySelectorAll('.home > section:not(.fixed)');
     let fixed = document.querySelector('.home > section.fixed');
+    let home = document.querySelector('.home');
     let scrollPos = document.body.scrollTop;
-    if (fixed.nextElementSibling) {
-      fixed.nextElementSibling.style.marginTop = fixed.offsetHeight + 'px';
-    }
+    let spacer;
+
     angular.forEach(sections, (section, i) => {
       let pos = section.offsetTop - scrollPos;
       if (0 < pos && pos < 64) {
+        console.log('Catch section', i);
+        if ((spacer = home.querySelector('.spacer'))) {
+          home.removeChild(spacer);
+          console.log('Removed spacer');
+        } else {
+          spacer = document.createElement('div');
+          spacer.className ='spacer';
+        }
+
+        spacer.style.height = section.offsetHeight + 'px';
+        home.insertBefore(spacer, section);
+        console.log('Insert spacer');
+
         angular.element(fixed).removeClass('fixed');
         angular.element(section).addClass('fixed');
-        if (fixed.nextElementSibling) {
-          fixed.nextElementSibling.style.marginTop = 0;
-        }
-        if (section.nextElementSibling) {
-          section.nextElementSibling.style.marginTop = fixed.offsetHeight + 'px';
-        }
+        console.log('Change fixed');
       }
     });
   });
