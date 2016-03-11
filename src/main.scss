@@ -3,16 +3,22 @@
 .home {
   background: none;
   overflow: hidden;
+  padding-top: 64px;
+  z-index: 0;
 
   > section {
-    z-index: 20;
+    box-sizing: border-box;
+    height: auto;
+    min-height: 350px;
+    padding: 5% 0;
+    z-index: 1;
 
     &.fixed {
       left: 0;
       position: fixed;
-      top: 0;
+      top: 64px;
       width: 100%;
-      z-index: 0;
+      z-index: -1;
     }
   }
 
@@ -23,7 +29,7 @@
   .app-section {
     background-color: $color-bg-light;
     color: $color-text-grey;
-    padding: 20px 0 40px;
+    // padding: 20px 0 40px;
 
     > div {
       text-align: center;
@@ -55,10 +61,6 @@
   }
 
   .home-section {
-    box-sizing: border-box;
-    height: auto;
-    min-height: 350px;
-    padding: 5% 0;
 
     $section-color-1: $color-primary-0;
     $section-color-2: $color-bg-light;
@@ -67,10 +69,6 @@
     $shadow-color: #000;
 
     perspective: 100vw;
-
-    &:first-child {
-      margin-top: 64px;
-    }
 
     &:nth-child(4n+1) {
       background-color: $section-color-1;
@@ -166,7 +164,7 @@
     background-color: $section-color;
     color: $color-text-light;
     overflow: hidden;
-    padding: 20px 0 40px;
+    // padding: 20px 0 40px;
 
     h1 {
       font-size: 3vmax;
