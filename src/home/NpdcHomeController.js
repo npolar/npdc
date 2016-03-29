@@ -8,7 +8,7 @@ var NpdcShowController = function($scope, $location,
 
   $scope.documents = [{
     link: "https://data.npolar.no/policy/NP-datapolitikk.pdf",
-    name: "Data policy",
+    name: "Data policy (Norwegian)",
     img: "/home/img/open-data.jpg",
     description: ""
   }];
