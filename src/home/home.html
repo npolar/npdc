@@ -17,7 +17,9 @@
 
   <section ng-repeat="section in sections" class="home-section" layout layout-align="center center" ng-if="section.promote && section.screenshots.length">
     <div flex="50" flex-order="{{$odd ? 0 : 1}}">
-      <img ng-src="{{section.screenshots[0]}}" class="screenshot" />
+      <a ng-href="{{section.link}}">
+        <img ng-src="{{section.screenshots[0]}}" class="screenshot" />
+      </a>
     </div>
     <div flex="50" flex-order="{{$odd ? 1 : 0}}">
       <h1><a ng-href="{{section.link}}">{{ section.link | t }}</a></h1>

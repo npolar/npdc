@@ -96,7 +96,13 @@
     min-width: 140px;
     transform: rotateY(25deg) rotateX(5deg);
     transform-style: preserve-3d;
+    transition: transform .3s;
     width: 50%;
+  }
+
+  a .screenshot:hover {
+    box-shadow: 0 0 15px $shadow-color;
+    transform: scale(1.1) !important;
   }
 
   > div {
@@ -127,6 +133,7 @@
     }
 
     .screenshot {
+      float: none;
       transform: rotateY(-25deg) rotateX(5deg);
     }
   }
