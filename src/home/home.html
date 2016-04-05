@@ -10,7 +10,7 @@
     </div>
     <form ng-submit="search();" class="search-container" flex="100" layout="row" layout-align="center center" layout-margin layout-wrap>
       <npdc:autocomplete options="searchOptions" class="search" flex="100" flex-gt-xs="75"></npdc:autocomplete>
-      <md-button class="md-button md-raised md-hue-1 search-button" type="submit" flex="100" flex-gt-xs="15">{{'search' | t}}</md-button>
+      <div flex="100" flex-gt-xs="15"><md-button class="md-button md-raised md-hue-1 search-button" type="submit">{{'search' | t}}</md-button></div>
     </form>
   </section>
 
