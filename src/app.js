@@ -13,11 +13,14 @@ npdc.config(require("./router"));
 
 // Controllers
 npdc.controller("NpdcHomeController", require("./home/NpdcHomeController"));
+npdc.controller("OceanographyBuoyMapController", require("./home/OceanographyBuoyMapController"));
 npdc.controller("GlobalSearchController", require("./search/GlobalSearchController"));
 
 // Bootstrap ngResource models using NpolarApiResource
 var resources = [
   { path: '/service', 'resource': 'Service', cache: true, base: '//api.npolar.no' },
+  { path: '/editlog', 'resource': 'Editlog', cache: true, base: '//api.npolar.no' },
+  { path: '/oceanography/buoy', 'resource': 'Buoy', cache: true, base: '//api.npolar.no' },
   { path: '/arcgis/rest/services', 'resource': 'ArcGIS', cache: true, base: '//geodata.npolar.no' },
 ];
 resources.forEach(function (service) {
@@ -29,14 +32,11 @@ resources.forEach(function (service) {
 
 // App configurations
 npdc.run(function($http, npolarApiConfig, npdcAppConfig, NpolarTranslate, NpolarLang, ArcGIS) {
-  var environment = "production"; // development | test | production
+  var environment = 'test'; // development | test | production
   Object.assign(npolarApiConfig, new AutoConfig(environment));
 
   // i18n
-  $http.get('//api.npolar.no/text/?q=&filter-bundle=npdc-home&format=json&variant=array&limit=all').then(response => {
-    NpolarTranslate.appendToDictionary(response.data);
-    NpolarLang.setLanguages(npdcAppConfig.i18n.languages);
-  });
+  NpolarTranslate.loadBundles(['npdc-home']);
 
   // http://geodata.npolar.no/arcgis/rest/services/?f=pjson
   // http://geodata.npolar.no/arcgis/rest/services/inspire1?f=pjson
