@@ -31,7 +31,12 @@
       height: 15vw;
       max-height: 96px;
       max-width: 96px;
+      transition: transform .2s ease;
       width: 15vw;
+    }
+
+    a:hover img {
+      transform: scale(1.1);
     }
 
   }
@@ -120,6 +125,7 @@
     margin-top: 2%;
 
     .search-button {
+      width: 100%;
       z-index: 55;
     }
   }
