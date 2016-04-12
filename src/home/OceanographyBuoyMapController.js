@@ -8,8 +8,6 @@ function BuoyMapController($scope, $location, $timeout,
 
   'ngInject';
   
-  let T = NpolarTranslate;
-  
   let dataset = {
     id: '6ed9a8ca-95b0-43be-bedf-8176bf56da80',
     license: 'http://creativecommons.org/licenses/by/4.0/',
