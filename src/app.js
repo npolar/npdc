@@ -14,14 +14,16 @@ npdc.config(require("./router"));
 // Controllers
 npdc.controller("NpdcHomeController", require("./home/NpdcHomeController"));
 npdc.controller("OceanographyBuoyMapController", require("./home/OceanographyBuoyMapController"));
+npdc.controller("ExpeditionMapController", require("./home/ExpeditionMapController"));
 npdc.controller("GlobalSearchController", require("./search/GlobalSearchController"));
 
 // Bootstrap ngResource models using NpolarApiResource
 var resources = [
   { path: '/service', 'resource': 'Service', cache: true, base: '//api.npolar.no' },
   { path: '/editlog', 'resource': 'Editlog', cache: true, base: '//api.npolar.no' },
+  { path: '/expedition/track', 'resource': 'Expedition', cache: true, base: '//api.npolar.no' },
   { path: '/oceanography/buoy', 'resource': 'Buoy', cache: true, base: '//api.npolar.no' },
-  { path: '/arcgis/rest/services', 'resource': 'ArcGIS', cache: true, base: '//geodata.npolar.no' },
+  { path: '/arcgis/rest/services', 'resource': 'ArcGIS', cache: true, base: '//geodata.npolar.no' }
 ];
 resources.forEach(function (service) {
   // Expressive DI syntax is needed here
@@ -32,7 +34,7 @@ resources.forEach(function (service) {
 
 // App configurations
 npdc.run(function($http, npolarApiConfig, npdcAppConfig, NpolarTranslate, NpolarLang, ArcGIS) {
-  var environment = 'test'; // development | test | production
+  var environment = 'production'; // development | test | production
   Object.assign(npolarApiConfig, new AutoConfig(environment));
 
   // i18n

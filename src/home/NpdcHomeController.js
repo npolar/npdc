@@ -21,9 +21,10 @@ function NpdcShowController($scope, $location, $timeout,
   
   if (NpolarApiSecurity.isAuthenticated()) {
     $scope.user = NpolarApiSecurity.getUser();
+    let lowercaseName = $scope.user.name.split(' ').join('+');
     Editlog.facets({q:'', 'filter-request.username': $scope.user.email}, r => {
       $scope.endpoints = r.find(f => f.facet === 'endpoint').terms.map(t => {
-        return { endpoint: t.term, count: t.count }; });
+        return { text: t.term, href: `${t.term}?q=${lowercaseName}`, count: t.count }; });
     });
   }
   
