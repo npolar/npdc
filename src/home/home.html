@@ -31,47 +31,30 @@
 
     </form>
 
-  </section>
-  
+</section>
+
+<!--
   <section class="section" layout="column" layout-padding>
     <div ng-show="security.isAuthenticated() && endpoints.length > 0">
       <h3>{{user.name}} contributed to</h3>
       <span ng-repeat="e in endpoints"><a href="{{e.href}}">{{e.text | t }}</a> | </span>
     </div>
-  </section>
+</section>
+-->
 
-  <section class="app-section" layout="column" layout-padding ng-controller="OceanographyBuoyMapController">
-    <h1>N-ICE2015 {{ 'oceanography-buoy-positions'|t }}</h1>   
-    <div id="map" style="height: 500px;" class="leaflet-map"></div>
-    <div>Type: <span ng-repeat="type in types">
-      <!--ng-click="changeBuoyType(type)"-->
-      <a ng-href="?type={{type}}">{{type}}</a>&nbsp;</span>
-      <!--Interval: <span ng-repeat="interval in ['12h', '24h', '48h']">
-        <a ng-href="?interval={{interval}}">{{interval}}</a>&nbsp;</span>
-      Geometry: <span ng-repeat="geometry in ['Point', 'LineString']">
-        <a ng-href="?geometry={{geometry}}">{{geometry}}</a>&nbsp;</span>-->
-     
-      <p>
-        {{'Line-plot-shows' | t }} {{ 'interval.'+interval | t }} {{ 'average-point-positions-acquired live-from-the'|t }}
-        <a href="https://api.npolar.no/oceanography/buoy/?q=&format=geojson&filter-latitude=60..">{{'Oceanography buoy API' | t}}</a>.
-        <span>{{ 'Last observation'|t}}: {{last}}</span>
-      </p>
-      </div>
-  </section>
-  
 <!--  <section class="app-section" layout="column" ng-controller="ExpeditionMapController">
-    <h1><a href="/dataset/7f7e56d0-9e70-4363-b37d-17915e09a935">Lance</a> expeditions ({{interval}} average positions)</h1>   
+    <h1><a href="/dataset/7f7e56d0-9e70-4363-b37d-17915e09a935">Lance</a> expeditions ({{interval}} average positions)</h1>
     <div id="npolar-esri-leaflet-map" style="height:600px;" class="leaflet-map"></div>
     <div>Type: <span ng-repeat="type in types">
   </section>-->
 
-  <section ng-repeat="section in sections" class="home-section" layout layout-align="center center" ng-if="section.promote && section.screenshots.length">
-    <div flex="50" flex-order="{{$odd ? 0 : 1}}">
+  <section ng-repeat="section in banners" class="home-section" layout layout-align="center center">
+    <div flex="50" flex-order="{{$even ? 0 : 1}}">
       <a ng-href="{{section.link}}">
         <img ng-src="{{section.screenshots[0]}}" class="screenshot" />
       </a>
     </div>
-    <div flex="50" flex-order="{{$odd ? 1 : 0}}">
+    <div flex="50" flex-order="{{$even ? 1 : 0}}">
       <h1><a ng-href="{{section.link}}">{{ section.link | t }}</a></h1>
       <p>{{ section.link + '.description' | t }}</p>
     </div>

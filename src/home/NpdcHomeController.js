@@ -4,13 +4,16 @@ function NpdcShowController($scope, $location, $timeout,
     NpolarApiSecurity,
     npdcAppConfig, NpdcApplications, NpdcSearchService, NpdcAutocompleteConfigFactory,
     Editlog) {
-  
+
   'ngInject';
-  
+
   $scope.security = NpolarApiSecurity;
 
   $scope.sections = NpdcApplications.filter(app => app.category === 'public');
-  
+  $scope.banners = $scope.sections.filter(app => app.promote && app.screenshots.length);
+
+  console.log($scope.sections);
+
   $scope.documents = [{
     link: "https://data.npolar.no/policy/NP-datapolitikk.pdf",
     name: "Data policy (Norwegian)",
@@ -18,7 +21,7 @@ function NpdcShowController($scope, $location, $timeout,
     description: ""
   }];
   $scope.apps = NpdcApplications.filter(app => app.category === 'public');
-  
+
   if (NpolarApiSecurity.isAuthenticated()) {
     $scope.user = NpolarApiSecurity.getUser();
     let lowercaseName = $scope.user.name.split(' ').join('+');
@@ -27,7 +30,7 @@ function NpdcShowController($scope, $location, $timeout,
         return { text: t.term, href: `${t.term}?q=${lowercaseName}`, count: t.count }; });
     });
   }
-  
+
   $scope.searchOptions = new NpdcAutocompleteConfigFactory({
     global: true,
     showCollections: false,
