@@ -88,18 +88,17 @@
       <h1>{{ 'guidelines.title' | t }}</h1>
       <p>{{ 'guidelines.tagline' | t }}</p>
     </div>
-    <md-grid-list
-      md-cols="2"
-      md-gutter="12px" md-gutter-gt-sm="8px" md-row-height="250px" style="height: 250px; margin-top: 20px;">
-      <md-grid-tile ng-repeat="doc in documents">
-        <a ng-href="{{doc.link}}">
-          <img ng-src="{{doc.img}}" style="width: 500px;" />
-          {{doc.name}}
+    <md-list flex>
+      <md-list-item class="md-3-line" ng-repeat="doc in documents" ng-click="null">
+        <!-- <img ng-src="{{ doc.img }}" class="md-avatar" alt="{{ doc.name }}" /> -->
+        <a ng-href="{{ doc.link }}">
+          <div class="md-list-item-text" layout="column">
+            <h3>{{ doc.name }}</h3>
+          </div>
         </a>
-        <p>{{doc.description}}</p>
-      </md-grid-tile>
-    </md-grid-list>
+      </md-list-item>
+    </md-list>
   </section>
-
 </md-content>
 <npdc:footer></npdc:footer>
+

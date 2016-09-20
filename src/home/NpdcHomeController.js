@@ -15,11 +15,13 @@ function NpdcShowController($scope, $location, $timeout,
   console.log($scope.sections);
 
   $scope.documents = [{
-    link: "https://data.npolar.no/policy/NP-datapolitikk.pdf",
-    name: "Data policy (Norwegian)",
-    img: "/home/img/open-data.jpg",
-    description: ""
+    link: "https://data.npolar.no/policy/NP-datapolitikk-nb_NO.pdf",
+    name: "Datapolitikk (Norsk Bokmål)"
+  }, {
+    link: "https://data.npolar.no/policy/NPI-data-policy-en_GB.pdf",
+    name: "Data policy (English)"
   }];
+
   $scope.apps = NpdcApplications.filter(app => app.category === 'public');
 
   if (NpolarApiSecurity.isAuthenticated()) {
