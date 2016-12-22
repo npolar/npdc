@@ -1,7 +1,7 @@
 {
   "name": "npdc-home",
   "private": true,
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Norwegian Polar Data Centre (v2)",
   "repository": "https://github.com/npolar/npdc",
   "license": "MIT",
