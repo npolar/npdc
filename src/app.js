@@ -6,24 +6,25 @@ var AutoConfig  = npdcCommon.AutoConfig;
 
 var npdc = angular.module("npdcHome", ["npdcCommon"]);
 
-// No auth interceptor
+// No auth interceptor is needed for the home app
 
 // Routing
 npdc.config(require("./router"));
 
 // Controllers
 npdc.controller("NpdcHomeController", require("./home/NpdcHomeController"));
-npdc.controller("OceanographyBuoyMapController", require("./home/OceanographyBuoyMapController"));
-npdc.controller("ExpeditionMapController", require("./home/ExpeditionMapController"));
+npdc.controller("NpdcHomeLatestController", require("./home/LatestController"));
+//npdc.controller("OceanographyBuoyMapController", require("./home/OceanographyBuoyMapController"));
+//npdc.controller("ExpeditionMapController", require("./home/ExpeditionMapController"));
 npdc.controller("GlobalSearchController", require("./search/GlobalSearchController"));
 
 // Bootstrap ngResource models using NpolarApiResource
 var resources = [
   { path: '/service', 'resource': 'Service', cache: true, base: '//api.npolar.no' },
   { path: '/editlog', 'resource': 'Editlog', cache: true, base: '//api.npolar.no' },
-  { path: '/expedition/track', 'resource': 'Expedition', cache: true, base: '//api.npolar.no' },
-  { path: '/oceanography/buoy', 'resource': 'Buoy', cache: true, base: '//api.npolar.no' },
-  { path: '/arcgis/rest/services', 'resource': 'ArcGIS', cache: true, base: '//geodata.npolar.no' }
+  //{ path: '/expedition/track', 'resource': 'Expedition', cache: true, base: '//api.npolar.no' },
+  //{ path: '/oceanography/buoy', 'resource': 'Buoy', cache: true, base: '//api.npolar.no' },
+  //{ path: '/arcgis/rest/services', 'resource': 'ArcGIS', cache: true, base: '//geodata.npolar.no' }
 ];
 resources.forEach(function (service) {
   // Expressive DI syntax is needed here
@@ -33,7 +34,7 @@ resources.forEach(function (service) {
 });
 
 // App configurations
-npdc.run(function($http, npolarApiConfig, npdcAppConfig, NpolarTranslate, NpolarLang, ArcGIS) {
+npdc.run(function($http, npolarApiConfig, npdcAppConfig, NpolarTranslate, NpolarLang) {
   var environment = 'production'; // development | test | production
   Object.assign(npolarApiConfig, new AutoConfig(environment));
 
@@ -42,9 +43,9 @@ npdc.run(function($http, npolarApiConfig, npdcAppConfig, NpolarTranslate, Npolar
 
   // http://geodata.npolar.no/arcgis/rest/services/?f=pjson
   // http://geodata.npolar.no/arcgis/rest/services/inspire1?f=pjson
-  ArcGIS.get({id: 'inspire1', f: 'pjson'}).$promise.then(f => {
-    console.debug(f);
-  });
+  //ArcGIS.get({id: 'inspire1', f: 'pjson'}).$promise.then(f => {
+  //  console.debug(f);
+  //});
   // Map apps =>
   // Svalbardkartet
   // Barentsportal

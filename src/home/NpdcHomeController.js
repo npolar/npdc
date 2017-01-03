@@ -12,11 +12,9 @@ function NpdcShowController($scope, $location, $timeout,
   $scope.sections = NpdcApplications.filter(app => app.category === 'public');
   $scope.banners = $scope.sections.filter(app => app.promote && app.screenshots.length);
 
-  console.log($scope.sections);
-
   $scope.documents = [{
     link: "https://data.npolar.no/policy/NP-datapolitikk-nb_NO.pdf",
-    name: "Datapolitikk (Norsk Bokmål)",
+    name: "Datapolitikk (norsk bokmål)",
     img: "/home/img/norway_round_icon_256.png"
   }, {
     link: "https://data.npolar.no/policy/NPI-data-policy-en_GB.pdf",

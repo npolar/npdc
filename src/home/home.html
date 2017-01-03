@@ -81,8 +81,18 @@
         </md-grid-tile>
       </md-grid-list>
     </div>
+  </section>
+
+  <section class="app-section" layout="column" layout-padding ng-controller="NpdcHomeLatestController">
+    <h1>Recent additions</h1>
+    <span ng-repeat="e in latest.POST">
+      <md-tooltip md-direction="left" md-delay="200">{{e.endpoint | t }}</md-tooltip>
+      <a href="{{e.uri}}">{{ e.document.title  || (e.document.titles|title) || e.document.id }}</a>
+      [{{e.document.created | isodate }}]
+    </span>
 
   </section>
+
   <section id="documents" class="document-section" layout="column" layout-align="start center">
     <div>
       <h1>{{ 'guidelines.title' | t }}</h1>
@@ -98,4 +108,3 @@
   </section>
 </md-content>
 <npdc:footer></npdc:footer>
-
