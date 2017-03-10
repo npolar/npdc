@@ -16,7 +16,7 @@
 
   <section id="search" class="home-section" layout layout-align="center start" layout-wrap>
     <div flex="50">
-      <img src="img/tracking.png" class="screenshot" />
+      <a href="/oceanography/buoy/globus/" target="_blank"><img src="img/N-ICE2015-buoys-globus-overview.png" class="screenshot" /></a>
     </div>
     <div flex="50">
       <h1>Norwegian Polar Data Centre</h1>
@@ -85,12 +85,10 @@
 
   <section class="app-section" layout="column" layout-padding ng-controller="NpdcHomeLatestController">
     <h1>Recent additions</h1>
-    <span ng-repeat="e in latest.POST">
-      <md-tooltip md-direction="left" md-delay="200">{{e.endpoint | t }}</md-tooltip>
-      <a href="{{e.uri}}">{{ e.document.title  || (e.document.titles|title) || e.document.id }}</a>
-      [{{e.document.created | isodate }}]
-    </span>
-
+    <h4 class="md-headline" ng-repeat="e in latest.POST">
+      <md-tooltip md-direction="bottom" md-delay="200">{{e.endpoint | t }}</md-tooltip>
+      [{{e.document.created | isodate }}] <a href="{{e.uri}}">{{ e.document.title  || (e.document.titles|title) || e.document.id }}</a>
+    </h4>
   </section>
 
   <section id="documents" class="document-section" layout="column" layout-align="start center">
