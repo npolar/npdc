@@ -22,14 +22,16 @@ function NpdcShowController($scope, $location, $timeout,
     img: "/home/img/united_kingdom_round_icon_256.png"
   }];
 
-  $scope.apps = NpdcApplications.filter(app => app.category === 'public');
+  $scope.apps = NpdcApplications.filter(app => app.category === 'public' && (!app.promote || !app.screenshots.length ));
 
   if (NpolarApiSecurity.isAuthenticated()) {
     $scope.user = NpolarApiSecurity.getUser();
     let lowercaseName = $scope.user.name.split(' ').join('+');
-    Editlog.facets({q:'', 'filter-request.username': $scope.user.email}, r => {
+    Editlog.facets({q:'', 'filter-request.username': $scope.user.email,
+      'filter-endpoint': NpdcApplications.map(a => a.link).join('|')
+      }, r => {
       $scope.endpoints = r.find(f => f.facet === 'endpoint').terms.map(t => {
-        return { text: t.term, href: `${t.term}?q=${lowercaseName}`, count: t.count }; });
+        return { text: t.term, href: `${t.term}?q=${lowercaseName}&sort=-updated`, count: t.count }; });
     });
   }
 

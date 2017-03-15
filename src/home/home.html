@@ -11,7 +11,9 @@
   }
 </style>
 
+
 <npdc:toolbar></npdc:toolbar>
+
 <md-content class="home">
 
   <section id="search" class="home-section" layout layout-align="center start" layout-wrap>
@@ -28,19 +30,17 @@
         <md-button class="md-button md-raised md-hue-1 search-button" type="submit">{{'search' | t}}
         </md-button>
       </div>-->
-
+          <span ng-show="security.isAuthenticated()" ng-if="endpoints.length > 0">
+      <span>
+        <h3>{{ 'Edits by'|t }} <a ng-href="/user/{{user.email}}">{{user.name}}</a></h3>
+        <span ng-repeat="e in endpoints"><a href="{{e.href}}">{{e.text | t }}</a> ({{e.count}}) </span>
+      </span>
+    </span>
     </form>
 
-</section>
 
-<!--
-  <section class="section" layout="column" layout-padding>
-    <div ng-show="security.isAuthenticated() && endpoints.length > 0">
-      <h3>{{user.name}} contributed to</h3>
-      <span ng-repeat="e in endpoints"><a href="{{e.href}}">{{e.text | t }}</a> | </span>
-    </div>
-</section>
--->
+
+  </section>
 
 <!--  <section class="app-section" layout="column" ng-controller="ExpeditionMapController">
     <h1><a href="/dataset/7f7e56d0-9e70-4363-b37d-17915e09a935">Lance</a> expeditions ({{interval}} average positions)</h1>
@@ -48,7 +48,12 @@
     <div>Type: <span ng-repeat="type in types">
   </section>-->
 
+
+
   <section ng-repeat="section in banners" class="home-section" layout layout-align="center center">
+
+
+
     <div flex="50" flex-order="{{$even ? 0 : 1}}">
       <a ng-href="{{section.link}}">
         <img ng-src="{{section.screenshots[0]}}" class="screenshot" />
@@ -87,7 +92,9 @@
     <h1>Recent additions</h1>
     <h4 class="md-headline" ng-repeat="e in latest.POST">
       <md-tooltip md-direction="bottom" md-delay="200">{{e.endpoint | t }}</md-tooltip>
-      [{{e.document.created | isodate }}] <a href="{{e.uri}}">{{ e.document.title  || (e.document.titles|title) || e.document.id }}</a>
+      [{{e.document.created | isodate }}] <a href="{{e.uri}}">
+        <span ng-if="e.document.title">{{ e.document.title | i18n }}</span>
+        <span ng-if="!e.document.title">{{ (e.document.titles|title) || e.document.id }}</span></a>
     </h4>
   </section>
 

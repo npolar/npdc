@@ -6,7 +6,7 @@
   "repository": "https://github.com/npolar/npdc",
   "license": "MIT",
   "dependencies": {
-    "npdc-common": "npolar/npdc-common#v4.9.4"
+    "npdc-common": "npolar/npdc-common#v4.9.6"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.3.13",
