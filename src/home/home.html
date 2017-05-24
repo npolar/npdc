@@ -30,8 +30,8 @@
         <md-button class="md-button md-raised md-hue-1 search-button" type="submit">{{'search' | t}}
         </md-button>
       </div>-->
-          <span ng-show="security.isAuthenticated()" ng-if="endpoints.length > 0">
-      <span>
+    <span ng-show="security.isAuthenticated()">
+      <span ng-show="endpoints.length > 0">
         <h3>{{ 'Edits by'|t }} <a ng-href="/user/{{user.email}}">{{user.name}}</a></h3>
         <span ng-repeat="e in endpoints"><a href="{{e.href}}">{{e.text | t }}</a> ({{e.count}}) </span>
       </span>
@@ -42,17 +42,12 @@
 
   </section>
 
-<!--  <section class="app-section" layout="column" ng-controller="ExpeditionMapController">
-    <h1><a href="/dataset/7f7e56d0-9e70-4363-b37d-17915e09a935">Lance</a> expeditions ({{interval}} average positions)</h1>
+  <!-- <section class="app-section" layout="column" ng-controller="ExpeditionMapController">
+    <h1>Lance expeditions ({{interval}} average positions)</h1>
     <div id="npolar-esri-leaflet-map" style="height:600px;" class="leaflet-map"></div>
-    <div>Type: <span ng-repeat="type in types">
-  </section>-->
-
-
+  </section> -->
 
   <section ng-repeat="section in banners" class="home-section" layout layout-align="center center">
-
-
 
     <div flex="50" flex-order="{{$even ? 0 : 1}}">
       <a ng-href="{{section.link}}">
