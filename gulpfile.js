@@ -6,7 +6,7 @@ var gulpif = require('gulp-if');
 var symlink = require('gulp-symlink');
 var path = require('path');
 var config = npdcGulp.baseConfig;
-config.COMMON_VERSION = '4.10.12';
+config.COMMON_VERSION = '4.10.16';
 
 npdcGulp.loadAppTasks(gulp);
 
